@@ -32,7 +32,7 @@ output$selectize_casesByCountries <- renderUI({
     "caseEvolution_country",
     label    = "Select Countries",
     choices  = unique(data_evolution$`Country/Region`),
-    selected = top5_countries,
+    selected = append(top5_countries, "Greece"),
     multiple = TRUE
   )
 })
@@ -154,7 +154,7 @@ output$selectize_casesByCountriesAfter100th <- renderUI({
     "caseEvolution_countryAfter100th",
     label    = "Select Countries",
     choices  = unique(data_evolution$`Country/Region`),
-    selected = top5_countries,
+    selected = append(top5_countries, "Greece"),
     multiple = TRUE
   )
 })
