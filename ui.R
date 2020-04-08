@@ -1,5 +1,6 @@
 source("sections/ui_overview.R", local = TRUE)
 source("sections/ui_plots.R", local = TRUE)
+source("sections/ui_social_plots.R", local = TRUE)
 source("sections/ui_about.R", local = TRUE)
 source("sections/ui_fullTable.R", local = TRUE)
 
