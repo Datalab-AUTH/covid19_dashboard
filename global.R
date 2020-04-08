@@ -7,6 +7,7 @@ library("plotly")
 library("DT")
 library("fs")
 library("wbstats")
+library("countrycode")
 
 source("utils.R", local = T)
 
