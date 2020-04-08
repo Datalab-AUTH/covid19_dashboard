@@ -28,11 +28,11 @@ downloadGithubData <- function() {
 
 
 updateData <- function() {
-  # Download data from Johns Hopkins (https://github.com/CSSEGISandData/COVID-19) if the data is older than 0.5h
+  # Download data from Johns Hopkins (https://github.com/CSSEGISandData/COVID-19) if the data is older than 12h
   if (!dir_exists("data")) {
     dir.create('data')
     downloadGithubData()
-  } else if ((!file.exists("data/covid19_data.zip")) || (as.double(Sys.time() - file_info("data/covid19_data.zip")$change_time, units = "hours") > 0.5)) {
+  } else if ((!file.exists("data/covid19_data.zip")) || (as.double(Sys.time() - file_info("data/covid19_data.zip")$change_time, units = "hours") > 12)) {
     downloadGithubData()
   }
 }
