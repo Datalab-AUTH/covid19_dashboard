@@ -211,7 +211,7 @@ output$selectize_doublingTime_Country <- renderUI({
     "selectize_doublingTime_Country",
     label    = "Select Countries",
     choices  = unique(data_evolution$`Country/Region`),
-    selected = top5_countries,
+    selected = append(top5_countries, "Greece"),
     multiple = TRUE
   )
 })
