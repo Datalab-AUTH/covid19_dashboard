@@ -1,3 +1,5 @@
+library(shinythemes)
+
 source("sections/ui_overview.R", local = TRUE)
 source("sections/ui_plots.R", local = TRUE)
 source("sections/ui_social_plots.R", local = TRUE)
@@ -6,6 +8,7 @@ source("sections/ui_about.R", local = TRUE)
 source("sections/ui_fullTable.R", local = TRUE)
 
 ui <- fluidPage(
+  theme = shinytheme("cyborg"),
   title = "COVID-19 Dashboard - Datalab AUTH",
   tags$head(
     tags$link(rel = "shortcut icon", type = "image/png", href = "logo.png")
