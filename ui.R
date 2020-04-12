@@ -1,6 +1,7 @@
 source("sections/ui_overview.R", local = TRUE)
 source("sections/ui_plots.R", local = TRUE)
 source("sections/ui_social_plots.R", local = TRUE)
+source("sections/ui_action_plots.R", local = TRUE)
 source("sections/ui_about.R", local = TRUE)
 source("sections/ui_fullTable.R", local = TRUE)
 
@@ -23,6 +24,7 @@ ui <- fluidPage(
     tabPanel("Table", page_fullTable, value = "page-fullTable"),
     tabPanel("Epimedic Plots", page_plots, value = "page-plots"),
     tabPanel("Social Plots", page_social_plots, value = "page-social-plots"),
+    tabPanel("Action Plots", page_action_plots, value = "page-actions-plots"),
     tabPanel("About", page_about, value = "page-about"),
     tags$script(HTML("var header = $('.navbar > .container-fluid');
     header.append('<div style=\"float:right\"><a target=\"_blank\" href=\"https://datalab.csd.auth.gr/\"><img src=\"logo.png\" alt=\"alt\" style=\"float:right;width:33px;padding-top:10px;margin-top:-50px;margin-right:10px\"> </a></div>');
