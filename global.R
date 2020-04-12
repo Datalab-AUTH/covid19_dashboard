@@ -8,6 +8,7 @@ library("DT")
 library("fs")
 library("wbstats")
 library("countrycode")
+library("openxlsx")
 
 source("utils.R", local = T)
 
@@ -26,6 +27,12 @@ downloadGithubData <- function() {
   )
 }
 
+downloadOxfordData <- function() {
+  download.file(
+    url      = "https://www.bsg.ox.ac.uk/sites/default/files/OxCGRT_Download_latest_data.xlsx",
+    destfile = "data/oxford_data.xlsx"
+  )
+}
 
 updateData <- function() {
   # Download data from Johns Hopkins (https://github.com/CSSEGISandData/COVID-19) if the data is older than 12h
@@ -34,6 +41,9 @@ updateData <- function() {
     downloadGithubData()
   } else if ((!file.exists("data/covid19_data.zip")) || (as.double(Sys.time() - file_info("data/covid19_data.zip")$change_time, units = "hours") > 12)) {
     downloadGithubData()
+  }
+  if ((!file.exists("data/oxford_data.xlsx")) || (as.double(Sys.time() - file_info("data/oxford_data.xlsx")$change_time, units = "hours") > 12)) {
+    downloadOxfordData
   }
 }
 
@@ -49,6 +59,9 @@ data_deceased_us  <- read_csv("data/time_series_covid19_deaths_US.csv")
 
 data_human_freedom <- read_csv("data/human_freedom.csv")
 data_whr <- read_csv("data/whr2019.csv")
+data_oxford <- read.xlsx("data/oxford_data.xlsx")
+data_oxford$Date <- as.Date.character(data_oxford$Date, format="%Y%m%d")
+data_oxford <- as.tibble(data_oxford)
 
 # Get latest data
 current_date <- as.Date(names(data_confirmed)[ncol(data_confirmed)], format = "%m/%d/%y")
