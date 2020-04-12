@@ -8,7 +8,7 @@ library("DT")
 library("fs")
 library("wbstats")
 library("countrycode")
-library("openxlsx")
+library("readxl")
 
 source("utils.R", local = T)
 
@@ -43,7 +43,7 @@ updateData <- function() {
     downloadGithubData()
   }
   if ((!file.exists("data/oxford_data.xlsx")) || (as.double(Sys.time() - file_info("data/oxford_data.xlsx")$change_time, units = "hours") > 12)) {
-    downloadOxfordData
+    downloadOxfordData()
   }
 }
 
@@ -59,9 +59,13 @@ data_deceased_us  <- read_csv("data/time_series_covid19_deaths_US.csv")
 
 data_human_freedom <- read_csv("data/human_freedom.csv")
 data_whr <- read_csv("data/whr2019.csv")
-data_oxford <- read.xlsx("data/oxford_data.xlsx")
+
+data_oxford <- read_xlsx("data/oxford_data.xlsx")
 data_oxford$Date <- as.Date.character(data_oxford$Date, format="%Y%m%d")
-data_oxford <- as.tibble(data_oxford)
+data_oxford <- data_oxford %>%
+  select(-"CountryName", -ends_with("_Notes"), -ends_with("_IsGeneral"), -starts_with("Confirmed"), -"StringencyIndex", -"...35") %>%
+  rename("iso3c" = "CountryCode") %>%
+  rename("ActionDate" = "Date")
 
 # Get latest data
 current_date <- as.Date(names(data_confirmed)[ncol(data_confirmed)], format = "%m/%d/%y")
@@ -174,6 +178,17 @@ data_atDate <- function(inputDate) {
              deceased > 0 |
              active > 0)
 }
+
+data_confirmed_1st_case <- data_evolution %>% 
+  filter(var == "confirmed") %>% 
+  filter(value > 0) %>% 
+  group_by(date, `Country/Region`) %>% 
+  summarise(value = sum(value)) %>% 
+  group_by(`Country/Region`) %>% 
+  slice(1) %>%
+  rename("Country" = "Country/Region") %>%
+  select("Country", "date")
+data_confirmed_1st_case$iso3c <- countrycode(data_confirmed_1st_case$Country, origin = "country.name", destination = "iso3c")
 
 data_latest <- data_atDate(max(data_evolution$date))
 
