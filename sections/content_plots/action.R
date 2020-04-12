@@ -4,7 +4,7 @@
 #
 
 output$action_cases <- renderPlotly({
-  req(input$action_case_country)
+  req(input$action_cases_country)
   req(input$action_cases_taken)
   data <- inner_join(data_oxford, data_confirmed_1st_case, by = "iso3c") %>% 
     arrange(iso3c, ActionDate) %>% 
@@ -70,7 +70,7 @@ output$action_cases <- renderPlotly({
       showlegend = TRUE
     )
   
-  for (country in input$action_case_country) {
+  for (country in input$action_cases_country) {
     country_diff <- data$diff[data$Country == country]
     p <- p %>%
       add_trace(
@@ -92,7 +92,7 @@ output$select_action_cases_country_variable <- renderUI({
   top5_countries_names <- countrycode(top5_countries_iso3c, origin = "iso3c", destination = "country.name")
   countries <- sort(unique(countrycode(data_oxford$iso3c, origin = "iso3c", destination = "country.name")))
   selectizeInput(
-    "action_case_country",
+    "action_cases_country",
     label    = "Select Countries",
     choices  = countries,
     selected = append(top5_countries_names, "Greece"),
@@ -100,7 +100,7 @@ output$select_action_cases_country_variable <- renderUI({
   )
 })
 
-output$select_action_case_variable <- renderUI({
+output$select_action_cases_variable <- renderUI({
   actions <- data_oxford %>% 
     select(starts_with("S")) %>% 
     names()
@@ -180,7 +180,7 @@ output$action_deaths <- renderPlotly({
   ) %>%
     layout(
       yaxis = list(title = "Number of countries"),
-      xaxis = list(title = paste("Delay of", input$action_deaths_taken, "since first confirmed deaths")),
+      xaxis = list(title = paste("Delay of", input$action_deaths_taken, "since first confirmed death")),
       showlegend = TRUE
     )
   
@@ -242,7 +242,7 @@ output$box_case_action <- renderUI({
           style = "float: right; padding: 10px; margin-right: 50px"
         ),
         column(
-          uiOutput("select_action_case_variable"),
+          uiOutput("select_action_cases_variable"),
           width = 4
         ),
         column(
