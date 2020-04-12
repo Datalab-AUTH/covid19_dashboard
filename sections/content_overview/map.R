@@ -19,10 +19,10 @@ map <- leaflet(addLabel(data_latest)) %>%
   setMaxBounds(-180, -90, 180, 90) %>%
   setView(0, 20, zoom = 2) %>%
   addTiles() %>%
-  addProviderTiles(providers$CartoDB.Positron, group = "Light") %>%
+  addProviderTiles(providers$CartoDB.DarkMatter, group = "Dark") %>%
   addProviderTiles(providers$HERE.satelliteDay, group = "Satellite") %>%
   addLayersControl(
-    baseGroups    = c("Light", "Satellite"),
+    baseGroups    = c("Dark", "Satellite"),
     overlayGroups = c("Confirmed", "Confirmed (per capita)", "Estimated Recoveries", "Deceased", "Active", "Active (per capita)")
   ) %>%
   hideGroup("Confirmed (per capita)") %>%
