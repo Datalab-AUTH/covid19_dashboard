@@ -84,6 +84,21 @@ output$action_cases <- renderPlotly({
       )
   }
   
+  p <- layout(p,
+    font = list(color = "#FFFFFF"),
+    paper_bgcolor = "#444B55",
+    plot_bgcolor = "#444B55",
+    yaxis = list(
+      zerolinecolor = "#666666",
+      linecolor = "#999999",
+      gridcolor = "#666666"
+    ),
+    xaxis = list(
+      zerolinecolor = "#666666",
+      linecolor = "#999999",
+      gridcolor = "#666666"
+    )
+  )
   return(p)
 })
 
@@ -198,6 +213,21 @@ output$action_deaths <- renderPlotly({
       )
   }
   
+  p <- layout(p,
+    font = list(color = "#FFFFFF"),
+    paper_bgcolor = "#444B55",
+    plot_bgcolor = "#444B55",
+    yaxis = list(
+      zerolinecolor = "#666666",
+      linecolor = "#999999",
+      gridcolor = "#666666"
+    ),
+    xaxis = list(
+      zerolinecolor = "#666666",
+      linecolor = "#999999",
+      gridcolor = "#666666"
+    )
+  )
   return(p)
 })
 

@@ -24,6 +24,22 @@ output$case_evolution <- renderPlotly({
     p <- layout(p, yaxis = list(type = "log"))
   }
 
+  p <- layout(p,
+    font = list(color = "#FFFFFF"),
+    paper_bgcolor = "#444B55",
+    plot_bgcolor = "#444B55",
+    yaxis = list(
+      zerolinecolor = "#666666",
+      linecolor = "#999999",
+      gridcolor = "#666666"
+    ),
+    xaxis = list(
+      zerolinecolor = "#666666",
+      linecolor = "#999999",
+      gridcolor = "#666666"
+    )
+  )
+  
   return(p)
 })
 
@@ -116,6 +132,21 @@ output$case_evolution_byCountry <- renderPlotly({
     p <- layout(p, yaxis = list(title = "# Cases per 100k Inhabitants"))
   }
 
+  p <- layout(p,
+    font = list(color = "#FFFFFF"),
+    paper_bgcolor = "#444B55",
+    plot_bgcolor = "#444B55",
+    yaxis = list(
+      zerolinecolor = "#666666",
+      linecolor = "#999999",
+      gridcolor = "#666666"
+    ),
+    xaxis = list(
+      zerolinecolor = "#666666",
+      linecolor = "#999999",
+      gridcolor = "#666666"
+    )
+  )
   return(p)
 })
 
@@ -147,6 +178,23 @@ output$case_evolution_new <- renderPlotly({
       yaxis = list(title = "# New Cases"),
       xaxis = list(title = "Date")
     )
+  
+  p <- layout(p,
+    font = list(color = "#FFFFFF"),
+    paper_bgcolor = "#444B55",
+    plot_bgcolor = "#444B55",
+    yaxis = list(
+      zerolinecolor = "#666666",
+      linecolor = "#999999",
+      gridcolor = "#666666"
+    ),
+    xaxis = list(
+      zerolinecolor = "#666666",
+      linecolor = "#999999",
+      gridcolor = "#666666"
+    )
+  )
+  return (p)
 })
 
 output$selectize_casesByCountriesAfter100th <- renderUI({
@@ -203,6 +251,21 @@ output$case_evolution_after100 <- renderPlotly({
     p <- layout(p, yaxis = list(title = "# Cases per 100k Inhabitants"))
   }
 
+  p <- layout(p,
+    font = list(color = "#FFFFFF"),
+    paper_bgcolor = "#444B55",
+    plot_bgcolor = "#444B55",
+    yaxis = list(
+      zerolinecolor = "#666666",
+      linecolor = "#999999",
+      gridcolor = "#666666"
+    ),
+    xaxis = list(
+      zerolinecolor = "#666666",
+      linecolor = "#999999",
+      gridcolor = "#666666"
+    )
+  )
   return(p)
 })
 
@@ -250,7 +313,22 @@ output$plot_doublingTime <- renderPlotly({
       yaxis = list(title = "Doubline Time in Days"),
       xaxis = list(title = "Date")
     )
-
+  
+  p <- layout(p,
+    font = list(color = "#FFFFFF"),
+    paper_bgcolor = "#444B55",
+    plot_bgcolor = "#444B55",
+    yaxis = list(
+      zerolinecolor = "#666666",
+      linecolor = "#999999",
+      gridcolor = "#666666"
+    ),
+    xaxis = list(
+      zerolinecolor = "#666666",
+      linecolor = "#999999",
+      gridcolor = "#666666"
+    )
+  )
   return(p)
 })
 
