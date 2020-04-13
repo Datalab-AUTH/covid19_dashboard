@@ -6,7 +6,19 @@ body_overview <- dashboardBody(
     tags$style(type = "text/css", "@media (max-width: 991px) { .details { display: flex; flex-direction: column; } }"),
     tags$style(type = "text/css", "@media (max-width: 991px) { .details .map { order: 1; width: 100%; } }"),
     tags$style(type = "text/css", "@media (max-width: 991px) { .details .summary { order: 3; width: 100%; } }"),
-    tags$style(type = "text/css", "@media (max-width: 991px) { .details .slider { order: 2; width: 100%; } }")
+    tags$style(type = "text/css", "@media (max-width: 991px) { .details .slider { order: 2; width: 100%; } }"),
+    tags$style(type = 'text/css', ".row { background-color: #444b55; }"),
+    tags$style(type = 'text/css', ".box { background-color: #444b55; border-top: 3px solid #444b55;}"),
+    tags$style(type = 'text/css', ".content-wrapper { background-color: #444b55; }"),
+    tags$style(type = 'text/css', ".bg-light-blue { background-color: #0bc3bb !important; }"),
+    tags$style(type = 'text/css', ".irs-bar, .irs-bar-edge { border-top: 1px solid #0bc3bb;
+                                              border-bottom: 1px solid #0bc3bb;
+                                              background: #0bc3bb;}"),
+    tags$style(type = 'text/css', ".irs-min, .irs-max { color: #fff; }"),
+    tags$style(type = 'text/css', ".irs-from, .irs-to, .irs-single { background: none; }"),
+    tags$style(type = 'text/css', ".play { color: #0bc3bb; }"),
+    tags$style(type = 'text/css', ".pause { color: #0bc3bb; }"),
+    tags$style(type = 'text/css', "body { color: #fff; }")
   ),
   fluidRow(
     fluidRow(
@@ -45,7 +57,19 @@ body_overview <- dashboardBody(
         style = 'padding-left:15px; padding-right:15px;'
       )
     )
-  )
+  ),
+  tags$style(type = 'text/css', ".nav-tabs-custom { background: #444b55; }"),
+  tags$style(type = 'text/css', ".nav-tabs-custom > .nav-tabs > li > a {color: #fff;}"),
+  tags$style(type = 'text/css', ".nav-tabs-custom .nav-tabs {border-bottom-color: #444b55; }
+      .nav-tabs-custom .nav-tabs li {background: #2F333B; color: #fff;}
+      .nav-tabs-custom .nav-tabs li a {color: #fff;}
+      .nav-tabs-custom .nav-tabs li.active {border-top-color: #0bc3bb;}
+      .nav-tabs-custom .nav-tabs li.active a {background: #0bc3bb; color: #fff;}
+      label {color: #fff; }
+      .nav-tabs-custom .tab-content {background: #444b55;}
+      table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd {background-color: #444b55;}
+             table.dataTable.stripe tbody tr.even, table.dataTable.display tbody tr.even {background-color: #2F333B;}
+      .legend {color: #fff; }")
 )
 
 page_overview <- dashboardPage(
