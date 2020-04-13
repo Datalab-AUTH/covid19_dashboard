@@ -19,6 +19,7 @@ ui <- fluidPage(
   tags$style(type = "text/css", ".row {margin-left: 0px; margin-right: 0px;}"),
   tags$style(HTML(".col-sm-12 { padding: 5px; margin-bottom: -15px; }")),
   tags$style(HTML(".col-sm-6 { padding: 5px; margin-bottom: -15px; }")),
+  tags$style(HTML("input { color: #FFFFFF; background: #444B55; background-color: #444B55 }")),
   tags$style(HTML(".selectized { background-color: #444B55 }")),
   tags$style(HTML(".selectize-control { background: #444B55; background-color: #444B55 }")),
   tags$style(HTML(".selectize-control * { background: #444B55; background-color: #444B55 }")),
