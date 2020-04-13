@@ -13,6 +13,7 @@ ui <- fluidPage(
   tags$head(
     tags$link(rel = "shortcut icon", type = "image/png", href = "logo.png")
   ),
+  tags$style(type = "text/css", "@media (max-width: 768px) { #logo { display: none; } }"),
   tags$style(type = "text/css", ".container-fluid {padding-left: 0px; padding-right: 0px !important;}"),
   tags$style(type = "text/css", ".navbar {margin-bottom: 0px;}"),
   tags$style(type = "text/css", ".content {padding: 0px;}"),
@@ -40,7 +41,7 @@ ui <- fluidPage(
     tabPanel("Government Action Plots", page_action_plots, value = "page-actions-plots"),
     tabPanel("About", page_about, value = "page-about"),
     tags$script(HTML("var header = $('.navbar > .container-fluid');
-    header.append('<div style=\"float:right\"><a target=\"_blank\" href=\"https://datalab.csd.auth.gr/\"><img src=\"logo.png\" alt=\"alt\" style=\"float:right;width:33px;padding-top:10px;margin-top:-50px;margin-right:10px\"> </a></div>');
+    header.append('<div style=\"float:right\"><a target=\"_blank\" href=\"https://datalab.csd.auth.gr/\"><img id=\"logo\" src=\"logo.png\" alt=\"alt\" style=\"float:right;width:33px;padding-top:10px;margin-top:-50px;margin-right:10px\"> </a></div>');
     console.log(header)")
     )
   )
