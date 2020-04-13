@@ -51,6 +51,7 @@ observe({
       lat          = ~Lat,
       radius       = ~log(confirmed^(zoomLevel / 2)),
       stroke       = FALSE,
+      color        = "#0bc3bb",
       fillOpacity  = 0.5,
       label        = ~label,
       labelOptions = labelOptions(textsize = 15),
