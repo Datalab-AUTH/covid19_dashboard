@@ -110,23 +110,24 @@ output$fullTable <- renderDataTable({
       columns         = "confirmed_new",
       valueColumns    = "confirmed_newPer",
       backgroundColor = styleInterval(c(10, 20, 33, 50, 75), c("NULL", "#FFE5E5", "#FFB2B2", "#FF7F7F", "#FF4C4C", "#983232")),
-      color           = styleInterval(75, c("#000000", "#FFFFFF"))
+      color           = styleInterval(10, c("#FFFFFF", "#000000"))
     ) %>%
     formatStyle(
       columns         = "deceased_new",
       valueColumns    = "deceased_newPer",
       backgroundColor = styleInterval(c(10, 20, 33, 50, 75), c("NULL", "#FFE5E5", "#FFB2B2", "#FF7F7F", "#FF4C4C", "#983232")),
-      color           = styleInterval(75, c("#000000", "#FFFFFF"))
+      color           = styleInterval(10, c("#FFFFFF", "#000000"))
     ) %>%
     formatStyle(
       columns         = "active_new",
       valueColumns    = "active_newPer",
       backgroundColor = styleInterval(c(-33, -20, -10, 10, 20, 33, 50, 75), c("#66B066", "#99CA99", "#CCE4CC", "NULL", "#FFE5E5", "#FFB2B2", "#FF7F7F", "#FF4C4C", "#983232")),
-      color           = styleInterval(75, c("#000000", "#FFFFFF"))
+      color           = styleInterval(10, c("#FFFFFF", "#000000"))
     ) %>%
     formatStyle(
       columns         = "recovered_new",
       valueColumns    = "recovered_newPer",
-      backgroundColor = styleInterval(c(10, 20, 33), c("NULL", "#CCE4CC", "#99CA99", "#66B066"))
+      backgroundColor = styleInterval(c(10, 20, 33), c("NULL", "#CCE4CC", "#99CA99", "#66B066")),
+      color           = styleInterval(10, c("#FFFFFF", "#000000"))
     )
 })
