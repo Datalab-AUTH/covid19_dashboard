@@ -27,7 +27,7 @@ ui <- fluidPage(
   tags$style(HTML(".selectize-input { color: #FFFFFF; background: #444B55; background-color: #444B55 }")),
   tags$style(HTML(".selectize-input * { color: #FFFFFF; background: #444B55; background-color: #444B55 }")),
   tags$style(HTML(".selectize-input.full { color: #FFFFFF; background: #444B55; background-color: #444B55 }")),
-  tags$style(HTML(".selectize-input.input-active { color: #FFFFFF; background: #444B55; background-color: #444B55 }")),
+  tags$style(HTML(".selectize-input.input-active { color: #FFFFFF; background: #444B55; background-color: #444B55 !important }")),
   tags$style(HTML(".selectize-dropdown-content { color: #FFFFFF; background: #444B55; background-color: #444B55 }")),
   navbarPage(
     title       = div("AUTH DATALAB - COVID-19 Dashboard", style = "padding-left: 10px"),
