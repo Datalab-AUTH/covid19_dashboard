@@ -69,7 +69,8 @@ body_overview <- dashboardBody(
       .nav-tabs-custom .tab-content {background: #444b55;}
       table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd {background-color: #444b55;}
              table.dataTable.stripe tbody tr.even, table.dataTable.display tbody tr.even {background-color: #2F333B;}
-      .legend {color: #fff; }")
+      .legend {color: #fff; }"),
+  tags$style(type = 'text/css', ".leaflet-control-layers-expanded { background: #444b55; }")
 )
 
 page_overview <- dashboardPage(
