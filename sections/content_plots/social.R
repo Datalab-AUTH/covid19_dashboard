@@ -48,7 +48,7 @@ output$freedom <- renderPlotly({
   if (p_value < 0.001) p_value_text = "P < 0.001"
   else if (p_value < 0.01) p_value_text = "P < 0.01"
   else p_value_text = paste("P = ", round(p_value, 3))
-  p_value_text <- paste("Correlation r =", rho, ",", p_value_text)
+  p_value_text <- paste0("Correlation r = ", rho, ", ", p_value_text)
   
   p <- plot_ly(
     data_merged,
@@ -152,7 +152,7 @@ output$healthGDP <- renderPlotly({
   if (p_value < 0.001) p_value_text = "P < 0.001"
   else if (p_value < 0.01) p_value_text = "P < 0.01"
   else p_value_text = paste("P = ", round(p_value, 3))
-  p_value_text <- paste("Correlation r =", rho, ",", p_value_text)
+  p_value_text <- paste0("Correlation r = ", rho, ", ", p_value_text)
   
   p <- plot_ly(
     data_merged,
