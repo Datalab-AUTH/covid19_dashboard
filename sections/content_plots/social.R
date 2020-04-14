@@ -249,9 +249,7 @@ output$box_case_social <- renderUI({
           style = "float: right; padding: 10px; margin-right: 50px"
         ),
         width = 6
-      )
-    ),
-    fluidRow(
+      ),
       box(
         title = "Cases vs Human Freedom",
         plotlyOutput("freedom"),
