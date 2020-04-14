@@ -3,6 +3,8 @@
 #
 output$freedom <- renderPlotly({
   req(input$case_freedom_var)
+  req(input$case_freedom_limit)
+
   data_conf <- data_latest %>%
     select("Country/Region", "population", input$case_freedom_var) %>%
     rename("Country" = "Country/Region") %>%
@@ -12,6 +14,7 @@ output$freedom <- renderPlotly({
       "population" = sum(population, na.rm = T),
       "values" = sum(values, na.rm = T)
     ) %>%
+    filter(values >= as.numeric(input$case_freedom_limit)) %>%
     mutate(iso3c = countrycode(Country, origin = "country.name", destination = "iso3c"))
   
   if (input$case_freedom_var == "confirmed") {
@@ -100,6 +103,15 @@ output$select_cases_freedom_variable <- renderUI({
     multiple = FALSE
   )
 })
+
+output$select_cases_freedom_limit <- renderUI((
+  selectizeInput(
+    "case_freedom_limit",
+    label = "Number of cases",
+    choices = list("≥1" = 1, "≥10" = 10, "≥100" = 100, "≥1,000" = 1000, "≥10,000" = 10000),
+    multiple = FALSE
+  )
+))
 
 #
 # Health GDP vs deaths
@@ -708,6 +720,10 @@ output$box_case_social <- renderUI({
         ),
         column(
           uiOutput("select_cases_freedom_variable"),
+          width = 3
+        ),
+        column(
+          uiOutput("select_cases_freedom_limit"),
           width = 3
         ),
         column(
