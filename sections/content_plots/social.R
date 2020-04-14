@@ -47,7 +47,6 @@ output$freedom <- renderPlotly({
   p_value <- correlation$p.value
   rho <- round(correlation$estimate, 3)
   if (p_value < 0.001) p_value_text = "P < 0.001"
-  else if (p_value < 0.01) p_value_text = "P < 0.01"
   else p_value_text = paste("P = ", round(p_value, 3))
   p_value_text <- paste0("Correlation r = ", rho, ", ", p_value_text)
   
@@ -159,7 +158,6 @@ output$healthGDP <- renderPlotly({
   p_value <- correlation$p.value
   rho <- round(correlation$estimate, 3)
   if (p_value < 0.001) p_value_text = "P < 0.001"
-  else if (p_value < 0.01) p_value_text = "P < 0.01"
   else p_value_text = paste("P = ", round(p_value, 3))
   p_value_text <- paste0("Correlation r = ", rho, ", ", p_value_text)
   
@@ -272,7 +270,6 @@ output$oecd_influenza <- renderPlotly({
   p_value <- correlation$p.value
   rho <- round(correlation$estimate, 3)
   if (p_value < 0.001) p_value_text = "P < 0.001"
-  else if (p_value < 0.01) p_value_text = "P < 0.01"
   else p_value_text = paste("P = ", round(p_value, 3))
   p_value_text <- paste0("Correlation r = ", rho, ", ", p_value_text)
   
@@ -385,7 +382,6 @@ output$oecd_expectancy <- renderPlotly({
   p_value <- correlation$p.value
   rho <- round(correlation$estimate, 3)
   if (p_value < 0.001) p_value_text = "P < 0.001"
-  else if (p_value < 0.01) p_value_text = "P < 0.01"
   else p_value_text = paste("P = ", round(p_value, 3))
   p_value_text <- paste0("Correlation r = ", rho, ", ", p_value_text)
   
@@ -498,7 +494,6 @@ output$oecd_smokers <- renderPlotly({
   p_value <- correlation$p.value
   rho <- round(correlation$estimate, 3)
   if (p_value < 0.001) p_value_text = "P < 0.001"
-  else if (p_value < 0.01) p_value_text = "P < 0.01"
   else p_value_text = paste("P = ", round(p_value, 3))
   p_value_text <- paste0("Correlation r = ", rho, ", ", p_value_text)
   
@@ -611,7 +606,6 @@ output$oecd_diabetes <- renderPlotly({
   p_value <- correlation$p.value
   rho <- round(correlation$estimate, 3)
   if (p_value < 0.001) p_value_text = "P < 0.001"
-  else if (p_value < 0.01) p_value_text = "P < 0.01"
   else p_value_text = paste("P = ", round(p_value, 3))
   p_value_text <- paste0("Correlation r = ", rho, ", ", p_value_text)
   
