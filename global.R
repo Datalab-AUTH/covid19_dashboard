@@ -60,6 +60,12 @@ data_deceased_us  <- read_csv("data/time_series_covid19_deaths_US.csv")
 data_human_freedom <- read_csv("data/human_freedom.csv")
 data_whr <- read_csv("data/whr2019.csv")
 
+data_world_bank <- read_csv("data/world_bank_data.csv") %>%
+  select("Country Code", "Current health expenditure (% of GDP)", "GDP per capita (current US$)") %>%
+  rename("iso3c" = "Country Code") %>%
+  rename("healthGDP" = "Current health expenditure (% of GDP)") %>%
+  rename("GDP" = "GDP per capita (current US$)")
+
 data_oxford <- read_xlsx("data/oxford_data.xlsx")
 data_oxford$Date <- as.Date.character(data_oxford$Date, format="%Y%m%d")
 data_oxford <- data_oxford %>%
