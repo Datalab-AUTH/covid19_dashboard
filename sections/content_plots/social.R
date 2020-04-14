@@ -202,21 +202,6 @@ output$box_case_social <- renderUI({
   tagList(
     fluidRow(
       box(
-        title = "Cases vs Human Freedom",
-        plotlyOutput("freedom"),
-        column(
-          width = 3,
-          style = "float: right; padding: 10px; margin-right: 50px"
-        ),
-        column(
-          uiOutput("select_cases_freedom_variable"),
-          width = 3
-        ),
-        width = 6
-      )
-    ),
-    fluidRow(
-      box(
         title = "Cases vs Health Expenditure",
         plotlyOutput("healthGDP"),
         column(
@@ -239,6 +224,21 @@ output$box_case_social <- renderUI({
           ),
           width = 3,
           style = "float: right; padding: 10px; margin-right: 50px"
+        ),
+        width = 6
+      )
+    ),
+    fluidRow(
+      box(
+        title = "Cases vs Human Freedom",
+        plotlyOutput("freedom"),
+        column(
+          width = 3,
+          style = "float: right; padding: 10px; margin-right: 50px"
+        ),
+        column(
+          uiOutput("select_cases_freedom_variable"),
+          width = 3
         ),
         width = 6
       )
