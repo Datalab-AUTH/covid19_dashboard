@@ -335,7 +335,7 @@ output$box_case_social <- renderUI({
   tagList(
     fluidRow(
       box(
-        title = "Cases vs Health Expenditure",
+        title = "Health Expenditure",
         plotlyOutput("healthGDP"),
         column(
           width = 3,
@@ -361,7 +361,7 @@ output$box_case_social <- renderUI({
         width = 6
       ),
       box(
-        title = "Cases vs Human Freedom",
+        title = "Human Freedom",
         plotlyOutput("freedom"),
         column(
           width = 3,
@@ -385,7 +385,7 @@ output$box_case_social <- renderUI({
     ),
     fluidRow(
       box(
-        title = "Cases vs Immunization to Influenza",
+        title = "Immunization to Influenza",
         plotlyOutput("oecd_influenza"),
         column(
           width = 3,
