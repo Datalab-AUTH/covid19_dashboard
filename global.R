@@ -66,6 +66,15 @@ data_world_bank <- read_csv("data/world_bank_data.csv") %>%
   rename("healthGDP" = "Current health expenditure (% of GDP)") %>%
   rename("GDP" = "GDP per capita (current US$)")
 
+data_oecd <- read_csv("data/oecd_data.csv") %>%
+  select("Countries and territories", "Daily Smokers", "Diebetes hospital admissions", "Life expectancy", "Immunization to Influenza") %>%
+  mutate(iso3c = countrycode(`Countries and territories`, origin="country.name", destination="iso3c")) %>%
+  select(-"Countries and territories") %>%
+  rename("dailySmokers" = "Daily Smokers") %>%
+  rename("diabetesAdmissions" = "Diebetes hospital admissions") %>%
+  rename("lifeExpectancy" = "Life expectancy") %>%
+  rename("influenzaImmunization" = "Immunization to Influenza")
+
 data_oxford <- read_xlsx("data/oxford_data.xlsx")
 data_oxford$Date <- as.Date.character(data_oxford$Date, format="%Y%m%d")
 data_oxford <- data_oxford %>%
