@@ -372,7 +372,7 @@ output$box_caseEvolution <- renderUI({
           ),
           column(
             checkboxInput("checkbox_logCaseEvolutionCountry", label = "Logarithmic Y-Axis", value = FALSE),
-            checkboxInput("checkbox_per100kEvolutionCountry", label = "Per Population", value = FALSE),
+            checkboxInput("checkbox_per100kEvolutionCountry", label = "Per Capita", value = TRUE),
             width = 3,
             style = "float: right; padding: 10px; margin-right: 50px"
           )
@@ -393,7 +393,7 @@ output$box_caseEvolution <- renderUI({
           ),
           column(
             checkboxInput("checkbox_logCaseEvolution100th", label = "Logarithmic Y-Axis", value = FALSE),
-            checkboxInput("checkbox_per100kEvolutionCountry100th", label = "Per Population", value = FALSE),
+            checkboxInput("checkbox_per100kEvolutionCountry100th", label = "Per Capita", value = TRUE),
             width = 3,
             style = "float: right; padding: 10px; margin-right: 50px"
           )
