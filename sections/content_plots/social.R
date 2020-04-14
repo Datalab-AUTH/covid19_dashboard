@@ -12,9 +12,8 @@ output$freedom <- renderPlotly({
       "population" = sum(population, na.rm = T),
       "values" = sum(values, na.rm = T)
     ) %>%
-    as.data.frame()
-  data_conf$iso3c <- countrycode(data_conf$Country, origin = "country.name", destination = "iso3c")
-
+    mutate(iso3c = countrycode(Country, origin = "country.name", destination = "iso3c"))
+  
   if (input$case_freedom_var == "confirmed") {
     y_label = "# Confirmed Cases"
     dot_color = "#FC8D62"
@@ -36,11 +35,10 @@ output$freedom <- renderPlotly({
   
   data_hf <- data_human_freedom %>%
     select("ISO_code", "hf_score") %>%
-    rename("iso3c" = "ISO_code") %>%
-    as.data.frame()
+    rename("iso3c" = "ISO_code")
   
-  data_merged <- merge(data_conf, data_hf)
-  data_merged$Country <- countrycode(data_merged$iso3c, origin = "iso3c", destination = "country.name")
+  data_merged <- merge(data_conf, data_hf) %>%
+    mutate(Country = countrycode(iso3c, origin = "iso3c", destination = "country.name"))
   
   correlation <- cor.test(data_merged$values, data_merged$hf_score, method = "spearman")
   p_value <- correlation$p.value
@@ -121,9 +119,8 @@ output$healthGDP <- renderPlotly({
       "values" = sum(values, na.rm = T)
     ) %>%
     filter(values >= as.numeric(input$case_healthGDP_limit)) %>%
-    as.data.frame()
-  data_conf$iso3c <- countrycode(data_conf$Country, origin = "country.name", destination = "iso3c")
-  
+    mutate(iso3c = countrycode(Country, origin = "country.name", destination = "iso3c"))
+
   if (input$case_healthGDP_var == "confirmed") {
     y_label = "# Confirmed Cases"
     dot_color = "#FC8D62"
@@ -143,8 +140,8 @@ output$healthGDP <- renderPlotly({
     data_conf$values <- 100000 * data_conf$values / data_conf$population
   }
   
-  data_merged <- merge(data_conf, data_world_bank)
-  data_merged$Country <- countrycode(data_merged$iso3c, origin = "iso3c", destination = "country.name")
+  data_merged <- merge(data_conf, data_world_bank) %>%
+    mutate(Country = countrycode(iso3c, origin = "iso3c", destination = "country.name"))
   
   correlation <- cor.test(data_merged$values, data_merged$healthGDP, method = "spearman")
   p_value <- correlation$p.value
@@ -235,9 +232,8 @@ output$oecd_influenza <- renderPlotly({
       "values" = sum(values, na.rm = T)
     ) %>%
     filter(values >= as.numeric(input$case_oecd_influenza_limit)) %>%
-    as.data.frame()
-  data_conf$iso3c <- countrycode(data_conf$Country, origin = "country.name", destination = "iso3c")
-  
+    mutate(iso3c = countrycode(Country, origin = "country.name", destination = "iso3c"))
+
   if (input$case_oecd_influenza_var == "confirmed") {
     y_label = "# Confirmed Cases"
     dot_color = "#FC8D62"
@@ -257,8 +253,8 @@ output$oecd_influenza <- renderPlotly({
     data_conf$values <- 100000 * data_conf$values / data_conf$population
   }
   
-  data_merged <- merge(data_conf, data_oecd)
-  data_merged$Country <- countrycode(data_merged$iso3c, origin = "iso3c", destination = "country.name")
+  data_merged <- merge(data_conf, data_oecd) %>%
+    mutate(Country = countrycode(iso3c, origin = "iso3c", destination = "country.name"))
   
   correlation <- cor.test(data_merged$values, data_merged$influenzaImmunization, method = "spearman")
   p_value <- correlation$p.value
