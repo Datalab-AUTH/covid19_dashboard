@@ -7,7 +7,7 @@ body_social_plots <- dashboardBody(
 )
 
 page_social_plots <- dashboardPage(
-  title   = "Social Plots",
+  title   = "Socioeconomic Plots",
   header  = dashboardHeader(disable = TRUE),
   sidebar = dashboardSidebar(disable = TRUE),
   body    = body_social_plots

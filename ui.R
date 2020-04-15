@@ -37,7 +37,7 @@ ui <- fluidPage(
     tabPanel("Overview", page_overview, value = "page-overview"),
     tabPanel("Table", page_fullTable, value = "page-fullTable"),
     tabPanel("Epidemic Plots", page_plots, value = "page-plots"),
-    tabPanel("Social Plots", page_social_plots, value = "page-social-plots"),
+    tabPanel("Socioeconomic Plots", page_social_plots, value = "page-social-plots"),
     tabPanel("Government Action Plots", page_action_plots, value = "page-actions-plots"),
     tabPanel("About", page_about, value = "page-about"),
     tags$script(HTML("var header = $('.navbar > .container-fluid');
