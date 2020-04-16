@@ -21,7 +21,7 @@ ui <- fluidPage(
   theme = shinytheme("cyborg"),
   title = "CovidDEXP - COVID-19 Data Exploration",
   tags$head(
-    tags$link(rel = "shortcut icon", type = "image/png", href = "logo.png")
+    tags$link(rel = "shortcut icon", type = "image/png", href = "datalab_logo.png")
   ),
   tags$style(type = "text/css", "@media (max-width: 1120px) { #csd_auth_logos { display: none; } }"),
   tags$style(type = "text/css", ".container-fluid {padding-left: 0px; padding-right: 0px !important;}"),
