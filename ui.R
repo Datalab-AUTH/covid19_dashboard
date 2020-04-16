@@ -7,13 +7,23 @@ source("sections/ui_action_plots.R", local = TRUE)
 source("sections/ui_about.R", local = TRUE)
 source("sections/ui_fullTable.R", local = TRUE)
 
+datalab_logo_html <- '<div style="float:left">
+                       <a target="_blank" href="https://datalab.csd.auth.gr/">
+                       <img id="logo" src="datalab_logo.png" alt="alt"
+                          style="float:left;width:48px;padding-top:10px;margin-top:-25px;margin-right:10px">
+                       </a>
+                       <span style="font-weight: bold">CovidDEXP</span>
+                       </div>'
+
+csd_auth_logos_html <- '\'<div style="float:right"><img id="csd_auth_logos" src="csd_auth_logos.png" alt="alt" usemap="#logosmap" style="float:right;height:62px;margin-top:-58px;margin-right:-10px"></div><map name="logosmap"><area shape="rect" coords="86,3,144,60" alt="School of Informatics" href="https://csd.auth.gr"><area shape="rect" coords="168,3,224,60" alt="Aristotle University of Thessaloniki" href="https://www.auth.gr/"></map>\''
+
 ui <- fluidPage(
   theme = shinytheme("cyborg"),
-  title = "COVID-19 Dashboard - Datalab AUTH",
+  title = "CovidDEXP - COVID-19 Data Exploration",
   tags$head(
     tags$link(rel = "shortcut icon", type = "image/png", href = "logo.png")
   ),
-  tags$style(type = "text/css", "@media (max-width: 768px) { #logo { display: none; } }"),
+  tags$style(type = "text/css", "@media (max-width: 1120px) { #csd_auth_logos { display: none; } }"),
   tags$style(type = "text/css", ".container-fluid {padding-left: 0px; padding-right: 0px !important;}"),
   tags$style(type = "text/css", ".navbar {margin-bottom: 0px;}"),
   tags$style(type = "text/css", ".content {padding: 0px;}"),
@@ -21,6 +31,7 @@ ui <- fluidPage(
   tags$style(HTML(".col-sm-12 { padding: 5px; margin-bottom: -15px; }")),
   tags$style(HTML(".col-sm-6 { padding: 5px; margin-bottom: -15px; }")),
   tags$style(HTML("input { color: #FFFFFF; background: #444B55; background-color: #444B55 }")),
+  tags$style(HTML(".navbar { height: 64px; padding: 8px }")),
   tags$style(HTML(".selectized { background-color: #444B55 }")),
   tags$style(HTML(".selectize-control { background: #444B55; background-color: #444B55 }")),
   tags$style(HTML(".selectize-control * { background: #444B55; background-color: #444B55 }")),
@@ -31,7 +42,7 @@ ui <- fluidPage(
   tags$style(HTML(".selectize-input.input-active { color: #FFFFFF; background: #444B55; background-color: #444B55 !important }")),
   tags$style(HTML(".selectize-dropdown-content { color: #FFFFFF; background: #444B55; background-color: #444B55 }")),
   navbarPage(
-    title       = div("AUTH DATALAB - COVID-19 Dashboard", style = "padding-left: 10px"),
+    title       = HTML(datalab_logo_html),
     collapsible = TRUE,
     fluid       = TRUE,
     tabPanel("World Overview", page_overview, value = "page-overview"),
@@ -40,9 +51,10 @@ ui <- fluidPage(
     tabPanel("Socioeconomic Plots", page_social_plots, value = "page-social-plots"),
     tabPanel("Government Response", page_action_plots, value = "page-actions-plots"),
     tabPanel("About", page_about, value = "page-about"),
-    tags$script(HTML("var header = $('.navbar > .container-fluid');
-    header.append('<div style=\"float:right\"><a target=\"_blank\" href=\"https://datalab.csd.auth.gr/\"><img id=\"logo\" src=\"logo.png\" alt=\"alt\" style=\"float:right;width:33px;padding-top:10px;margin-top:-50px;margin-right:10px\"> </a></div>');
-    console.log(header)")
+    tags$script(HTML(paste0("var header = $('.navbar > .container-fluid');",
+      "header.append(",
+      csd_auth_logos_html,
+      ")"))
     )
   )
 )
