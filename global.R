@@ -12,22 +12,6 @@ library("readxl")
 
 source("utils.R", local = T)
 
-downloadOxfordData <- function() {
-  download.file(
-    url      = "https://www.bsg.ox.ac.uk/sites/default/files/OxCGRT_Download_latest_data.xlsx",
-    destfile = "data/oxford_data.xlsx"
-  )
-}
-
-updateData <- function() {
-  if ((!file.exists("data/oxford_data.xlsx")) || (as.double(Sys.time() - file_info("data/oxford_data.xlsx")$change_time, units = "hours") > 12)) {
-    downloadOxfordData()
-  }
-}
-
-# Update with start of app
-updateData()
-
 JHU_data_path <- "data/JHU_data/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_"
 # TODO: Still throws a warning but works for now
 data_confirmed    <- read_csv(paste0(JHU_data_path, "confirmed_global.csv"))
