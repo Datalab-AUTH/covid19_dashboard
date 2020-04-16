@@ -41,6 +41,7 @@ ui <- fluidPage(
   tags$style(HTML(".selectize-input.full { color: #FFFFFF; background: #444B55; background-color: #444B55 }")),
   tags$style(HTML(".selectize-input.input-active { color: #FFFFFF; background: #444B55; background-color: #444B55 !important }")),
   tags$style(HTML(".selectize-dropdown-content { color: #FFFFFF; background: #444B55; background-color: #444B55 }")),
+  tags$style(HTML(".leaflet-tooltip { color: #FFFFFF; background-color: #181818}")),
   navbarPage(
     title       = HTML(datalab_logo_html),
     collapsible = TRUE,
