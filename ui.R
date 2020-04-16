@@ -15,7 +15,7 @@ datalab_logo_html <- '<div style="float:left">
                        <span style="font-weight: bold">CovidDEXP</span>
                        </div>'
 
-csd_auth_logos_html <- '\'<div style="float:right"><img id="csd_auth_logos" src="csd_auth_logos.png" alt="alt" usemap="#logosmap" style="float:right;height:62px;margin-top:-58px;margin-right:-10px"></div><map name="logosmap"><area shape="rect" coords="86,3,144,60" alt="School of Informatics" href="https://csd.auth.gr"><area shape="rect" coords="168,3,224,60" alt="Aristotle University of Thessaloniki" href="https://www.auth.gr/"></map>\''
+csd_auth_logos_html <- '\'<div style="float:right"><img id="csd_auth_logos" src="csd_auth_logos.png" alt="alt" usemap="#logosmap" style="float:right;margin-top:-50px;margin-right:-10px"></div><map name="logosmap"><area shape="rect" coords="63,1,108,46" alt="School of Informatics" href="https://csd.auth.gr"><area shape="rect" coords="124,1,169,46" alt="Aristotle University of Thessaloniki" href="https://www.auth.gr/"></map>\''
 
 ui <- fluidPage(
   theme = shinytheme("cyborg"),
@@ -23,7 +23,7 @@ ui <- fluidPage(
   tags$head(
     tags$link(rel = "shortcut icon", type = "image/png", href = "datalab_logo.png")
   ),
-  tags$style(type = "text/css", "@media (max-width: 1120px) { #csd_auth_logos { display: none; } }"),
+  tags$style(type = "text/css", "@media (max-width: 1065px) { #csd_auth_logos { display: none; } }"),
   tags$style(type = "text/css", ".container-fluid {padding-left: 0px; padding-right: 0px !important;}"),
   tags$style(type = "text/css", ".navbar {margin-bottom: 0px;}"),
   tags$style(type = "text/css", ".content {padding: 0px;}"),
@@ -31,7 +31,6 @@ ui <- fluidPage(
   tags$style(HTML(".col-sm-12 { padding: 5px; margin-bottom: -15px; }")),
   tags$style(HTML(".col-sm-6 { padding: 5px; margin-bottom: -15px; }")),
   tags$style(HTML("input { color: #FFFFFF; background: #444B55; background-color: #444B55 }")),
-  tags$style(HTML(".navbar { height: 64px; padding: 8px }")),
   tags$style(HTML(".selectized { background-color: #444B55 }")),
   tags$style(HTML(".selectize-control { background: #444B55; background-color: #444B55 }")),
   tags$style(HTML(".selectize-control * { background: #444B55; background-color: #444B55 }")),
@@ -43,7 +42,7 @@ ui <- fluidPage(
   tags$style(HTML(".selectize-dropdown-content { color: #FFFFFF; background: #444B55; background-color: #444B55 }")),
   tags$style(HTML(".leaflet-tooltip { color: #FFFFFF; background-color: #181818}")),
   navbarPage(
-    title       = HTML(datalab_logo_html),
+    title       = div(HTML(datalab_logo_html), style = "padding-left: 10px"),
     collapsible = TRUE,
     fluid       = TRUE,
     tabPanel("World Overview", page_overview, value = "page-overview"),
