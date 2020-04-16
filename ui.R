@@ -34,11 +34,11 @@ ui <- fluidPage(
     title       = div("AUTH DATALAB - COVID-19 Dashboard", style = "padding-left: 10px"),
     collapsible = TRUE,
     fluid       = TRUE,
-    tabPanel("Overview", page_overview, value = "page-overview"),
-    tabPanel("Table", page_fullTable, value = "page-fullTable"),
+    tabPanel("World Overview", page_overview, value = "page-overview"),
+    tabPanel("Data Table", page_fullTable, value = "page-fullTable"),
     tabPanel("Epidemic Plots", page_plots, value = "page-plots"),
     tabPanel("Socioeconomic Plots", page_social_plots, value = "page-social-plots"),
-    tabPanel("Government Action Plots", page_action_plots, value = "page-actions-plots"),
+    tabPanel("Government Response", page_action_plots, value = "page-actions-plots"),
     tabPanel("About", page_about, value = "page-about"),
     tags$script(HTML("var header = $('.navbar > .container-fluid');
     header.append('<div style=\"float:right\"><a target=\"_blank\" href=\"https://datalab.csd.auth.gr/\"><img id=\"logo\" src=\"logo.png\" alt=\"alt\" style=\"float:right;width:33px;padding-top:10px;margin-top:-50px;margin-right:10px\"> </a></div>');
