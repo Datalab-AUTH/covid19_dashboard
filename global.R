@@ -12,21 +12,6 @@ library("readxl")
 
 source("utils.R", local = T)
 
-downloadGithubData <- function() {
-  download.file(
-    url      = "https://github.com/CSSEGISandData/COVID-19/archive/master.zip",
-    destfile = "data/covid19_data.zip"
-  )
-  
-  data_path <- "COVID-19-master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_"
-  unzip(
-    zipfile   = "data/covid19_data.zip",
-    files     = paste0(data_path, c("confirmed_global.csv", "deaths_global.csv", "recovered_global.csv", "confirmed_US.csv", "deaths_US.csv")),
-    exdir     = "data",
-    junkpaths = T
-  )
-}
-
 downloadOxfordData <- function() {
   download.file(
     url      = "https://www.bsg.ox.ac.uk/sites/default/files/OxCGRT_Download_latest_data.xlsx",
@@ -35,13 +20,6 @@ downloadOxfordData <- function() {
 }
 
 updateData <- function() {
-  # Download data from Johns Hopkins (https://github.com/CSSEGISandData/COVID-19) if the data is older than 12h
-  if (!dir_exists("data")) {
-    dir.create('data')
-    downloadGithubData()
-  } else if ((!file.exists("data/covid19_data.zip")) || (as.double(Sys.time() - file_info("data/covid19_data.zip")$change_time, units = "hours") > 12)) {
-    downloadGithubData()
-  }
   if ((!file.exists("data/oxford_data.xlsx")) || (as.double(Sys.time() - file_info("data/oxford_data.xlsx")$change_time, units = "hours") > 12)) {
     downloadOxfordData()
   }
@@ -50,12 +28,13 @@ updateData <- function() {
 # Update with start of app
 updateData()
 
+JHU_data_path <- "data/JHU_data/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_"
 # TODO: Still throws a warning but works for now
-data_confirmed    <- read_csv("data/time_series_covid19_confirmed_global.csv")
-data_deceased     <- read_csv("data/time_series_covid19_deaths_global.csv")
-data_recovered    <- read_csv("data/time_series_covid19_recovered_global.csv")
-data_confirmed_us <- read_csv("data/time_series_covid19_confirmed_US.csv")
-data_deceased_us  <- read_csv("data/time_series_covid19_deaths_US.csv")
+data_confirmed    <- read_csv(paste0(JHU_data_path, "confirmed_global.csv"))
+data_deceased     <- read_csv(paste0(JHU_data_path, "deaths_global.csv"))
+data_recovered    <- read_csv(paste0(JHU_data_path, "recovered_global.csv"))
+data_confirmed_us <- read_csv(paste0(JHU_data_path, "confirmed_US.csv"))
+data_deceased_us  <- read_csv(paste0(JHU_data_path, "deaths_US.csv"))
 
 data_human_freedom <- read_csv("data/human_freedom.csv")
 data_whr <- read_csv("data/whr2019.csv")
