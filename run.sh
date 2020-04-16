@@ -14,6 +14,7 @@ download_oxford_data() {
 		diff data/oxford_data_new.xlsx data/oxford_data.xlsx > /dev/null
 		if [[ $? -eq 0 ]]; then
 			echo "Oxford data not updated."
+			rm -f data/oxford_data_new.xlsx
 		else
 			echo "Oxford data has been updated. Replacing."
 			mv data/oxford_data_new.xlsx data/oxford_data.xlsx
