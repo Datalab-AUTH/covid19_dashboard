@@ -8,5 +8,5 @@ RUN apt-get update && \
 		git && \
 	Rscript install_libraries.R && \
 	apt-get clean
-CMD ["Rscript", "run.R"]
+CMD ["./run.sh"]
 
