@@ -108,60 +108,6 @@ body_social_plots <- dashboardBody(
         ),
         width = 6
         )
-      ),
-      fluidRow(
-        box(
-        title = "Daily Smokers",
-        plotlyOutput("oecd_smokers"),
-        column(
-          width = 3,
-          style = "float: right; padding: 10px; margin-right: 50px"
-        ),
-        column(
-          uiOutput("select_cases_oecd_smokers_variable"),
-          width = 3
-        ),
-        column(
-          uiOutput("select_cases_oecd_smokers_limit"),
-          width = 3
-        ),
-        column(
-          checkboxInput(
-          "checkbox_oecd_smokers_per_capita",
-          label = "Per Capita",
-          value = TRUE
-          ),
-          width = 3,
-          style = "float: right; padding: 10px; margin-right: 50px"
-        ),
-        width = 6
-        ),
-        box(
-        title = "Diabetes Hospital Admissions",
-        plotlyOutput("oecd_diabetes"),
-        column(
-          width = 3,
-          style = "float: right; padding: 10px; margin-right: 50px"
-        ),
-        column(
-          uiOutput("select_cases_oecd_diabetes_variable"),
-          width = 3
-        ),
-        column(
-          uiOutput("select_cases_oecd_diabetes_limit"),
-          width = 3
-        ),
-        column(
-          checkboxInput(
-          "checkbox_oecd_diabetes_per_capita",
-          label = "Per Capita",
-          value = TRUE
-          ),
-          width = 3,
-          style = "float: right; padding: 10px; margin-right: 50px"
-        ),
-        width = 6
-        )
       )
     )
   )
