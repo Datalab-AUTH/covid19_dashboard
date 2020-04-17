@@ -3,6 +3,16 @@ body_social_plots <- dashboardBody(
     fluidRow(
       fluidRow(
         box(
+          column(
+            uiOutput("social_general_text"),
+            width = 12,
+            style = "padding: 10px; padding-left: 50px; padding-right: 50px"
+          ),
+          width = 12
+        )
+      ),
+      fluidRow(
+        box(
         title = "Health Expenditure",
         plotlyOutput("healthGDP"),
         column(
@@ -29,6 +39,16 @@ body_social_plots <- dashboardBody(
         width = 6
         ),
         box(
+          column(
+            uiOutput("social_healthGDP_text"),
+            width = 6,
+            style = "padding: 50px;"
+          ),
+          width = 6
+        )
+      ),
+      fluidRow(
+        box(
         title = "Human Freedom",
         plotlyOutput("freedom"),
         column(
@@ -53,6 +73,14 @@ body_social_plots <- dashboardBody(
           style = "float: right; padding: 10px; margin-right: 50px"
         ),
         width = 6
+        ),
+        box(
+          column(
+            uiOutput("social_freedom_text"),
+            width = 6,
+            style = "padding: 50px;"
+          ),
+          width = 6
         )
       ),
       fluidRow(
@@ -83,6 +111,15 @@ body_social_plots <- dashboardBody(
         width = 6
         ),
         box(
+          column(
+            uiOutput("social_influenza_text"),
+            width = 6,
+            style = "padding: 50px;"
+          ),
+          width = 6
+        )
+      ), fluidRow(
+        box(
         title = "Life Expectancy",
         plotlyOutput("oecd_expectancy"),
         column(
@@ -107,6 +144,14 @@ body_social_plots <- dashboardBody(
           style = "float: right; padding: 10px; margin-right: 50px"
         ),
         width = 6
+        ),
+        box(
+          column(
+            uiOutput("social_expectancy_text"),
+            width = 6,
+            style = "padding: 50px;"
+          ),
+          width = 6
         )
       )
     )
