@@ -32,14 +32,14 @@ body_fullTable <- dashboardBody(
           tags$li(tags$span(class = "pos3"), "20 % to 33 %"),
           tags$li(tags$span(class = "pos4"), "33 % to 50 %"),
           tags$li(tags$span(class = "pos5"), "50 % to 75 %"),
-          tags$li(tags$span(class = "pos6"), "> 75 %"),
+          tags$li(tags$span(class = "pos6"), "> 75 % (worsening)"),
           tags$br()
         ),
         tags$ul(class = "legend",
           tags$li(tags$span(class = "neg1"), " 0 % to 10 %"),
           tags$li(tags$span(class = "neg2"), "10 % to 20 %"),
           tags$li(tags$span(class = "neg3"), "20 % to 33 %"),
-          tags$li(tags$span(class = "neg4"), "> 33 %")
+          tags$li(tags$span(class = "neg4"), "> 33 % (improving)")
         )
       ),
       width = 12
