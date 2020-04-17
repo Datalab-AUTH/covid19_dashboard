@@ -165,8 +165,8 @@ data_confirmed_1st_case <- data_evolution %>%
   group_by(`Country/Region`) %>% 
   slice(1) %>%
   rename("Country" = "Country/Region") %>%
-  select("Country", "date")
-data_confirmed_1st_case$iso3c <- countrycode(data_confirmed_1st_case$Country, origin = "country.name", destination = "iso3c")
+  select("Country", "date") %>%
+  mutate(iso3c = countrycode(Country, origin = "country.name", destination = "iso3c"))
 
 data_1st_death <- data_evolution %>% 
   filter(var == "deceased") %>% 
@@ -176,8 +176,8 @@ data_1st_death <- data_evolution %>%
   group_by(`Country/Region`) %>% 
   slice(1) %>%
   rename("Country" = "Country/Region") %>%
-  select("Country", "date")
-data_1st_death$iso3c <- countrycode(data_1st_death$Country, origin = "country.name", destination = "iso3c")
+  select("Country", "date") %>%
+  mutate(iso3c = countrycode(Country, origin = "country.name", destination = "iso3c"))
 
 data_latest <- data_atDate(max(data_evolution$date))
 
