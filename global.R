@@ -47,7 +47,7 @@ data_oxford <- data_oxford %>%
 
 # Get latest data
 current_date <- as.Date(names(data_confirmed)[ncol(data_confirmed)], format = "%m/%d/%y")
-changed_date <- file_info("data/covid19_data.zip")$change_time
+changed_date <- file_info(paste0(JHU_data_path, "confirmed_global.csv"))$change_time
 
 # Get evolution data by country
 data_confirmed_sub <- data_confirmed %>%
