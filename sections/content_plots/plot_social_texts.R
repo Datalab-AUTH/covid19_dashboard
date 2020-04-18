@@ -58,7 +58,7 @@ output$social_freedom_text <- renderText(
 
 output$social_influenza_text <- renderText(
   paste(
-    em("Recorded Immunization to Influenza - does it actually affect cases of Covid19?"),
+    em("Recorded Immunization to Influenza - does it actually affect cases of COVID-19?"),
     br(),br(),
     "This plot presents the correlation between the Recorded Immunization to
     Influenza  and the number of Confirmed/Active Cases/Deaths and Recoveries.",
