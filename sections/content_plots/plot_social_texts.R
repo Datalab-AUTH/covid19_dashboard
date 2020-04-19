@@ -7,11 +7,11 @@ output$social_general_text <- renderText(
   "with some socioeconomic factors.",
   br(),br(),
   "The term",
-  a(href = "https://en.wikipedia.org/wiki/Correlation_and_dependence", "Correlation"),
+  a(href = "https://en.wikipedia.org/wiki/Correlation_and_dependence", target="_blank", "Correlation"),
   "describes any statistical association, though it commonly refers to the
   degree to which a pair of variables are linearly related.
   The correlation metric in the plots below is calculated using the",
-  a(href = "https://en.wikipedia.org/wiki/Correlation_and_dependence", "Spearman"),
+  a(href = "https://en.wikipedia.org/wiki/Correlation_and_dependence",target="_blank", "Spearman"),
   "method. Correlation r metric values close to 1, indicate a positive
   correlation, while r metric vales close to -1, indicate a negative
   correlation. In any case, P values lower than 0.05, indicate that the
