@@ -38,10 +38,9 @@ data_oecd <- read_csv("data/oecd_data.csv") %>%
   rename("lifeExpectancy" = "Life expectancy") %>%
   rename("influenzaImmunization" = "Immunization to Influenza")
 
-data_oxford <- read_xlsx("data/oxford_data.xlsx")
-data_oxford$Date <- as.Date.character(data_oxford$Date, format="%Y%m%d")
-data_oxford <- data_oxford %>%
-  select(-"CountryName", -ends_with("_Notes"), -ends_with("_IsGeneral"), -starts_with("Confirmed"), -"StringencyIndex", -"...35") %>%
+data_oxford <- read_csv("data/oxford_data/data/OxCGRT_latest.csv") %>%
+  mutate(Date = as.Date.character(Date, format="%Y%m%d")) %>%
+  select(-"CountryName", -ends_with("_Notes"), -ends_with("_IsGeneral"), -starts_with("Confirmed"), -starts_with("StringencyIndex"), -"X27") %>%
   rename("iso3c" = "CountryCode") %>%
   rename("ActionDate" = "Date")
 
