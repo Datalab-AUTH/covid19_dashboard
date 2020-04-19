@@ -1,7 +1,26 @@
 output$action_cases <- renderPlotly({
   req(input$action_cases_country)
   req(input$action_cases_taken)
-  data <- inner_join(data_oxford, data_confirmed_1st_case, by = "iso3c") %>% 
+  req(input$action_cases_limit)
+  
+  if (input$action_cases_limit == 1) {
+    data_action_cases_limit <- data_confirmed_1st_case
+    action_cases_limit_str = "1st"
+  } else if (input$action_cases_limit == 10) {
+    data_action_cases_limit <- data_confirmed_10th_case
+    action_cases_limit_str = "10th"
+  } else if (input$action_cases_limit == 100) {
+    data_action_cases_limit <- data_confirmed_100th_case
+    action_cases_limit_str = "100th"
+  } else if (input$action_cases_limit == 1000) {
+    data_action_cases_limit <- data_confirmed_1000th_case
+    action_cases_limit_str = "1,000th"
+  } else { # 10000 cases
+    data_action_cases_limit <- data_confirmed_10000th_case
+    action_cases_limit_str = "10,000th"
+  }
+  
+  data <- inner_join(data_oxford, data_action_cases_limit, by = "iso3c") %>% 
     arrange(iso3c, ActionDate) %>% 
     rename("ConfirmedDate" = "date") %>% 
     group_by(iso3c)
@@ -61,7 +80,7 @@ output$action_cases <- renderPlotly({
     ) %>%
     layout(
       yaxis = list(title = "Number of countries"),
-      xaxis = list(title = paste("Delay of", input$action_cases_taken, "since first confirmed case")),
+      xaxis = list(title = paste("Delay of", input$action_cases_taken, "since", action_cases_limit_str, "confirmed case")),
       showlegend = TRUE
     )
   
@@ -122,3 +141,13 @@ output$select_action_cases_variable <- renderUI({
     multiple = FALSE
   )
 })
+
+output$select_action_cases_limit <- renderUI((
+  selectizeInput(
+    "action_cases_limit",
+    label = "Number of cases",
+    choices = list("≥1" = 1, "≥10" = 10, "≥100" = 100, "≥1,000" = 1000, "≥10,000" = 10000),
+    selected = 100,
+    multiple = FALSE
+  )
+))

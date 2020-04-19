@@ -167,9 +167,97 @@ data_confirmed_1st_case <- data_evolution %>%
   select("Country", "date") %>%
   mutate(iso3c = countrycode(Country, origin = "country.name", destination = "iso3c"))
 
+data_confirmed_10th_case <- data_evolution %>% 
+  filter(var == "confirmed") %>% 
+  filter(value >= 10) %>% 
+  group_by(date, `Country/Region`) %>% 
+  summarise(value = sum(value)) %>% 
+  group_by(`Country/Region`) %>% 
+  slice(1) %>%
+  rename("Country" = "Country/Region") %>%
+  select("Country", "date") %>%
+  mutate(iso3c = countrycode(Country, origin = "country.name", destination = "iso3c"))
+
+data_confirmed_100th_case <- data_evolution %>% 
+  filter(var == "confirmed") %>% 
+  filter(value >= 100) %>% 
+  group_by(date, `Country/Region`) %>% 
+  summarise(value = sum(value)) %>% 
+  group_by(`Country/Region`) %>% 
+  slice(1) %>%
+  rename("Country" = "Country/Region") %>%
+  select("Country", "date") %>%
+  mutate(iso3c = countrycode(Country, origin = "country.name", destination = "iso3c"))
+
+data_confirmed_1000th_case <- data_evolution %>% 
+  filter(var == "confirmed") %>% 
+  filter(value >= 1000) %>% 
+  group_by(date, `Country/Region`) %>% 
+  summarise(value = sum(value)) %>% 
+  group_by(`Country/Region`) %>% 
+  slice(1) %>%
+  rename("Country" = "Country/Region") %>%
+  select("Country", "date") %>%
+  mutate(iso3c = countrycode(Country, origin = "country.name", destination = "iso3c"))
+
+data_confirmed_10000th_case <- data_evolution %>% 
+  filter(var == "confirmed") %>% 
+  filter(value >= 10000) %>% 
+  group_by(date, `Country/Region`) %>% 
+  summarise(value = sum(value)) %>% 
+  group_by(`Country/Region`) %>% 
+  slice(1) %>%
+  rename("Country" = "Country/Region") %>%
+  select("Country", "date") %>%
+  mutate(iso3c = countrycode(Country, origin = "country.name", destination = "iso3c"))
+
 data_1st_death <- data_evolution %>% 
   filter(var == "deceased") %>% 
   filter(value > 0) %>% 
+  group_by(date, `Country/Region`) %>% 
+  summarise(value = sum(value)) %>% 
+  group_by(`Country/Region`) %>% 
+  slice(1) %>%
+  rename("Country" = "Country/Region") %>%
+  select("Country", "date") %>%
+  mutate(iso3c = countrycode(Country, origin = "country.name", destination = "iso3c"))
+
+data_10th_death <- data_evolution %>% 
+  filter(var == "deceased") %>% 
+  filter(value >= 10) %>% 
+  group_by(date, `Country/Region`) %>% 
+  summarise(value = sum(value)) %>% 
+  group_by(`Country/Region`) %>% 
+  slice(1) %>%
+  rename("Country" = "Country/Region") %>%
+  select("Country", "date") %>%
+  mutate(iso3c = countrycode(Country, origin = "country.name", destination = "iso3c"))
+
+data_100th_death <- data_evolution %>% 
+  filter(var == "deceased") %>% 
+  filter(value >= 100) %>% 
+  group_by(date, `Country/Region`) %>% 
+  summarise(value = sum(value)) %>% 
+  group_by(`Country/Region`) %>% 
+  slice(1) %>%
+  rename("Country" = "Country/Region") %>%
+  select("Country", "date") %>%
+  mutate(iso3c = countrycode(Country, origin = "country.name", destination = "iso3c"))
+
+data_1000th_death <- data_evolution %>% 
+  filter(var == "deceased") %>% 
+  filter(value >= 1000) %>% 
+  group_by(date, `Country/Region`) %>% 
+  summarise(value = sum(value)) %>% 
+  group_by(`Country/Region`) %>% 
+  slice(1) %>%
+  rename("Country" = "Country/Region") %>%
+  select("Country", "date") %>%
+  mutate(iso3c = countrycode(Country, origin = "country.name", destination = "iso3c"))
+
+data_10000th_death <- data_evolution %>% 
+  filter(var == "deceased") %>% 
+  filter(value >= 10000) %>% 
   group_by(date, `Country/Region`) %>% 
   summarise(value = sum(value)) %>% 
   group_by(`Country/Region`) %>% 

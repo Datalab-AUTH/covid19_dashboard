@@ -1,7 +1,26 @@
 output$action_deaths <- renderPlotly({
   req(input$action_deaths_country)
   req(input$action_deaths_taken)
-  data <- inner_join(data_oxford, data_1st_death, by = "iso3c") %>% 
+  req(input$action_deaths_limit)
+  
+  if (input$action_deaths_limit == 1) {
+    data_action_deaths_limit <- data_1st_death
+    action_cases_deaths_str = "1st"
+  } else if (input$action_deaths_limit == 10) {
+    data_action_deaths_limit <- data_10th_death
+    action_cases_deaths_str = "10th"
+  } else if (input$action_deaths_limit == 100) {
+    data_action_deaths_limit <- data_100th_death
+    action_cases_deaths_str = "100th"
+  } else if (input$action_deaths_limit == 1000) {
+    data_action_deaths_limit <- data_1000th_death
+    action_cases_deaths_str = "1,000th"
+  } else { # 10000 deaths
+    data_action_deaths_limit <- data_10000th_death
+    action_cases_deaths_str = "10,000th"
+  }
+  
+  data <- inner_join(data_oxford, data_action_deaths_limit, by = "iso3c") %>% 
     arrange(iso3c, ActionDate) %>% 
     rename("ConfirmedDate" = "date") %>% 
     group_by(iso3c)
@@ -61,7 +80,7 @@ output$action_deaths <- renderPlotly({
   ) %>%
     layout(
       yaxis = list(title = "Number of countries"),
-      xaxis = list(title = paste("Delay of", input$action_deaths_taken, "since first confirmed death")),
+      xaxis = list(title = paste("Delay of", input$action_deaths_taken, "since", action_cases_deaths_str, "confirmed death")),
       showlegend = TRUE
     )
   
@@ -123,3 +142,12 @@ output$select_action_deaths_variable <- renderUI({
   )
 })
 
+output$select_action_deaths_limit <- renderUI((
+  selectizeInput(
+    "action_deaths_limit",
+    label = "Number of deaths",
+    choices = list("≥1" = 1, "≥10" = 10, "≥100" = 100, "≥1,000" = 1000, "≥10,000" = 10000),
+    selected = 10,
+    multiple = FALSE
+  )
+))
