@@ -5,52 +5,84 @@ body_about <- dashboardBody(
         box(
           title = div("About this project", style = "padding-left: 20px", class = "h2"),
           column(
-            "This dashboard shows recent developments of the COVID-19 pandemic. The latest
-            open data on the COVID-19 spread are regularly downloaded and displayed in
-            a map, summary tables, key figures and plots.",
-            tags$br(),
+            "CovidDExp (COVID-19 Data Exploration) is an exploratory data
+            analysis tool with a visually rich presentation of the COVID-19
+            pandemic. It includes processing of reliable real-time evolving data
+            with qualitative data examined against a series of selected
+            indicators to monitor and detail the worldwide virus outbreak
+            situation under a holistic approach.",
+            br(),
             h3("Motivation"),
-            "Various companies thought that a global crisis is an excellent opportunity to
-            show case their technologies. Therefore, my idea was to show that open-source
-            technologies, such as R Shiny, can be used to create a decent dashboard in few hours.
-            Furthermore, the most popular COVID-19 dashboard (",
-            tags$a(href = "https://coronavirus.jhu.edu/map.html", "Johns Hopkins COVID-19"), ") is styled rather
-            alarmist. Therefore, a more neutral dashboard might help to dampen the already
-            existing hysteria a little.",
-            h4("Why Open Source?"),
-            "My hope is that this dashboard can help researchers around the world to get a
-            better overview of the current situation concerning the COVID-19 idea. I hereby
-            invite all of you to contribute to this project with additional visualizations,
-            information etc.",
-            tags$br(),
-            tags$br(),
-            "Find more thoughts on this dashboard from Christoph Schoenenberger in this",
-            tags$a(href = "https://medium.com/@ch.schoenenberger/covid-19-open-source-dashboard-fa1d2b4cd985",
-              "Medium article"), ".",
-            h3("Data"),
+            "CovidDExp was born by scientific curiosity and eagerness to
+            understand and examine the global pandemic crisis and its parameters
+            from the data scientist perspective. Beyond the evolution of the
+            pandemic and epidemic statistics, our intention is to discover and
+            explore correlations and connections with socio-economic and
+            governmental indicators that can highlight alternate angles and
+            provide further insights to the interested viewer. This initiative
+            is launched and supported by members of the",
+            tags$a(href = "https://datalab.csd.auth.gr", "Data and Web Science Lab"),
+            "(DATALAB)",
+            "an active research group engaged in ICT research and innovation on
+            data science and multi scope analytics under the",
+            tags$a(href = "https://www.csd.auth.gr", "Department of Informatics,"),
+            tags$a(href = "https://www.csd.auth.gr", "Aristotle University of Thessaloniki"),
+            h3("Data Sources"),
+            "This project aggregates and combines publicly available data from
+            several different sources. These include:",
             tags$ul(
-              tags$li(tags$b("COVID-19 data:"), tags$a(href = "https://github.com/CSSEGISandData/COVID-19",
-                "Johns Hopkins CSSE")),
-              tags$li(tags$b("Population data:"), tags$a(href = "https://data.worldbank.org/indicator/SP.POP.TOTL",
-                "The World Bank"), "& Wikipedia for countries which are not in World Bank data set.")
+              tags$li(tags$b("COVID-19 Data:"),
+                      tags$a(href = "https://github.com/CSSEGISandData/COVID-19",
+                      "Johns Hopkins CSSE")),
+              tags$li(tags$b("Population Data:"),
+                      tags$a(href = "https://data.worldbank.org/indicator/SP.POP.TOTL",
+                      "The World Bank"),
+                      "& Wikipedia for countries which are not in World Bank
+                      data set."),
+              tags$li(tags$b("Human Freedom Index:"),
+                      tags$a(href = "https://www.cato.org/human-freedom-index-new",
+                      "CATO Institute")),
+              tags$li(tags$b("Socioeconomic Data:"),
+                      tags$a(href = "http://www.oecd.org/",
+                      "OECD")),
+              tags$li(tags$b("Health Expediture Data:"),
+                      tags$a(href = "https://data.worldbank.org/indicator/SH.XPD.CHEX.GD.ZS",
+                      "The World Bank")),
+              tags$li(tags$b("Government Response Data:"),
+                      tags$a(href = "https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker",
+                      "Oxford COVID-19 Government Response Tracker"))
             ),
-            HTML("<b>Note</b>: Johns Hopkins is not updating their data on recovered cases anymore for various
-            countries. Therefore, this data is estimated as <i>(Confirmed at current date - 14 days) - deceased at
-            current date)</i>, wherever no real data is available."),
-            h3("Bugs, Issues & Enhancement Requests"),
-            "If you find any bug / issue or have an idea how to improve the dashboard,
-            please create an issue on ", tags$a(href = "https://github.com/chschoenenberger/covid19_dashboard/issues",
-              "Github"), ". I will try to look into it as soon as possible.",
-            h3("Contribute"),
-            "If you want to add any visualization or further information feel free to create
-            a pull request on ", tags$a(href = "https://github.com/chschoenenberger/covid19_dashboard", "Github"), ".
-            For major rework either fork the repository or create an issue so we can discuss it.",
-            h3("Developers"),
-            "Christoph Schoenenberger | Data Scientist @",
-            tags$a(href = "https://www.zuehlke.com/ch/en/", "Zuehlke Engineering"), "|",
-            tags$a(href = "https://www.linkedin.com/in/cschonenberger/", "LinkedIn"), "|",
-            tags$a(href = "https://twitter.com/ChSchonenberger", "Twitter"), "|",
-            tags$a(href = "https://github.com/chschoenenberger/", "Github"),
+            h3("Issues and Suggestions"),
+            "If you encounter any issue or have a suggestion to improve or add
+            new content, please create an issue with our",
+            tags$a(href = "https://github.com/Datalab-AUTH/covid19_dashboard",
+                   "issue tracker at Github."),
+            h3("The Team"),
+            tags$ul(
+              tags$li("Prof. Athena Vakali - Data and Web Science Lab director"),
+              tags$li("Vasileios Psomiadis - Post doc researcher"),
+              tags$li("George Arvanitakis - Post doc researcher"),
+              tags$li("Pavlos Sermpezis - Post doc researcher"),
+              tags$li("Ilias Dimitriadis - PhD researcher"),
+              tags$li("Stefanos Efstathiou - PhD researcher"),
+              tags$li("Dimitra Karanatsiou - PhD researcher"),
+              tags$li("Marinos Poiitis - PhD researcher"),
+              tags$li("George Vlahavas - PhD researcher"),
+              tags$li("Sofia Yfantidou - PhD researcher"),
+              tags$li("Konstantinos Georgiou - MSc student")
+            ),
+            h3("Licencing"),
+            "The creators of this initiative are strong advocates of open-source
+            culture and its fundamental benefits for open scientific research.
+            This effort utilizes open datasets and is based on open-source
+            technologies. This project is released to the public under an",
+            tags$a(href = "https://en.wikipedia.org/wiki/MIT_License", "MIT license"),
+            "and is based on the initial work by",
+            tags$a(href = "https://github.com/chschoenenberger/covid19_dashboard",
+                   "Christoph Schoenenberger."),
+            "You may find all relevant source code in our project page at",
+            tags$a(href = "https://github.com/Datalab-AUTH/covid19_dashboard",
+                   "Github"),
             width = 12,
             style = "padding-left: 20px; padding-right: 20px; padding-bottom: 40px; margin-top: -15px;"
           ),

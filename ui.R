@@ -50,7 +50,7 @@ ui <- fluidPage(
     tabPanel("Epidemic Plots", page_plots, value = "page-plots"),
     tabPanel("Socioeconomic Plots", page_social_plots, value = "page-social-plots"),
     tabPanel("Government Response", page_action_plots, value = "page-actions-plots"),
-    #tabPanel("About", page_about, value = "page-about"),
+    tabPanel("About", page_about, value = "page-about"),
     tags$script(HTML(paste0("var header = $('.navbar > .container-fluid');",
       "header.append(",
       csd_auth_logos_html,
