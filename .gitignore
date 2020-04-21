@@ -47,4 +47,5 @@ covid19_dashboard.iml
 data/covid19_data.zip
 data/time_series_covid19_*.csv
 data/oxford_data.xlsx
+data/*.RDS
 

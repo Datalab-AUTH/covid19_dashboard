@@ -6,7 +6,13 @@ RUN apt-get update && \
 		libcurl4-openssl-dev \
 		libssl-dev libxml2-dev \
 		git && \
-	Rscript install_libraries.R && \
+	sed -i "s|url = git@github.com:|url = https://github.com/|" \
+		.git/config && \
+	echo "gitdir: ../../.git/modules/data/JHU_data" > \
+		data/JHU_data/.git && \
+	echo "gitdir: ../../.git/modules/data/oxford_data" > \
+		data/oxford_data/.git && \
+	Rscript ./install_libraries.R && \
 	apt-get clean
 CMD ["./run.sh"]
 
