@@ -3,6 +3,16 @@ body_action_plots <- dashboardBody(
     fluidRow(
       fluidRow(
         box(
+          column(
+            uiOutput("action_general_text"),
+            width = 12,
+            style = "padding: 10px; padding-left: 50px; padding-right: 50px"
+          ),
+          width = 12
+        )
+      ),
+      fluidRow(
+        box(
         title = "Government actions with respect to confirmed cases",
         plotlyOutput("action_cases"),
         column(
