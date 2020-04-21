@@ -43,6 +43,7 @@ output$action_general_text <- renderText(
   country has responded with measures",
   em("before"),
   "the selected confirmed case/death milestone has been reached. Positive values
-  indoicate that the government acted after so many days when the selected
-  milestone has been reached."
+  indicate that the government acted",
+  em("after"),
+  "the selected milestone has been reached."
 ))
