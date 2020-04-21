@@ -46,7 +46,7 @@ saveRDS(data_oxford, "data/data_oxford.RDS")
 
 # Get latest data
 current_date <- as.Date(names(data_confirmed)[ncol(data_confirmed)], format = "%m/%d/%y")
-changed_date <- file_info(paste0(JHU_data_path, "confirmed_global.csv"))$change_time
+changed_date <- Sys.time()
 saveRDS(current_date, "data/current_date.RDS")
 saveRDS(changed_date, "data/changed_date.RDS")
 
