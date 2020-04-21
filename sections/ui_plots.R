@@ -3,6 +3,16 @@ body_plots <- dashboardBody(
     fluidRow(
       fluidRow(
         box(
+          column(
+            uiOutput("case_evolution_general_text"),
+            width = 12,
+            style = "padding: 10px; padding-left: 50px; padding-right: 50px"
+          ),
+          width = 12
+        )
+      ),
+      fluidRow(
+        box(
           title = "Evolution of Cases since Outbreak",
           plotlyOutput("case_evolution"),
           column(
@@ -12,6 +22,16 @@ body_plots <- dashboardBody(
           ),
           width = 6
         ),
+        box(
+          column(
+            uiOutput("case_evolution_text"),
+            width = 6,
+            style = "padding: 50px;"
+          ),
+          width = 6
+        )
+      ),
+      fluidRow(
         box(
           title = "New cases",
           plotlyOutput("case_evolution_new"),
@@ -24,6 +44,14 @@ body_plots <- dashboardBody(
           be negative for some days, if on this day there were more new estimated recoveries + deceased cases than there were new
           confirmed cases."),
             width = 7
+          ),
+          width = 6
+        ),
+        box(
+          column(
+            uiOutput("case_evolution_new_text"),
+            width = 6,
+            style = "padding: 50px;"
           ),
           width = 6
         )
@@ -47,6 +75,16 @@ body_plots <- dashboardBody(
           width = 6
         ),
         box(
+          column(
+            uiOutput("case_evolution_byCountry_text"),
+            width = 6,
+            style = "padding: 50px;"
+          ),
+          width = 6
+        )
+      ),
+      fluidRow(
+        box(
           title = "Evolution of Cases since 10th/100th case",
           plotlyOutput("case_evolution_after100"),
           fluidRow(
@@ -64,6 +102,14 @@ body_plots <- dashboardBody(
               width = 3,
               style = "float: right; padding: 10px; margin-right: 50px"
             )
+          ),
+          width = 6
+        ),
+        box(
+          column(
+            uiOutput("case_evolution_after100_text"),
+            width = 6,
+            style = "padding: 50px;"
           ),
           width = 6
         )
@@ -88,6 +134,14 @@ body_plots <- dashboardBody(
               width = 3
             )
           )
+        ),
+        box(
+          column(
+            uiOutput("plot_doublingTime_text"),
+            width = 6,
+            style = "padding: 50px;"
+          ),
+          width = 6
         )
       )
     )
