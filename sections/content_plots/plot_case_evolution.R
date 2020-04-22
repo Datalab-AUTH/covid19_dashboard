@@ -9,13 +9,7 @@ output$selectize_casesByCountries <- renderUI({
 })
 
 output$case_evolution <- renderPlotly({
-  data <- data_evolution %>%
-    group_by(date, var) %>%
-    summarise(
-      "value" = sum(value, na.rm = T)
-    ) %>%
-    as.data.frame()
-
+  data <- data_case_evolution
   p <- plot_ly(
     data,
     x     = ~date,

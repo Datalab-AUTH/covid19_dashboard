@@ -335,3 +335,11 @@ data_full_table <- data_evolution %>%
   select(-population) %>%
   as.data.frame()
 saveRDS(data_full_table, "data/data_full_table.RDS")
+
+data_case_evolution <- data_evolution %>%
+  group_by(date, var) %>%
+  summarise(
+    "value" = sum(value, na.rm = T)
+  ) %>%
+  as.data.frame()
+saveRDS(data_case_evolution, "data/data_case_evolution.RDS")

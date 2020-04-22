@@ -29,6 +29,8 @@ updateData <- function() {
   top5_countries <<- readRDS("data/top5_countries.RDS")
   data_world_bank <<- readRDS("data/data_world_bank.RDS")
   data_human_freedom <<- readRDS("data/data_human_freedom.RDS")
+  data_full_table <<- readRDS("data/data_full_table.RDS")
+  data_case_evolution <<- readRDS("data/data_case_evolution.RDS")
 }
 
 updateData()
