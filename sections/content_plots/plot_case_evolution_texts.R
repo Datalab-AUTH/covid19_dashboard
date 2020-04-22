@@ -48,7 +48,7 @@ output$case_evolution_new_text <- renderText(
 
 output$case_evolution_byCountry_text <- renderText(
   paste(
-    em("See how the decease is evolving between different countries."),
+    em("See how the desease is evolving between different countries."),
     br(),br(),
     "The plot shows the temporal evolution of the number of cases for specific
     countries. Each solid line corresponds to the confirmed cases of the
