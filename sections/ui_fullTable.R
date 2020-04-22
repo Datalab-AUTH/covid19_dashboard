@@ -5,15 +5,15 @@ body_fullTable <- dashboardBody(
     tags$style(type = "text/css", ".legend span { border: 1px solid #ccc; float: left; width: 30px; height: 15px;
     margin-right: 5px; margin-top: 1px; position: relative;"),
     tags$style(type = "text/css", ".legend .pos1 { background-color: #444B55; }"),
-    tags$style(type = "text/css", ".legend .pos2 { background-color: #FFE5E5; }"),
-    tags$style(type = "text/css", ".legend .pos3 { background-color: #FFB2B2; }"),
-    tags$style(type = "text/css", ".legend .pos4 { background-color: #FF7F7F; }"),
-    tags$style(type = "text/css", ".legend .pos5 { background-color: #FF4C4C; }"),
+    tags$style(type = "text/css", ".legend .pos2 { background-color: #836C71; }"),
+    tags$style(type = "text/css", ".legend .pos3 { background-color: #BE8688; }"),
+    tags$style(type = "text/css", ".legend .pos4 { background-color: #CC7E7D; }"),
+    tags$style(type = "text/css", ".legend .pos5 { background-color: #B15554; }"),
     tags$style(type = "text/css", ".legend .pos6 { background-color: #983232; }"),
     tags$style(type = "text/css", ".legend .neg1 { background-color: #444B55; }"),
-    tags$style(type = "text/css", ".legend .neg2 { background-color: #CCE4CC; }"),
-    tags$style(type = "text/css", ".legend .neg3 { background-color: #99CA99; }"),
-    tags$style(type = "text/css", ".legend .neg4 { background-color: #66B066; }"),
+    tags$style(type = "text/css", ".legend .neg2 { background-color: #587661; }"),
+    tags$style(type = "text/css", ".legend .neg3 { background-color: #549C53; }"),
+    tags$style(type = "text/css", ".legend .neg4 { background-color: #1F8D1F; }"),
     tags$style(type = "text/css", "@media (min-width: 768px) { .full-table { margin-top: -30px; } }")
   ),
   fluidPage(
