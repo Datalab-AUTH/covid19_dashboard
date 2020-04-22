@@ -23,6 +23,8 @@ output$case_evolution_general_text <- renderText(
 
 output$case_evolution_text <- renderText(
   paste(
+    em("Observe the evolution of COVID-19 worldwide."),
+    br(),br(),
     "The plot shows the temporal evolution of the number of cases on a global
     scale.",
     br(),br(),
@@ -33,6 +35,8 @@ output$case_evolution_text <- renderText(
 
 output$case_evolution_new_text <- renderText(
   paste(
+    em("Explore the evolution of new COVID-19 cases."),
+    br(),br(),
     "The plot shows the temporal evolution of the number of new cases that are
     recorded each day. Each color bar corresponds to a different category as
     described in the accompanying legend.",
@@ -44,6 +48,8 @@ output$case_evolution_new_text <- renderText(
 
 output$case_evolution_byCountry_text <- renderText(
   paste(
+    em("See how the decease is evolving between different countries."),
+    br(),br(),
     "The plot shows the temporal evolution of the number of cases for specific
     countries. Each solid line corresponds to the confirmed cases of the
     corresponding country. Similarly, dashed lines refer to the estimated
@@ -62,6 +68,9 @@ output$case_evolution_byCountry_text <- renderText(
 
 output$case_evolution_after100_text <- renderText(
   paste(
+    em("Discover how COVID-19 progresses in specific countries after important
+       milestones."),
+    br(),br(),
     "The plot shows the temporal evolution of the number of cases for specific
     countries counting from the day when the 100th confirmed case appeared, or
     when the 10th death occured. These dates usually provide a better intuition
@@ -77,6 +86,8 @@ output$case_evolution_after100_text <- renderText(
 
 output$plot_doublingTime_text <- renderText(
   paste(
+    em("View doubling times for confirmed cases and deaths."),
+    br(),br(),
     "The plot shows how the doubling time progresses starting since the date
     when the 100th confirmed case, or the 10th death occurred. The doubling time
     expresses the number of days needed for the virus to double the number of
