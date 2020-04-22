@@ -94,7 +94,7 @@ data_us <- data_confirmed_sub_us %>%
   add_column(recovered = NA) %>%
   select(`Province/State`, `Country/Region`, date, Lat, Long, confirmed, recovered, deceased)
 
-data_evolution_temp <- data_confirmed_sub %>%
+data_evolution <- data_confirmed_sub %>%
   full_join(data_recovered_sub) %>%
   full_join(data_deceased_sub) %>%
   rbind(data_us) %>%
@@ -117,7 +117,7 @@ data_evolution_temp <- data_confirmed_sub %>%
   ungroup()
 
 # Calculating new cases
-data_evolution_temp <- data_evolution_temp %>%
+data_evolution <- data_evolution %>%
   group_by(`Province/State`, `Country/Region`) %>%
   mutate(value_new = value - lag(value, 4, default = 0)) %>%
   ungroup()
@@ -144,7 +144,7 @@ noDataCountries <- data.frame(
 )
 population      <- bind_rows(population, noDataCountries)
 
-data_evolution <- data_evolution_temp %>%
+data_evolution <- data_evolution %>%
   left_join(population, by = c("Country/Region" = "country"))
 saveRDS(data_evolution, "data/data_evolution.RDS")
 rm(population, countryNamesPop, countryNamesDat, noDataCountries)
