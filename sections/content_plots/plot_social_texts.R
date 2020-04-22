@@ -13,7 +13,7 @@ output$social_general_text <- renderText(
   The correlation metric in the plots below is calculated using the",
   a(href = "https://en.wikipedia.org/wiki/Correlation_and_dependence",target="_blank", "Spearman"),
   "method. Correlation r metric values close to 1, indicate a positive
-  correlation, while r metric valeus close to -1, indicate a negative
+  correlation, while r metric values close to -1, indicate a negative
   correlation. In any case, P values lower than 0.05, indicate that the
   correlation is statistically significant.",
   br(),br(),
