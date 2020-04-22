@@ -27,6 +27,7 @@ output$case_evolution_new <- renderPlotly({
       xaxis = list(title = "Date")
     )
   p <- layout(p,
+      barmode = "stack",
       font = list(color = "#FFFFFF"),
       paper_bgcolor = "#444B55",
       plot_bgcolor = "#444B55",
