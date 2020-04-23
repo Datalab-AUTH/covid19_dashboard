@@ -24,7 +24,8 @@ ui <- fluidPage(
     tags$link(rel = "shortcut icon", type = "image/png", href = "datalab_logo.png"),
     tags$style(
       HTML('.wrapper {height: auto !important; position:relative; overflow-x:hidden; overflow-y:hidden}')
-      )
+      ),
+    includeHTML("google-analytics.html")
   ),
   tags$style(type = "text/css", "@media (max-width: 1065px) { #csd_auth_logos { display: none; } }"),
   tags$style(type = "text/css", ".container-fluid {padding-left: 0px; padding-right: 0px !important;}"),
