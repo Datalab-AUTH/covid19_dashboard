@@ -1,4 +1,4 @@
-server <- function(input, output) {
+server <- function(input, output, session) {
   sourceDirectory("sections", recursive = TRUE)
 
   # Trigger once an hour
@@ -11,4 +11,14 @@ server <- function(input, output) {
   observe({
     data <- data_atDate(input$timeSlider)
   })
+  
+  observe({
+    updateSliderInput(
+      session,
+      "timeSlider",
+      max = max(data_evolution$date),
+      value = max(data_evolution$date)
+    )
+  })
+
 }
