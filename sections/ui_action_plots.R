@@ -44,9 +44,9 @@ body_action_plots <- dashboardBody(
           uiOutput("select_action_deaths_limit"),
           width = 3
         ),
-        width = 6,
-        style = "padding-bottom: 200px;"
-        )
+        width = 6
+        ),
+      style = "padding-bottom: 200px;"
       )
     )
   )
