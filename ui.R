@@ -15,7 +15,7 @@ datalab_logo_html <- '<div style="float:left">
                        <span style="font-weight: bold">CovidDEXP</span>
                        </div>'
 
-csd_auth_logos_html <- '\'<div style="float:right"><img id="csd_auth_logos" src="csd_auth_logos.png" alt="alt" usemap="#logosmap" style="float:right;margin-top:-50px;margin-right:-10px"></div><map name="logosmap"><area shape="rect" coords="63,1,108,46" alt="School of Informatics" href="https://csd.auth.gr"><area shape="rect" coords="124,1,169,46" alt="Aristotle University of Thessaloniki" href="https://www.auth.gr/"></map>\''
+csd_auth_logos_html <- '\'<div style="float:right"><img id="csd_auth_logos" src="csd_auth_logos.png" alt="alt" usemap="#logosmap" style="float:right;margin-top:-50px;margin-right:-10px"></div><map name="logosmap"><area shape="rect" coords="63,1,108,46" alt="School of Informatics" href="https://www.csd.auth.gr"><area shape="rect" coords="124,1,169,46" alt="Aristotle University of Thessaloniki" href="https://www.auth.gr/"></map>\''
 
 ui <- fluidPage(
   theme = shinytheme("cyborg"),
