@@ -20,7 +20,7 @@ updateData <- function() {
   data_100th_death <<- readRDS("data/data_100th_death.RDS")
   data_confirmed_10th_case <<- readRDS("data/data_confirmed_10th_case.RDS")
   data_10th_death <<- readRDS("data/data_10th_death.RDS")
-  data_confirmed_1st_case <- readRDS("data/data_confirmed_1st_case.RDS")
+  data_confirmed_1st_case <<- readRDS("data/data_confirmed_1st_case.RDS")
   data_1st_death <<- readRDS("data/data_1st_death.RDS")
   data_evolution <<- readRDS("data/data_evolution.RDS")
   data_latest <<- readRDS("data/data_latest.RDS")
