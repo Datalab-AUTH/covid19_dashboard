@@ -152,7 +152,8 @@ body_social_plots <- dashboardBody(
             style = "padding: 50px;"
           ),
           width = 6
-        )
+        ),
+        style = "padding-bottom: 120px;"
       )
     )
   )
