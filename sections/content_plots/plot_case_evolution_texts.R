@@ -92,7 +92,7 @@ output$plot_doublingTime_text <- renderText(
     when the 100th confirmed case, or the 10th death occurred. The doubling time
     expresses the number of days needed for the virus to double the number of
     cases/deaths. The larger the Y-axis value, the better the outcome. So, lines
-    that become vertical faster, signify a better outcome. Lines that stay flat
+    that climb faster, signify a better outcome. Lines that stay flat
     for longer periods of time, signify a worse progression of the disease.",
     br(),br(),
     "You may select which countries to include in the plot for comparison
