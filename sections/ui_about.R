@@ -55,7 +55,7 @@ body_about <- dashboardBody(
             h3("Issues and Suggestions"),
             "If you encounter any issue or have a suggestion to improve or add
             new content, please create an issue with our",
-            tags$a(href = "https://github.com/Datalab-AUTH/covid19_dashboard",
+            tags$a(href = "https://github.com/Datalab-AUTH/covid19_dashboard/issues",
                    "issue tracker at Github."),
             h3("The Team"),
             tags$ul(
