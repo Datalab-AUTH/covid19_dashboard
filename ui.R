@@ -9,7 +9,7 @@ source("sections/ui_fullTable.R", local = TRUE)
 
 datalab_logo_html <- '<div style="float:left">
                        <a target="_blank" href="https://datalab.csd.auth.gr/">
-                       <img id="logo" src="datalab_logo.png" alt="alt"
+                       <img id="logo" src="datalab_logo.png" alt="Datalab"
                           style="float:left;width:48px;padding-top:10px;margin-top:-25px;margin-right:10px">
                        </a>
                        <span style="font-weight: bold">CovidDEXP</span>
