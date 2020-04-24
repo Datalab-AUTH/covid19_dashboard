@@ -55,7 +55,7 @@ output$valueBox_deceased <- renderValueBox({
   valueBox(
     key_figures()$deceased,
     subtitle = "Deceased",
-    icon     = icon("heartbeat"),
+    icon     = icon("skull"),
     color    = "light-blue"
   )
 })
