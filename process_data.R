@@ -1,5 +1,8 @@
 #!/usr/bin/Rscript
 
+# this script processes all data inputs (JHU, OECD, Oxford etc) and
+# outputs RDS files that are ready to be consumed by the Shiny app.
+
 library("tidyverse")
 library("fs")
 library("countrycode")
@@ -343,3 +346,4 @@ data_case_evolution <- data_evolution %>%
   ) %>%
   as.data.frame()
 saveRDS(data_case_evolution, "data/data_case_evolution.RDS")
+
