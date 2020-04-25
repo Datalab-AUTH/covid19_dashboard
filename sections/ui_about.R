@@ -29,7 +29,7 @@ body_about <- dashboardBody(
             tags$a(href = "https://www.csd.auth.gr",
                    "Department of Informatics,"),
             tags$a(href = "https://www.csd.auth.gr",
-                   "Aristotle University of Thessaloniki"),
+                   "Aristotle University of Thessaloniki."),
             h3("Data Sources"),
             "This project aggregates and combines publicly available data from
             several different sources. These include:",
@@ -86,7 +86,7 @@ body_about <- dashboardBody(
                    "Christoph Schoenenberger."),
             "You may find all relevant source code in our project page at",
             tags$a(href = "https://github.com/Datalab-AUTH/covid19_dashboard",
-                   "Github"),
+                   "Github."),
             width = 12,
             style = "padding-left: 20px; padding-right: 20px; padding-bottom: 40px; margin-top: -15px;"
           ),
