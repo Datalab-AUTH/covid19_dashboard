@@ -6,7 +6,6 @@ output$action_general_text <- renderText(
   of government response to COVID-19, as recorded by the",
   paste0(
   tags$a(href = "https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker",
-         target = "_blank",
          "Oxford COVID-19 Government Response Tracker"),
   "."),
   "Seven of the indicators (S1-S7) record

@@ -21,42 +21,45 @@ body_about <- dashboardBody(
             governmental indicators that can highlight alternate angles and
             provide further insights to the interested viewer. This initiative
             is launched and supported by members of the",
-            tags$a(href = "https://datalab.csd.auth.gr", "Data and Web Science Lab"),
+            tags$a(href = "https://datalab.csd.auth.gr",
+                   "Data and Web Science Lab"),
             "(DATALAB)",
             "an active research group engaged in ICT research and innovation on
             data science and multi scope analytics under the",
-            tags$a(href = "https://www.csd.auth.gr", "Department of Informatics,"),
-            tags$a(href = "https://www.csd.auth.gr", "Aristotle University of Thessaloniki"),
+            tags$a(href = "https://www.csd.auth.gr",
+                   "Department of Informatics,"),
+            tags$a(href = "https://www.csd.auth.gr",
+                   "Aristotle University of Thessaloniki"),
             h3("Data Sources"),
             "This project aggregates and combines publicly available data from
             several different sources. These include:",
             tags$ul(
               tags$li(tags$b("COVID-19 Data:"),
                       tags$a(href = "https://github.com/CSSEGISandData/COVID-19",
-                      "Johns Hopkins CSSE")),
+                            "Johns Hopkins CSSE")),
               tags$li(tags$b("Population Data:"),
                       tags$a(href = "https://data.worldbank.org/indicator/SP.POP.TOTL",
-                      "The World Bank"),
+                             "The World Bank"),
                       "& Wikipedia for countries which are not in World Bank
                       data set."),
               tags$li(tags$b("Human Freedom Index:"),
                       tags$a(href = "https://www.cato.org/human-freedom-index-new",
-                      "CATO Institute")),
+                            "CATO Institute")),
               tags$li(tags$b("Socioeconomic Data:"),
                       tags$a(href = "http://www.oecd.org/",
-                      "OECD")),
+                            "OECD")),
               tags$li(tags$b("Health Expediture Data:"),
                       tags$a(href = "https://data.worldbank.org/indicator/SH.XPD.CHEX.GD.ZS",
-                      "The World Bank")),
+                            "The World Bank")),
               tags$li(tags$b("Government Response Data:"),
                       tags$a(href = "https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker",
-                      "Oxford COVID-19 Government Response Tracker"))
+                            "Oxford COVID-19 Government Response Tracker"))
             ),
             h3("Issues and Suggestions"),
             "If you encounter any issue or have a suggestion to improve or add
             new content, please create an issue with our",
             tags$a(href = "https://github.com/Datalab-AUTH/covid19_dashboard/issues",
-                   "issue tracker at Github."),
+                          "issue tracker at Github."),
             h3("The Team"),
             tags$ul(
               tags$li("Prof. Athena Vakali - Data and Web Science Lab director"),
@@ -76,7 +79,8 @@ body_about <- dashboardBody(
             culture and its fundamental benefits for open scientific research.
             This effort utilizes open datasets and is based on open-source
             technologies. This project is released to the public under an",
-            tags$a(href = "https://en.wikipedia.org/wiki/MIT_License", "MIT license"),
+            tags$a(href = "https://en.wikipedia.org/wiki/MIT_License",
+                   "MIT license"),
             "and is based on the initial work by",
             tags$a(href = "https://github.com/chschoenenberger/covid19_dashboard",
                    "Christoph Schoenenberger."),

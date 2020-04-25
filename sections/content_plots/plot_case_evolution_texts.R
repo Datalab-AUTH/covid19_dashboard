@@ -12,7 +12,7 @@ output$case_evolution_general_text <- renderText(
     "Epidemic data has been acquired from",
     paste0(
       tags$a(href = "https://github.com/CSSEGISandData/COVID-19",
-           "Johns Hopkins CSSE"),
+             "Johns Hopkins CSSE"),
       ","),
     "while population data has been acquired from",
     tags$a(href = "https://data.worldbank.org/indicator/SP.POP.TOTL",
