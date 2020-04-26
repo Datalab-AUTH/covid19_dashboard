@@ -42,7 +42,7 @@ saveRDS(data_oecd, "data/data_oecd.RDS")
 
 data_oxford <- read_csv("data/oxford_data/data/OxCGRT_latest.csv") %>%
   mutate(Date = as.Date.character(Date, format="%Y%m%d")) %>%
-  select(-"CountryName", -ends_with("_Notes"), -ends_with("_IsGeneral"), -starts_with("Confirmed"), -starts_with("StringencyIndex"), -"X27") %>%
+  select(-"CountryName", -ends_with("_Notes"), -ends_with("_IsGeneral"), -starts_with("Confirmed"), -"X27") %>%
   rename("iso3c" = "CountryCode") %>%
   rename("ActionDate" = "Date")
 saveRDS(data_oxford, "data/data_oxford.RDS")
