@@ -31,6 +31,8 @@ updateData <- function() {
   data_human_freedom <<- readRDS("data/data_human_freedom.RDS")
   data_full_table <<- readRDS("data/data_full_table.RDS")
   data_case_evolution <<- readRDS("data/data_case_evolution.RDS")
+  data_trajectory_confirmed <<- readRDS("data/data_trajectory_confirmed.RDS")
+  data_trajectory_deceased <<- readRDS("data/data_trajectory_deceased.RDS")
 }
 
 updateData()

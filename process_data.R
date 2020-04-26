@@ -7,6 +7,7 @@ library("tidyverse")
 library("fs")
 library("countrycode")
 library("wbstats")
+library("zoo")
 
 source("utils.R", local = T)
 
@@ -347,3 +348,30 @@ data_case_evolution <- data_evolution %>%
   as.data.frame()
 saveRDS(data_case_evolution, "data/data_case_evolution.RDS")
 
+data_trajectory_confirmed <- data_evolution %>%
+  filter(var == "confirmed") %>%
+  select(`Country/Region`, date, value, value_new, population) %>%
+  arrange(`Country/Region`, date) %>%
+  group_by(`Country/Region`, date) %>%
+  summarize(
+    value = sum(value),
+    value_new = sum(value_new),
+    population = head(population, 1)
+  ) %>%
+  group_by(`Country/Region`) %>%
+  mutate(new_7days_rollsum = rollsum(value_new, 7, fill = NA, align = "right"))
+saveRDS(data_trajectory_confirmed, "data/data_trajectory_confirmed.RDS")
+
+data_trajectory_deceased <- data_evolution %>%
+  filter(var == "deceased") %>%
+  select(`Country/Region`, date, value, value_new, population) %>%
+  arrange(`Country/Region`, date) %>%
+  group_by(`Country/Region`, date) %>%
+  summarize(
+    value = sum(value),
+    value_new = sum(value_new),
+    population = head(population, 1)
+  ) %>%
+  group_by(`Country/Region`) %>%
+  mutate(new_7days_rollsum = rollsum(value_new, 7, fill = NA, align = "right"))
+saveRDS(data_trajectory_deceased, "data/data_trajectory_deceased.RDS")

@@ -100,3 +100,22 @@ output$plot_doublingTime_text <- renderText(
     or deaths."
   )
 )
+
+output$plot_case_trajectory_text <- renderText(
+  paste(
+    em("Explore the evolution of new cases with respect to total cases."),
+    br(),br(),
+    "This plot displays new cases/deaths against the total number of cases/deaths.
+    It is evident that all countries follow the same trajectory while the
+    decease is evolving. By plotting the two axes using logarithic scales, it
+    is easy to detect when the spread of the decease is slowing down; it is
+    when the lines drop abruptly. However, logarithmic scales might make it
+    harder to detect any resurgence of new infections; plotting the data using
+    linear axes is more suitable for that.",
+    br(),br(),
+    "You may select which countries to include in the plot for comparison
+    reasons. You may also select to plot data with respect to confirmed cases,
+    or deaths, view the data using linear or logarithmic scales and plot
+    cases/deaths in absolute numbers of per capita."
+  )
+)

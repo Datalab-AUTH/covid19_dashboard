@@ -142,8 +142,37 @@ body_plots <- dashboardBody(
             style = "padding: 50px;"
           ),
           width = 6
+        )
+      ),
+      fluidRow(
+        box(
+          title = "Case Trajectory",
+          plotlyOutput("plot_case_trajectory"),
+          column(
+            uiOutput("selectize_case_trajectory_countries"),
+            width = 3,
+          ),
+          column(
+            uiOutput("selectize_trajectory_var"),
+            width = 3,
+          ),
+          column(
+            checkboxInput("checkbox_logCaseTrajectory", label = "Logarithmic Axes", value = TRUE),
+            checkboxInput("checkbox_trajectory_per_capita", label = "Per Capita", value = TRUE),
+            width = 3,
+            style = "float: right; padding: 10px; margin-right: 50px"
+          ),
+          width = 6
         ),
-        style = "padding-bottom: 200px;"
+        box(
+          column(
+            uiOutput("plot_case_trajectory_text"),
+            width = 6,
+            style = "padding: 50px;"
+          ),
+          width = 6
+        ),
+        style = "padding-bottom: 180px;"
       )
     )
   )
