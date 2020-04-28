@@ -108,7 +108,7 @@ output$plot_case_trajectory_text <- renderText(
     "This plot displays new cases/deaths against the total number of cases/deaths.
     It is evident that all countries follow the same trajectory while the
     decease is evolving. By plotting the two axes using logarithic scales, it
-    is easy to detect when the spread of the decease is slowing down; it is
+    is easy to detect when the spread of the desease is slowing down; it is
     when the lines drop abruptly. However, logarithmic scales might make it
     harder to detect any resurgence of new infections; plotting the data using
     linear axes is more suitable for that.",
