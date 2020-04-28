@@ -24,39 +24,57 @@ output$action_deaths <- renderPlotly({
     arrange(iso3c, ActionDate) %>% 
     rename("ConfirmedDate" = "date") %>% 
     group_by(iso3c)
-  if (input$action_deaths_taken == "S1_School closing") {
+  if (input$action_deaths_taken == "C1_School closing") {
     data <- data %>%
-      filter(`S1_School closing` > 0 )
-  } else if (input$action_deaths_taken == "S2_Workplace closing") {
+      filter(`C1_School closing` > 0 )
+  } else if (input$action_deaths_taken == "C2_Workplace closing") {
     data <- data %>%
-      filter(`S2_Workplace closing` > 0 )
-  } else if (input$action_deaths_taken == "S3_Cancel public events") {
+      filter(`C2_Workplace closing` > 0 )
+  } else if (input$action_deaths_taken == "C3_Cancel public events") {
     data <- data %>%
-      filter(`S3_Cancel public events` > 0 )
-  } else if (input$action_deaths_taken == "S4_Close public transport") {
+      filter(`C3_Cancel public events` > 0 )
+  } else if (input$action_deaths_taken == "C4_Restrictions on gatherings") {
     data <- data %>%
-      filter(`S4_Close public transport` > 0 )
-  } else if (input$action_deaths_taken == "S5_Public information campaigns") {
+      filter(`C4_Restrictions on gatherings` > 0 )
+  } else if (input$action_deaths_taken == "C5_Close public transport") {
     data <- data %>%
-      filter(`S5_Public information campaigns` > 0 )
-  } else if (input$action_deaths_taken == "S6_Restrictions in internal movement") {
+      filter(`C5_Close public transport` > 0 )
+  } else if (input$action_deaths_taken == "C6_Stay at home requirements") {
     data <- data %>%
-      filter(`S6_Restrictions in internal movement` > 0 )
-  } else if (input$action_deaths_taken == "S7_International travel controls") {
+      filter(`C6_Stay at home requirements` > 0 )
+  } else if (input$action_deaths_taken == "C7_Restrictions on internal movement") {
     data <- data %>%
-      filter(`S7_International travel controls` > 0 ) 
-  } else if (input$action_deaths_taken == "S8_Fiscal measures") {
+      filter(`C7_Restrictions on internal movement` > 0 ) 
+  } else if (input$action_deaths_taken == "C8_International travel controls") {
     data <- data %>%
-      filter(`S8_Fiscal measures` > 0 )
-  } else if (input$action_deaths_taken == "S9_Monetary measures") {
+      filter(`C8_International travel controls` > 0 )
+  } else if (input$action_deaths_taken == "E1_Income support") {
     data <- data %>%
-      filter(`S9_Monetary measures` > 0 )
-  } else if (input$action_deaths_taken == "S10_Emergency investment in health care") {
+      filter(`E1_Income support` > 0 )
+  } else if (input$action_deaths_taken == "E2_Debt/contract relief") {
     data <- data %>%
-      filter(`S10_Emergency investment in health care` > 0 )
+      filter(`E2_Debt/contract relief` > 0 )
+  } else if (input$action_deaths_taken == "E3_Fiscal measures") {
+    data <- data %>%
+      filter(`E3_Fiscal measures` > 0 )
+  } else if (input$action_deaths_taken == "E4_International support") {
+    data <- data %>%
+      filter(`E4_International support` > 0 )
+  } else if (input$action_deaths_taken == "H1_Public information campaigns") {
+    data <- data %>%
+      filter(`H1_Public information campaigns` > 0 )
+  } else if (input$action_deaths_taken == "H2_Testing policy") {
+    data <- data %>%
+      filter(`H2_Testing policy` > 0 )
+  } else if (input$action_deaths_taken == "H3_Contact tracing") {
+    data <- data %>%
+      filter(`H3_Contact tracing` > 0 )
+  } else if (input$action_deaths_taken == "H4_Emergency investment in healthcare") {
+    data <- data %>%
+      filter(`H4_Emergency investment in healthcare` > 0 )
   } else {
     data <- data %>%
-      filter(`S11_Investment in Vaccines` > 0 )
+      filter(`H5_Investment in vaccines` > 0 )
   }
   data <- data %>%
     slice(1) %>%
@@ -122,7 +140,7 @@ output$select_action_deaths_country_variable <- renderUI({
 
 output$select_action_deaths_variable <- renderUI({
   actions <- data_oxford %>% 
-    select(starts_with("S")) %>% 
+    select(starts_with("C"), starts_with("E"), starts_with("H")) %>%
     names()
   selectizeInput(
     "action_deaths_taken",
