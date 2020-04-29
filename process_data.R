@@ -426,8 +426,8 @@ if (data_greece_region["status_code"] == 200) {
     fromJSON() %>%
     first() %>%
     rename("confirmed" = "region_cases") %>%
-    mutate(confirmedPerCapita = confirmed) %>%
-    merge(data_greece_geo)
+    merge(data_greece_geo) %>%
+    mutate(confirmedPerCapita = round(100000 * confirmed / population, 2))
   saveRDS(data_greece_region_parsed, "data/data_greece_region.RDS")
 }
 data_greece_age <- GET("https://covid-19-greece.herokuapp.com/age-distribution")
