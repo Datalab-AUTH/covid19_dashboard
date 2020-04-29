@@ -1,0 +1,101 @@
+
+key_figures_greece <- reactive({
+  data <- data_greece_all %>%
+    slice(n())
+  data_yesterday <- data_greece_all %>%
+    slice(n() - 1)
+
+  data_new <- list(
+    new_confirmed = (data$confirmed - data_yesterday$confirmed) / data_yesterday$confirmed * 100,
+    new_active    = (data$active - data_yesterday$active) / data_yesterday$active * 100,
+    new_recovered = (data$recovered - data_yesterday$recovered) / data_yesterday$recovered * 100,
+    new_deaths    = (data$deaths - data_yesterday$deaths) / data_yesterday$deaths * 100,
+    new_icu       = (data$icu - data_yesterday$icu) / data_yesterday$icu * 100,
+    new_tests     = (data$tests - data_yesterday$tests) / data_yesterday$tests * 100
+  )
+  
+  keyFigures <- list(
+    "confirmed" = HTML(paste(format(data$confirmed, big.mark = " "), sprintf("<h4>(%+.1f %%)</h4>", data_new$new_confirmed))),
+    "active"    = HTML(paste(format(data$active, big.mark = " "), sprintf("<h4>(%+.1f %%)</h4>", data_new$new_active))),
+    "recovered" = HTML(paste(format(data$recovered, big.mark = " "), sprintf("<h4>(%+.1f %%)</h4>", data_new$new_recovered))),
+    "deceased"  = HTML(paste(format(data$deaths, big.mark = " "), sprintf("<h4>(%+.1f %%)</h4>", data_new$new_deaths))),
+    "icu"       = HTML(paste(format(data$icu, big.mark = " "), sprintf("<h4>(%+.1f %%)</h4>", data_new$new_icu))),
+    "tests"     = HTML(paste(format(data$tests, big.mark = " "), sprintf("<h4>(%+.1f %%)</h4>", data_new$new_tests))),
+    "date"      = data$date
+  )
+  return(keyFigures)
+})
+
+output$valueBox_greece_confirmed <- renderValueBox({
+  valueBox(
+    key_figures_greece()$confirmed,
+    subtitle = "Confirmed",
+    icon     = icon("file-medical"),
+    color    = "light-blue",
+    width    = NULL
+  )
+})
+
+output$valueBox_greece_active <- renderValueBox({
+  valueBox(
+    key_figures_greece()$active,
+    subtitle = "Active",
+    icon     = icon("stethoscope"),
+    color    = "light-blue",
+    width    = NULL
+  )
+})
+
+output$valueBox_greece_recovered <- renderValueBox({
+  valueBox(
+    key_figures_greece()$recovered,
+    subtitle = "Recoveries",
+    icon     = icon("heart"),
+    color    = "light-blue"
+  )
+})
+
+output$valueBox_greece_deceased <- renderValueBox({
+  valueBox(
+    key_figures_greece()$deceased,
+    subtitle = "Deceased",
+    icon     = icon("skull"),
+    color    = "light-blue"
+  )
+})
+
+output$valueBox_greece_icu <- renderValueBox({
+  valueBox(
+    key_figures_greece()$icu,
+    subtitle = "Intensive Care",
+    icon     = icon("procedures"),
+    color    = "light-blue"
+  )
+})
+
+output$valueBox_greece_tests <- renderValueBox({
+  valueBox(
+    key_figures_greece()$tests,
+    subtitle = "Tests",
+    icon     = icon("vial"),
+    color    = "light-blue"
+  )
+})
+
+output$box_keyFigures_greece <- renderUI(box(
+  title = paste0("Key Figures (", strftime(key_figures_greece()$date, format = "%d.%m.%Y"), ")"),
+  fluidRow(
+    column(
+      valueBoxOutput("valueBox_greece_confirmed", width = 2),
+      valueBoxOutput("valueBox_greece_active", width = 2),
+      valueBoxOutput("valueBox_greece_recovered", width = 2),
+      valueBoxOutput("valueBox_greece_deceased", width = 2),
+      valueBoxOutput("valueBox_greece_icu", width = 2),
+      valueBoxOutput("valueBox_greece_tests", width = 2),
+      width = 12,
+      style = "margin-left: -20px"
+    )
+  ),
+  div("Last updated: ", strftime(changed_date, format = "%d.%m.%Y - %R %Z")),
+  width = 12
+))
