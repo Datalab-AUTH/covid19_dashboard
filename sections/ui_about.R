@@ -53,7 +53,10 @@ body_about <- dashboardBody(
                             "The World Bank")),
               tags$li(tags$b("Government Response Data:"),
                       tags$a(href = "https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker",
-                            "Oxford COVID-19 Government Response Tracker"))
+                            "Oxford COVID-19 Government Response Tracker")),
+              tags$li(tags$b("Greece Data:"),
+                      tags$a(href = "https://www.covid19response.gr/",
+                             "COVID-19 Response Greece"))
             ),
             h3("Issues and Suggestions"),
             "If you encounter any issue or have a suggestion to improve or add
