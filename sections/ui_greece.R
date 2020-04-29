@@ -31,6 +31,80 @@ body_greece <- dashboardBody(
         width = 4,
         style = 'padding:0px;'
       )
+    ),
+    fluidRow(
+      box(
+        title = "Evolution of Cases since Outbreak",
+        plotlyOutput("case_evolution_greece"),
+        column(
+          checkboxInput("checkbox_logCaseEvolution_greece", label = "Logarithmic Y-Axis", value = FALSE),
+          width = 3,
+          style = "float: right; padding: 10px; margin-right: 50px"
+        ),
+        width = 6
+      ),
+      box(
+        column(
+          uiOutput("case_evolution_greece_text"),
+          width = 6,
+          style = "padding: 50px;"
+        ),
+        width = 6
+      )
+    ),
+    fluidRow(
+      box(
+        title = "COVID-19 Tests Performed",
+        plotlyOutput("tests_greece"),
+        column(
+          checkboxInput("checkbox_log_tests_greece", label = "Logarithmic Y-Axis", value = FALSE),
+          width = 3,
+          style = "float: right; padding: 10px; margin-right: 50px"
+        ),
+        width = 6
+      ),
+      box(
+        column(
+          uiOutput("tests_greece_text"),
+          width = 6,
+          style = "padding: 50px;"
+        ),
+        width = 6
+      )
+    ),
+    fluidRow(
+      box(
+        title = "Age Distribution",
+        plotlyOutput("age_greece"),
+        column(
+          uiOutput("select_age_var_greece"),
+          width = 3,
+        ),
+        width = 6
+      ),
+      box(
+        column(
+          uiOutput("age_greece_text"),
+          width = 6,
+          style = "padding: 50px;"
+        ),
+        width = 6
+      )
+    ),
+    fluidRow(
+      box(
+        title = "Gender Distribution",
+        plotlyOutput("gender_greece"),
+        width = 6
+      ),
+      box(
+        column(
+          uiOutput("gender_greece_text"),
+          width = 6,
+          style = "padding: 50px;"
+        ),
+        width = 6
+      )
     )
   ),
   tags$style(type = 'text/css', ".nav-tabs-custom { background: #444b55; }"),
