@@ -8,6 +8,9 @@ library("fs")
 library("countrycode")
 library("wbstats")
 library("zoo")
+library("httr")
+library("reshape2")
+library("jsonlite")
 
 source("utils.R", local = T)
 
@@ -375,3 +378,80 @@ data_trajectory_deceased <- data_evolution %>%
   group_by(`Country/Region`) %>%
   mutate(new_7days_rollsum = rollsum(value_new, 7, fill = NA, align = "right"))
 saveRDS(data_trajectory_deceased, "data/data_trajectory_deceased.RDS")
+
+#
+# Greece data from covid-19-greece project
+#
+data_greece_all <- GET("https://covid-19-greece.herokuapp.com/all")
+data_greece_ICU <- GET("https://covid-19-greece.herokuapp.com/intensive-care")
+data_greece_total_tests <- GET("https://covid-19-greece.herokuapp.com/total-tests")
+if (data_greece_all["status_code"] == 200 &&
+    data_greece_ICU["status_code"] == 200 &&
+    data_greece_total_tests["status_code"] == 200) {
+  data_greece_all_parsed <- data_greece_all %>%
+    content(as="text", encoding = "UTF-8") %>%
+    fromJSON() %>%
+    first()
+  data_greece_ICU_parsed <- data_greece_ICU %>%
+    content(as="text", encoding = "UTF-8") %>%
+    fromJSON() %>%
+    first() %>%
+    rename("icu" = "intensive_care") %>%
+    fill(icu)
+  data_greece_total_tests_parsed <- data_greece_total_tests %>%
+    content(as="text", encoding = "UTF-8") %>%
+    fromJSON() %>%
+    first() %>%
+    fill(tests) %>%
+    mutate(tests = ifelse(is.na(tests), 0, tests))
+  data_greece <- data_greece_all_parsed %>%
+    merge(data_greece_ICU_parsed) %>%
+    merge(data_greece_total_tests_parsed) %>%
+    arrange(date)
+  saveRDS(data_greece, "data/data_greece_all.RDS")
+}
+data_greece_cumulative <- GET("https://covid-19-greece.herokuapp.com/total")
+if (data_greece_cumulative["status_code"] == 200) {
+  data_greece_cumulative_parsed <- data_greece_cumulative %>%
+    content(as="text", encoding = "UTF-8") %>%
+    fromJSON() %>%
+    first()
+  saveRDS(data_greece_cumulative_parsed, "data/data_greece_cumulative.RDS")
+}
+data_greece_region <- GET("https://covid-19-greece.herokuapp.com/regions")
+if (data_greece_region["status_code"] == 200) {
+  data_greece_geo <- read_csv("data/greece_geo_coordinates.csv")
+  data_greece_region_parsed <- data_greece_region %>%
+    content(as="text", encoding = "UTF-8") %>%
+    fromJSON() %>%
+    first() %>%
+    rename("confirmed" = "region_cases") %>%
+    mutate(confirmedPerCapita = confirmed) %>%
+    merge(data_greece_geo)
+  saveRDS(data_greece_region_parsed, "data/data_greece_region.RDS")
+}
+data_greece_age <- GET("https://covid-19-greece.herokuapp.com/age-distribution")
+if (data_greece_age["status_code"] == 200) {
+  data_greece_age_parsed <- data_greece_age %>%
+    content(as="text", encoding = "UTF-8") %>%
+    fromJSON() %>%
+    first()
+  data_greece_age_distribution <- data_greece_age_parsed$total_age_groups %>%
+    melt() %>%
+    rename("group" = "L2", "var" = "L1")
+  data_greece_age_averages <- c(case = data_greece_age_parsed$age_average,
+                                death = data_greece_age_parsed$average_death_age)
+  saveRDS(data_greece_age_distribution, "data/data_greece_age_distribution.RDS")
+  saveRDS(data_greece_age_averages, "data/data_greece_age_averages.RDS")
+}
+data_greece_gender <- GET("https://covid-19-greece.herokuapp.com/gender-distribution")
+if (data_greece_gender["status_code"] == 200) {
+  data_greece_gender_parsed <- data_greece_gender %>%
+    content(as="text", encoding = "UTF-8") %>%
+    fromJSON() %>%
+    first() %>%
+    melt() %>%
+    rename("Gender" = "L1", "Percentage" = "value") %>%
+    mutate(Gender = recode(Gender, "total_females" = "Female", "total_males" = "Male"))
+  saveRDS(data_greece_gender_parsed, "data/data_greece_gender.RDS")
+}
