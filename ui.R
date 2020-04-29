@@ -6,6 +6,7 @@ source("sections/ui_social_plots.R", local = TRUE)
 source("sections/ui_action_plots.R", local = TRUE)
 source("sections/ui_about.R", local = TRUE)
 source("sections/ui_fullTable.R", local = TRUE)
+source("sections/ui_greece.R", local = TRUE)
 
 datalab_logo_html <- '<div style="float:left">
                        <a href="https://datalab.csd.auth.gr/">
@@ -54,6 +55,7 @@ ui <- fluidPage(
     tabPanel("Epidemic Plots", page_plots, value = "page-plots"),
     tabPanel("Socioeconomic Plots", page_social_plots, value = "page-social-plots"),
     tabPanel("Government Response", page_action_plots, value = "page-actions-plots"),
+    tabPanel("Greece", page_greece, value = "page-greece"),
     tabPanel("About", page_about, value = "page-about"),
     tags$script(HTML(paste0("var header = $('.navbar > .container-fluid');",
       "header.append(",
