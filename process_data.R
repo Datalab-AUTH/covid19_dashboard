@@ -407,7 +407,9 @@ if (data_greece_all["status_code"] == 200 &&
   data_greece <- data_greece_all_parsed %>%
     merge(data_greece_ICU_parsed) %>%
     merge(data_greece_total_tests_parsed) %>%
-    arrange(date)
+    arrange(date) %>%
+    as_tibble() %>%
+    mutate(date = as.Date(date, format="%Y-%m-%d"))
   saveRDS(data_greece, "data/data_greece_all.RDS")
 }
 data_greece_cumulative <- GET("https://covid-19-greece.herokuapp.com/total")
