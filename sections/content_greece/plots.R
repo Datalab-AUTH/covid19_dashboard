@@ -11,7 +11,7 @@ output$case_evolution_greece <- renderPlotly({
       xaxis = list(title = "Date")
     )
   
-  if (input$checkbox_log_tests_greece) {
+  if (input$checkbox_logCaseEvolution_greece) {
     p <- layout(p, yaxis = list(type = "log"))
   }
   
