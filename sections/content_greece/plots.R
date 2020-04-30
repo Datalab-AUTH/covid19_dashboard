@@ -4,7 +4,7 @@ output$case_evolution_greece <- renderPlotly({
     p <- plot_ly(data = data, x = ~date, y = ~active, type = 'scatter', mode = 'lines', name = "Active") %>%
     add_trace(data = data, x = ~date, y = ~confirmed, type = 'scatter', mode = 'lines', name = "Confirmed") %>%
     add_trace(data = data, x = ~date, y = ~recovered, type = 'scatter', mode = 'lines', name = "Recovered") %>%
-    add_trace(data = data, x = ~date, y = ~deaths, type = 'scatter', mode = 'lines', name = "Deaths") %>%
+    add_trace(data = data, x = ~date, y = ~deaths, type = 'scatter', mode = 'lines', name = "Deceased") %>%
     add_trace(data = data, x = ~date, y = ~icu, type = 'scatter', mode = 'lines', name = "Intensive Care") %>%
     layout(
       yaxis = list(title = "# Cases", rangemode = "nonnegative"),
