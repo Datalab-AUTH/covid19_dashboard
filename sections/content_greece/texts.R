@@ -13,8 +13,8 @@ output$tests_greece_text <- renderText(
   paste(
     em("See how many COVID-19 tests have been performed."),
     br(),br(),
-    "This plot displays the cumulative number of COVID-19 tests that have been
-    performede in Greece.",
+    "This plot displays the number of COVID-19 tests that are performed daily
+    in Greece, as well as the cumulative (total) number of them.",
     br(),br(),
     "You may select to view the Y-axis in logarithmic scale."
   )

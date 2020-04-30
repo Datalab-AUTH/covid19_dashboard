@@ -35,7 +35,8 @@ output$case_evolution_greece <- renderPlotly({
 
 output$tests_greece <- renderPlotly({
   data <- data_greece_all
-  p <- plot_ly(data = data, x = ~date, y = ~tests, type = 'scatter', mode = 'lines', name = "Tests Performed") %>%
+  p <- plot_ly(data = data, x = ~date, y = ~tests, type = 'scatter', mode = 'lines', name = "Total Tests") %>%
+    add_trace(data = data, x = ~date, y = ~tests_new, type = 'scatter', mode = 'lines', name = "New Tests") %>%
     layout(
       yaxis = list(title = "# Tests", rangemode = "nonnegative"),
       xaxis = list(title = "Date")
