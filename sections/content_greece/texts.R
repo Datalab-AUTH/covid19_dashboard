@@ -5,7 +5,9 @@ output$case_evolution_greece_text <- renderText(
     "This plot presents the evolution of active cases, confirmed cases,
     recovered patients and of patients currently in intensive care.",
     br(),br(),
-    "You may select to view the Y-axis in logarithmic scale."
+    "You may select to view the Y-axis in logarithmic scale.",
+    br(),br(),
+    em("Note: Recoveries are only reported periodically, not daily.")
   )
 )
 
