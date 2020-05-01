@@ -54,6 +54,21 @@ body_greece <- dashboardBody(
     ),
     fluidRow(
       box(
+        title = "New Cases",
+        plotlyOutput("cases_per_day_greece"),
+        width = 6
+      ),
+      box(
+        column(
+          uiOutput("cases_per_day_greece_text"),
+          width = 6,
+          style = "padding: 50px;"
+        ),
+        width = 6
+      )
+    ),
+    fluidRow(
+      box(
         title = "COVID-19 Tests Performed",
         plotlyOutput("tests_greece"),
         column(

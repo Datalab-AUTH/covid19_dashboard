@@ -33,6 +33,35 @@ output$case_evolution_greece <- renderPlotly({
   return(p)
 })
 
+output$cases_per_day_greece <- renderPlotly({
+  data <- data_greece_all
+  p <- plot_ly(data = data, x = ~date, y = ~confirmed_new, type = 'bar', name = "Confirmed") %>%
+    add_trace(data = data, x = ~date, y = ~deaths_new, type = 'bar', name = "Deceased") %>%
+    add_trace(data = data, x = ~date, y = ~icu_new, type = 'bar', name = "Intensive Care") %>%
+    layout(
+      barmode = "stack",
+      yaxis = list(title = "# Cases"),
+      xaxis = list(title = "Date")
+    )
+  
+  p <- layout(p,
+              font = list(color = "#FFFFFF"),
+              paper_bgcolor = "#444B55",
+              plot_bgcolor = "#444B55",
+              yaxis = list(
+                zerolinecolor = "#666666",
+                linecolor = "#999999",
+                gridcolor = "#666666"
+              ),
+              xaxis = list(
+                zerolinecolor = "#666666",
+                linecolor = "#999999",
+                gridcolor = "#666666"
+              )
+  )
+  return(p)
+})
+
 output$tests_greece <- renderPlotly({
   data <- data_greece_all
   p <- plot_ly(data = data, x = ~date, y = ~tests, type = 'scatter', mode = 'lines', name = "Total Tests") %>%

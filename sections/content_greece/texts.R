@@ -9,6 +9,15 @@ output$case_evolution_greece_text <- renderText(
   )
 )
 
+output$cases_per_day_greece_text <- renderText(
+  paste(
+    em("View how cases evolve daily"),
+    br(),br(),
+    "This plots shows the number of new confirmed cases, new deaths and new
+    admissions in intensive care that occur daily."
+  )
+)
+
 output$tests_greece_text <- renderText(
   paste(
     em("See how many COVID-19 tests have been performed."),

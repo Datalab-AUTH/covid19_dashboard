@@ -415,7 +415,7 @@ if (data_greece_all["status_code"] == 200 &&
       confirmed_new = confirmed - lag(confirmed, 1),
       deaths_new = deaths - lag(deaths, 1),
       recovered_new = recovered -  lag(recovered, 1),
-      icu_new = icu - lag(icu, 1),
+      icu_new = icu - lag(icu, 1) + deaths_new,
       tests_new = tests - lag(tests, 1)
     )
   saveRDS(data_greece, "data/data_greece_all.RDS")
