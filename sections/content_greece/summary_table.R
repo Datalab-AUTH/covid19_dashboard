@@ -14,12 +14,12 @@ proxy_summaryDT_greece  <- dataTableProxy("summaryDT_greece")
 
 summariseData_greece <- function(df) {
   df %>%
-    group_by(region_en_name) %>%
-    summarise(
-      "Confirmed"            = sum(confirmed, na.rm = T),
-      "Confirmed / 100,000 people" = sum(confirmedPerCapita, na.rm = T)
-    ) %>%
-    rename("Region" = "region_en_name") %>%
+    select("region_en_name", "confirmed", "confirmedPerCapita") %>%
+    rename(
+      "Region" = "region_en_name",
+      "Confirmed" = "confirmed",
+      "Confirmed / 100,000 people" = "confirmedPerCapita"
+      ) %>%
     as.data.frame()
 }
 
