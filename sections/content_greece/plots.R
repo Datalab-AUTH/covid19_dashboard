@@ -126,11 +126,25 @@ output$age_greece <- renderPlotly({
   }
   data <- data_greece_age_distribution %>%
     filter(var == input$age_var_greece)
-  p <- plot_ly(data = data, x = ~group, y = ~value, type = 'bar',
-               marker = list(color = bar_color)) %>%
+  
+  if (input$checkbox_age_pct_greece) {
+    y_label <- "Percentage"
+    y_values <- data$pct
+  } else {
+    y_label <- "Number of People"
+    y_values <- data$value
+  }
+  
+  p <- plot_ly(
+              data = data,
+              x = ~group,
+              y = y_values,
+              type = 'bar',
+              marker = list(color = bar_color)
+      ) %>%
       layout(
         xaxis = list(title = "Age Group"),
-        yaxis = list(title = "Number of People")
+        yaxis = list(title = y_label)
       )
   
   p <- layout(p,

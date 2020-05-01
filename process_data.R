@@ -448,7 +448,10 @@ if (data_greece_age["status_code"] == 200) {
     first()
   data_greece_age_distribution <- data_greece_age_parsed$total_age_groups %>%
     melt() %>%
-    rename("group" = "L2", "var" = "L1")
+    rename("group" = "L2", "var" = "L1") %>%
+    group_by(var) %>%
+    mutate(pct = round(100 * value / sum(value), 2)) %>%
+    ungroup()
   data_greece_age_averages <- c(case = data_greece_age_parsed$age_average,
                                 death = data_greece_age_parsed$average_death_age)
   saveRDS(data_greece_age_distribution, "data/data_greece_age_distribution.RDS")

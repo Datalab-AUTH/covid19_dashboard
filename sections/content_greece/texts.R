@@ -46,6 +46,7 @@ output$age_greece_text <- renderText(
     "With this plot you can view the age distribution of confirmed cases,
     patients that are in critical condition and deaths due to COVID-19.",
     br(),br(),
-    "You may select which variable you would like to use."
+    "You may select which variable you would like to use and whether to view
+    absolute numbers or percentages."
   )
 )

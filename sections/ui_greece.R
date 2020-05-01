@@ -95,6 +95,11 @@ body_greece <- dashboardBody(
           uiOutput("select_age_var_greece"),
           width = 3,
         ),
+        column(
+          checkboxInput("checkbox_age_pct_greece", label = "Show percentages", value = FALSE),
+          width = 3,
+          style = "float: right; padding: 10px; margin-right: 50px"
+        ),
         width = 6
       ),
       box(
