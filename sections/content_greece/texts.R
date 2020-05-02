@@ -15,8 +15,13 @@ output$cases_per_day_greece_text <- renderText(
   paste(
     em("View how cases evolve daily"),
     br(),br(),
-    "This plots shows the number of new confirmed cases, new deaths and new
-    admissions in intensive care that occur daily."
+    "This plots shows the number of new active cases, new confirmed cases, 
+    new deaths and new admissions in intensive care that occur daily. Negative
+    active case values signify that, for that day, the number of recoveries, in
+    addition to the number of deaths, exceed the number of new confirmed cases.
+    Similarly, negative intensive care values signify that more people are no
+    longer treated in ICUs, either because they recovered, or because they died,
+    compared to new people admitted in the ICU."
   )
 )
 
