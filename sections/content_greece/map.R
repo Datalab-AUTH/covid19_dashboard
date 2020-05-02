@@ -2,14 +2,16 @@ library("htmltools")
 
 addLabel_greece <- function(data) {
   data$label <- paste0(
-    '<b>', data$region_en_name, '</b><br>
+    '<b>', data$region, '</b><br>
     <table style="width:120px;">
-    <tr><td>Confirmed:</td><td align="right">', data$confirmed, '</td></tr>',
+    <tr><td>Confirmed:</td><td align="right">', data$confirmed, '</td></tr>
+    <tr><td>New Confirmed:</td><td align="right">', data$confirmed_new, '</td></tr>',
     ifelse(!is.infinite(data$confirmedPerCapita),
           paste0(
                 '<tr><td>Confirmed / 100,000 people:</td><td align="right">',
                 data$confirmedPerCapita, 
-                '</td></tr>'),
+                '</td></tr>'
+                ),
           ''),
     '</table>'
   )
@@ -23,17 +25,24 @@ map_greece <- leaflet(addLabel_greece(data_greece_region)) %>%
   setView(23, 38, zoom = 6) %>%
   addProviderTiles(providers$CartoDB.DarkMatter, group = "Dark") %>%
   addLayersControl(
-    overlayGroups = c("Confirmed", "Confirmed / 100,000 people")
+    overlayGroups = c("Confirmed",
+                      "Confirmed / 100,000 people",
+                      "New Confirmed")
   ) %>%
   hideGroup("Confirmed / 100,000 people") %>%
+  hideGroup("New Confirmed") %>%
   addEasyButton(easyButton(
     icon    = "glyphicon glyphicon-globe", title = "Reset zoom",
     onClick = JS("function(btn, map){ map.setView([38, 23], 6); }")))
 
 observe({
-  zoomLevel               <- input$overview_map_greece_zoom
-  data                    <- data_greece_region %>% addLabel_greece()
-
+  req(input$timeslider_greece)
+  zoomLevel <- input$overview_map_greece_zoom
+  data <- data_greece_region_timeline %>%
+    filter(date == input$timeslider_greece) %>%
+    addLabel_greece() %>%
+  req(data)
+  
   leafletProxy("overview_map_greece", data = data) %>%
     clearMarkers() %>%
     addCircleMarkers(
@@ -57,6 +66,17 @@ observe({
       label        = ~label,
       labelOptions = labelOptions(textsize = 15),
       group        = "Confirmed / 100,000 people"
+    ) %>%
+    addCircleMarkers(
+      lng          = ~Long,
+      lat          = ~Lat,
+      radius       = ~log(confirmed_new^(zoomLevel)),
+      stroke       = FALSE,
+      color        = "#005900",
+      fillOpacity  = 0.5,
+      label        = ~label,
+      labelOptions = labelOptions(textsize = 15),
+      group = "New Confirmed"
     )
 })
 

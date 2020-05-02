@@ -13,6 +13,10 @@ server <- function(input, output, session) {
   })
   
   observe({
+    data_greece <- data_atDate_greece(input$timeslider_greece)
+  })
+  
+  observe({
     updateSliderInput(
       session,
       "timeSlider",
@@ -21,4 +25,12 @@ server <- function(input, output, session) {
     )
   })
 
+  observe({
+    updateSliderInput(
+      session,
+      "timeslider_greece",
+      max = max(data_greece_region_timeline$date),
+      value = max(data_greece_region_timeline$date)
+    )
+  })
 }

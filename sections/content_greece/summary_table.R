@@ -9,21 +9,29 @@ output$summary_table_greece <- renderUI({
   )
 })
 
-output$summaryDT_greece <- renderDataTable(getSummaryDT_greece(data_greece_region, selectable = TRUE))
+output$summaryDT_greece <- renderDataTable(getSummaryDT_greece(data_atDate_greece("2020-04-22")))
 proxy_summaryDT_greece  <- dataTableProxy("summaryDT_greece")
+
+observeEvent(input$timeslider_greece, {
+  data <- data_atDate_greece(input$timeslider_greece)
+  replaceData(proxy_summaryDT_greece,
+              summariseData_greece(data),
+              rownames = FALSE)
+}, ignoreInit = TRUE, ignoreNULL = TRUE)
 
 summariseData_greece <- function(df) {
   df %>%
-    select("region_en_name", "confirmed", "confirmedPerCapita") %>%
+    select("region", "confirmed", "confirmed_new", "confirmedPerCapita") %>%
     rename(
-      "Region" = "region_en_name",
+      "Region" = "region",
       "Confirmed" = "confirmed",
+      "New Confirmed" = "confirmed_new",
       "Confirmed / 100,000 people" = "confirmedPerCapita"
       ) %>%
     as.data.frame()
 }
 
-getSummaryDT_greece <- function(data, selectable = FALSE) {
+getSummaryDT_greece <- function(data) {
   datatable(
     na.omit(summariseData_greece(data)),
     rownames  = FALSE,
@@ -35,6 +43,6 @@ getSummaryDT_greece <- function(data, selectable = FALSE) {
       dom            = 'ft',
       paging         = FALSE
     ),
-    selection = ifelse(selectable, "single", "none")
+    selection = "none"
   )
 }

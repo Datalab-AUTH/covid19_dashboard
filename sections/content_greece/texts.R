@@ -50,3 +50,13 @@ output$age_greece_text <- renderText(
     absolute numbers or percentages."
   )
 )
+
+output$timeslider_greece_note <- renderText(
+  paste(
+    em(paste("NOTE: Historical per region data for Greece are only available
+             since",
+      min(data_greece_region_timeline$date),
+      "and only for confirmed cases.")
+    )
+  )
+)

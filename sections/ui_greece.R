@@ -30,6 +30,26 @@ body_greece <- dashboardBody(
         class = "summary",
         width = 4,
         style = 'padding:0px;'
+      ),
+      column(
+        sliderInput(
+          "timeslider_greece",
+          label      = "Select date",
+          min        = min(data_greece_region_timeline$date),
+          max        = max(data_greece_region_timeline$date),
+          value      = max(data_greece_region_timeline$date),
+          width      = "100%",
+          timeFormat = "%d.%m.%Y",
+          animate    = animationOptions(interval = 1000, loop = TRUE)
+        ),
+        class = "slider",
+        width = 12,
+        style = 'padding-left:15px; padding-right:15px;'
+      ),
+      column(
+        uiOutput("timeslider_greece_note"),
+        width = 12,
+        style = "padding-bottom: 50px; padding-right: 50px; padding-left: 50px;"
       )
     ),
     fluidRow(
