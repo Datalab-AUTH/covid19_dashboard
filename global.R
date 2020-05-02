@@ -36,6 +36,7 @@ updateData <- function() {
   data_greece_all <<- readRDS("data/data_greece_all.RDS")
   data_greece_cumulative <<- readRDS("data/data_greece_cumulative.RDS")
   data_greece_region <<- readRDS("data/data_greece_region.RDS")
+  data_greece_region_timeline <<- readRDS("data/data_greece_region_timeline.RDS")
   data_greece_age_distribution <<- readRDS("data/data_greece_age_distribution.RDS")
   data_greece_age_averages <<- readRDS("data/data_greece_age_averages.RDS")
   data_greece_gender <<- readRDS("data/data_greece_gender.RDS")

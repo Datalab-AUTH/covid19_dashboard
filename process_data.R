@@ -428,9 +428,9 @@ if (data_greece_cumulative["status_code"] == 200) {
     first()
   saveRDS(data_greece_cumulative_parsed, "data/data_greece_cumulative.RDS")
 }
+data_greece_geo <- read_csv("data/greece_geo_coordinates.csv")
 data_greece_region <- GET("https://covid-19-greece.herokuapp.com/regions")
 if (data_greece_region["status_code"] == 200) {
-  data_greece_geo <- read_csv("data/greece_geo_coordinates.csv")
   data_greece_region_parsed <- data_greece_region %>%
     content(as="text", encoding = "UTF-8") %>%
     fromJSON() %>%
@@ -439,6 +439,41 @@ if (data_greece_region["status_code"] == 200) {
     merge(data_greece_geo) %>%
     mutate(confirmedPerCapita = round(100000 * confirmed / population, 2))
   saveRDS(data_greece_region_parsed, "data/data_greece_region.RDS")
+}
+data_greece_region_timeline <- GET("https://covid-19-greece.herokuapp.com/regions-history")
+if (data_greece_region_timeline["status_code"] == 200) {
+  data_greece_geo <- read_csv("data/greece_geo_coordinates.csv")
+  d <- data_greece_region_timeline %>%
+    content(as="text", encoding = "UTF-8") %>%
+    fromJSON() %>%
+    first()
+  dates <- d %>%
+    pluck("date") %>%
+    enframe() %>%
+    mutate(value = as.Date(value, format = "%Y-%m-%d")) %>%
+    rename("date" = "value", "index" = "name")
+  timeline <- d %>%
+    pluck("regions") %>%
+    melt() %>%
+    filter(variable == "region_cases") %>%
+    select(-region_gr_name, -variable) %>%
+    merge(data_greece_geo) %>%
+    rename(
+      "region" = "region_en_name",
+      "index" = "L1",
+      "confirmed" = "value"
+      ) %>%
+    merge(dates) %>%
+    select(-index) %>%
+    group_by(region) %>%
+    arrange(region) %>%
+    mutate(confirmed_new = confirmed - lag(confirmed, 1)) %>%
+    mutate(
+      confirmedPerCapita = round(100000 * confirmed / population, 2),
+      confirmedPerCapita_new = round(100000 * confirmed_new / population, 2),
+    ) %>%
+    as_tibble()
+  saveRDS(timeline, "data/data_greece_region_timeline.RDS")
 }
 data_greece_age <- GET("https://covid-19-greece.herokuapp.com/age-distribution")
 if (data_greece_age["status_code"] == 200) {
