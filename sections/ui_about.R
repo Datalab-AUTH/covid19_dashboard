@@ -29,7 +29,10 @@ body_about <- dashboardBody(
             tags$a(href = "https://www.csd.auth.gr",
                    "Department of Informatics,"),
             tags$a(href = "https://www.csd.auth.gr",
-                   "Aristotle University of Thessaloniki."),
+                   "Aristotle University of Thessaloniki,"),
+            "Greece. Since, apparently, the case of Greece is important to us,
+            there is a specialized section that examines the evolution of the
+            disease in it.",
             h3("Data Sources"),
             "This project aggregates and combines publicly available data from
             several different sources. These include:",
@@ -83,10 +86,7 @@ body_about <- dashboardBody(
             This effort utilizes open datasets and is based on open-source
             technologies. This project is released to the public under an",
             tags$a(href = "https://en.wikipedia.org/wiki/MIT_License",
-                   "MIT license"),
-            "and is based on the initial work by",
-            tags$a(href = "https://github.com/chschoenenberger/covid19_dashboard",
-                   "Christoph Schoenenberger."),
+                   "MIT license."),
             "You may find all relevant source code in our project page at",
             tags$a(href = "https://github.com/Datalab-AUTH/covid19_dashboard",
                    "Github."),
