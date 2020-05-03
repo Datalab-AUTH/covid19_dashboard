@@ -18,8 +18,8 @@ interested viewer. This initiative is launched and supported by members
 of the [Data and Web Science Lab](https://datalab.csd.auth.gr) (DATALAB)
 an active research group
 engaged in ICT research and innovation on data science and multi scope
-analytics under the [Department of Informatics](https://csd.auth.gr),
-[Aristotle University of Thessaloniki](https://auth.gr).
+analytics under the [Department of Informatics](https://www.csd.auth.gr),
+[Aristotle University of Thessaloniki](https://www.auth.gr), Greece.
 
 # Issues and Suggestions
 If you encounter any issue or have a suggestion to improve or add new
