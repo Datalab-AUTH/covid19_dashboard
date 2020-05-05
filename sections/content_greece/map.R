@@ -30,7 +30,6 @@ map_greece <- leaflet(addLabel_greece(data_greece_region)) %>%
                       "New Confirmed")
   ) %>%
   hideGroup("Confirmed / 100,000 people") %>%
-  hideGroup("New Confirmed") %>%
   addEasyButton(easyButton(
     icon    = "glyphicon glyphicon-globe", title = "Reset zoom",
     onClick = JS("function(btn, map){ map.setView([38, 23], 6); }")))
