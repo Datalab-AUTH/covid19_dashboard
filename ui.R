@@ -48,6 +48,7 @@ ui <- fluidPage(
   tags$style(HTML(".leaflet-tooltip { color: #FFFFFF; background-color: #181818}")),
   navbarPage(
     title       = div(HTML(datalab_logo_html), style = "padding-left: 10px"),
+    id          = "navbar_set_panel",
     collapsible = TRUE,
     fluid       = TRUE,
     tabPanel("World Overview", page_overview, value = "page-overview"),
