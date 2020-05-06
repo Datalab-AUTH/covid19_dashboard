@@ -98,7 +98,7 @@ output$valueBox_greece_age_case <- renderValueBox({
 output$valueBox_greece_age_death <- renderValueBox({
   valueBox(
     key_figures_greece()$death_age,
-    subtitle = "Average age for fatalities",
+    subtitle = "Average age for deaths",
     icon     = icon("hospital"),
     color    = "light-blue"
   )
