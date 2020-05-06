@@ -146,8 +146,46 @@ population[which(population$country %in% countryNamesPop), "country"] <- country
 
 # Data from wikipedia
 noDataCountries <- data.frame(
-  country    = c("Cruise Ship", "Guadeloupe", "Guernsey", "Holy See", "Jersey", "Martinique", "Reunion", "Taiwan*"),
-  population = c(3700, 395700, 63026, 800, 106800, 376480, 859959, 23780452)
+  country    = c("Cruise Ship",
+                 "Guadeloupe",
+                 "Guernsey",
+                 "Holy See",
+                 "Jersey",
+                 "Martinique",
+                 "Reunion",
+                 "Taiwan*",
+                 "Bahamas",
+                 "Burma",
+                 "Eritrea",
+                 "Gambia",
+                 "Kyrgyzstan",
+                 "Laos",
+                 "Saint Kitts and Nevis",
+                 "Syria",
+                 "West Bank and Gaza",
+                 "Western Sahara",
+                 "Yemen"
+  ),
+  population = c(3700, # Cruise Ship
+                 395700, # Guadeloupe
+                 63026, # Guernsey
+                 800, # Holy See
+                 106800, # Jersey
+                 376480, # Martinique
+                 859959, # Reunion
+                 23780452, # Taiwan
+                 392606, # Bahamas
+                 54348883, # Burma
+                 3538029, # Eritrea
+                 2157846, # Gambia
+                 6389500, # Kyrgyzstan
+                 7257182, # Laos
+                 53000, # Saint Kitts and Nevis
+                 18528105, # Syria
+                 4569087, # West Bank and Gaza
+                 518663, # Western Sahara
+                 29825964 # Yemen
+  )
 )
 population      <- bind_rows(population, noDataCountries)
 
