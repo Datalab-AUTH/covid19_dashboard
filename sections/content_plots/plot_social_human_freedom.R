@@ -8,7 +8,7 @@ output$freedom <- renderPlotly({
     rename("values" = input$case_freedom_var) %>%
     group_by(Country) %>%
     summarise(
-      "population" = sum(population, na.rm = T),
+      "population" = head(population, 1),
       "values" = sum(values, na.rm = T)
     ) %>%
     filter(values >= as.numeric(input$case_freedom_limit)) %>%
