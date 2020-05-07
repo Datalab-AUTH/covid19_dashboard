@@ -29,8 +29,8 @@ output$oecd_expectancy <- renderPlotly({
   }
   
   if (input$checkbox_oecd_expectancy_per_capita) {
-	y_label = paste(y_label, "/ 100,000 people")
-	data_conf$values <- 100000 * data_conf$values / data_conf$population
+  	y_label = paste(y_label, "/ 100,000 people")
+  	data_conf$values <- 100000 * data_conf$values / data_conf$population
   }
   
   data_merged <- merge(data_conf, data_oecd) %>%
