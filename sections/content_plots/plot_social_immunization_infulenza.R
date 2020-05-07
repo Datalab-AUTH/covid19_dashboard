@@ -34,7 +34,8 @@ output$oecd_influenza <- renderPlotly({
   }
   
   data_merged <- merge(data_conf, data_oecd) %>%
-    mutate(Country = countrycode(iso3c, origin = "iso3c", destination = "country.name"))
+    mutate(Country = countrycode(iso3c, origin = "iso3c", destination = "country.name"),
+           Country = recode(Country, "Macedonia" = "North Macedonia"))
   
   correlation <- cor.test(data_merged$values, data_merged$influenzaImmunization, method = "spearman")
   p_value <- correlation$p.value

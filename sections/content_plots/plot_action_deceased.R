@@ -78,8 +78,9 @@ output$action_deaths <- renderPlotly({
   }
   data <- data %>%
     slice(1) %>%
-    mutate(Country = countrycode(iso3c, origin = "iso3c", destination = "country.name")) %>%
-    mutate(diff = as.integer(ActionDate - ConfirmedDate))
+    mutate(Country = countrycode(iso3c, origin = "iso3c", destination = "country.name"),
+           Country = recode(Country, "Macedonia" = "North Macedonia"),
+           diff = as.integer(ActionDate - ConfirmedDate))
   
   p <- plot_ly(
     data,
@@ -127,8 +128,10 @@ output$action_deaths <- renderPlotly({
 
 output$select_action_deaths_country_variable <- renderUI({
   top5_countries_iso3c <- countrycode(top5_countries, origin = "country.name", destination = "iso3c")
-  top5_countries_names <- countrycode(top5_countries_iso3c, origin = "iso3c", destination = "country.name")
-  countries <- sort(unique(countrycode(data_oxford$iso3c, origin = "iso3c", destination = "country.name")))
+  top5_countries_names <- countrycode(top5_countries_iso3c, origin = "iso3c", destination = "country.name") %>%
+    recode("Macedonia" = "North Macedonia")
+  countries <- sort(unique(countrycode(data_oxford$iso3c, origin = "iso3c", destination = "country.name"))) %>%
+    recode("Macedonia" = "North Macedonia")
   selectizeInput(
     "action_deaths_country",
     label    = "Select Countries",

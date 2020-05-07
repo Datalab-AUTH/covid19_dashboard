@@ -38,7 +38,8 @@ output$freedom <- renderPlotly({
     rename("iso3c" = "ISO_code")
   
   data_merged <- merge(data_conf, data_hf) %>%
-    mutate(Country = countrycode(iso3c, origin = "iso3c", destination = "country.name"))
+    mutate(Country = countrycode(iso3c, origin = "iso3c", destination = "country.name"),
+           Country = recode(Country, "Macedonia" = "North Macedonia"))
   
   correlation <- cor.test(data_merged$values, data_merged$hf_score, method = "spearman")
   p_value <- correlation$p.value
