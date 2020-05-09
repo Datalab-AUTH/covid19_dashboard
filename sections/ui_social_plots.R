@@ -41,7 +41,7 @@ body_social_plots <- dashboardBody(
         box(
           column(
             uiOutput("social_healthGDP_text"),
-            width = 6,
+            width = 12,
             style = "padding: 50px;"
           ),
           width = 6
@@ -77,7 +77,7 @@ body_social_plots <- dashboardBody(
         box(
           column(
             uiOutput("social_freedom_text"),
-            width = 6,
+            width = 12,
             style = "padding: 50px;"
           ),
           width = 6
@@ -113,7 +113,7 @@ body_social_plots <- dashboardBody(
         box(
           column(
             uiOutput("social_influenza_text"),
-            width = 6,
+            width = 12,
             style = "padding: 50px;"
           ),
           width = 6
@@ -148,7 +148,7 @@ body_social_plots <- dashboardBody(
         box(
           column(
             uiOutput("social_expectancy_text"),
-            width = 6,
+            width = 12,
             style = "padding: 50px;"
           ),
           width = 6

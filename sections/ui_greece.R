@@ -66,7 +66,7 @@ body_greece <- dashboardBody(
       box(
         column(
           uiOutput("case_evolution_greece_text"),
-          width = 6,
+          width = 12,
           style = "padding: 50px;"
         ),
         width = 6
@@ -81,7 +81,7 @@ body_greece <- dashboardBody(
       box(
         column(
           uiOutput("cases_per_day_greece_text"),
-          width = 6,
+          width = 12,
           style = "padding: 50px;"
         ),
         width = 6
@@ -101,7 +101,7 @@ body_greece <- dashboardBody(
       box(
         column(
           uiOutput("tests_greece_text"),
-          width = 6,
+          width = 12,
           style = "padding: 50px;"
         ),
         width = 6
@@ -125,7 +125,7 @@ body_greece <- dashboardBody(
       box(
         column(
           uiOutput("age_greece_text"),
-          width = 6,
+          width = 12,
           style = "padding: 50px;"
         ),
         width = 6
@@ -140,7 +140,7 @@ body_greece <- dashboardBody(
       box(
         column(
           uiOutput("gender_greece_text"),
-          width = 6,
+          width = 12,
           style = "padding: 50px;"
         ),
         width = 6

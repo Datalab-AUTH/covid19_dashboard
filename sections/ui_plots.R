@@ -25,7 +25,7 @@ body_plots <- dashboardBody(
         box(
           column(
             uiOutput("case_evolution_text"),
-            width = 6,
+            width = 12,
             style = "padding: 50px;"
           ),
           width = 6
@@ -50,7 +50,7 @@ body_plots <- dashboardBody(
         box(
           column(
             uiOutput("case_evolution_new_text"),
-            width = 6,
+            width = 12,
             style = "padding: 50px;"
           ),
           width = 6
@@ -77,7 +77,7 @@ body_plots <- dashboardBody(
         box(
           column(
             uiOutput("case_evolution_byCountry_text"),
-            width = 6,
+            width = 12,
             style = "padding: 50px;"
           ),
           width = 6
@@ -108,7 +108,7 @@ body_plots <- dashboardBody(
         box(
           column(
             uiOutput("case_evolution_after100_text"),
-            width = 6,
+            width = 12,
             style = "padding: 50px;"
           ),
           width = 6
@@ -138,7 +138,7 @@ body_plots <- dashboardBody(
         box(
           column(
             uiOutput("plot_doublingTime_text"),
-            width = 6,
+            width = 12,
             style = "padding: 50px;"
           ),
           width = 6
@@ -167,7 +167,7 @@ body_plots <- dashboardBody(
         box(
           column(
             uiOutput("plot_case_trajectory_text"),
-            width = 6,
+            width = 12,
             style = "padding: 50px;"
           ),
           width = 6
