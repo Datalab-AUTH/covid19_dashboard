@@ -92,8 +92,8 @@ body_greece <- dashboardBody(
         title = "COVID-19 Tests Performed",
         plotlyOutput("tests_greece"),
         column(
-          checkboxInput("checkbox_log_tests_greece", label = "Logarithmic Y-Axis", value = FALSE),
-          width = 3,
+          checkboxInput("checkbox_log_tests_greece", label = "Logarithmic Y-Axis (Total Tests)", value = FALSE),
+          width = 4,
           style = "float: right; padding: 10px; margin-right: 50px"
         ),
         width = 6

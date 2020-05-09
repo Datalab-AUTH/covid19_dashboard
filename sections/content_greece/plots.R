@@ -64,15 +64,20 @@ output$cases_per_day_greece <- renderPlotly({
 
 output$tests_greece <- renderPlotly({
   data <- data_greece_all
-  p <- plot_ly(data = data, x = ~date, y = ~tests, type = 'scatter', mode = 'lines', name = "Total Tests") %>%
-    add_trace(data = data, x = ~date, y = ~tests_new, type = 'bar', name = "New Tests") %>%
+  p <- plot_ly(data = data, x = ~date, y = ~tests_new, type = 'bar', name = "New Tests") %>%
+    add_trace(data = data, x = ~date, y = ~tests, type = 'scatter', mode = 'lines', name = "Total Tests", yaxis = "y2") %>%
     layout(
-      yaxis = list(title = "# Tests", rangemode = "nonnegative"),
+      yaxis = list(title = "New Tests", rangemode = "nonnegative"),
+      yaxis2 = list(
+        overlaying = "y",
+        side = "right",
+        title = "Total Tests"
+      ),
       xaxis = list(title = "Date")
     )
   
   if (input$checkbox_log_tests_greece) {
-    p <- layout(p, yaxis = list(type = "log"))
+    p <- layout(p, yaxis2 = list(type = "log"))
   }
   
   p <- layout(p,
