@@ -441,7 +441,11 @@ if (data_greece_all["status_code"] == 200 &&
     fromJSON() %>%
     first() %>%
     fill(tests) %>%
-    mutate(tests = ifelse(is.na(tests), 0, tests))
+    mutate(tests = ifelse(is.na(tests), 0, tests),
+           tests = ifelse(date == "2020-04-13", 43431, tests), # fix badly reported data
+           tests = ifelse(date == "2020-04-14", 47389, tests),
+           tests = ifelse(date == "2020-04-15", 48798, tests))
+    
   data_greece <- data_greece_all_parsed %>%
     merge(data_greece_ICU_parsed) %>%
     merge(data_greece_total_tests_parsed) %>%
