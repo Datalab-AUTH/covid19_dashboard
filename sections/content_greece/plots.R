@@ -35,10 +35,8 @@ output$case_evolution_greece <- renderPlotly({
 
 output$cases_per_day_greece <- renderPlotly({
   data <- data_greece_all
-  p <- plot_ly(data = data, x = ~date, y = ~active_new, type = 'scatter', mode = 'lines', name = "Active") %>%
-    add_trace(data = data, x = ~date, y = ~confirmed_new, type = 'scatter', mode = 'lines', name = "Confirmed") %>%
+  p <- plot_ly(data = data, x = ~date, y = ~confirmed_new, type = 'scatter', mode = 'lines', name = "Confirmed") %>%
     add_trace(data = data, x = ~date, y = ~deaths_new, type = 'scatter', mode = 'lines', name = "Deceased") %>%
-    add_trace(data = data, x = ~date, y = ~icu_new, type = 'scatter', mode = 'lines', name = "Intensive Case") %>%
     layout(
       yaxis = list(title = "# Cases"),
       xaxis = list(title = "Date")
