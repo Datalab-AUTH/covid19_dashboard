@@ -28,7 +28,11 @@ output$case_evolution_text <- renderText(
     "The plot shows the temporal evolution of the number of cases on a global
     scale.",
     br(),br(),
-    "You may select to plot the number of cases (Y-axis) on a logarithmic scale
+    "You may hide/show variables by clicking on the respective entries in the
+    legend. By double-clicking on a legend entry, you may isolate it from the
+    rest.",
+    br(),br(),
+    "You may also select to plot the number of cases (Y-axis) on a logarithmic scale
     for a different perspective of the evolution of cases."
   )
 )
@@ -40,6 +44,10 @@ output$case_evolution_new_text <- renderText(
     "The plot shows the temporal evolution of the number of new cases that are
     recorded each day. Each color bar corresponds to a different category as
     described in the accompanying legend.",
+    br(),br(),
+    "You may hide/show variables by clicking on the respective entries in the
+    legend. By double-clicking on a legend entry, you may isolate it from the
+    rest.",
     br(),br(),
     "By default, the plot displays world-wide data, but you may select to
     isolate any specific country."
@@ -57,6 +65,10 @@ output$case_evolution_byCountry_text <- renderText(
     br(),br(),
     "You may select which countries you would like to include in the plot for
     comparison reasons.",
+    br(),br(),
+    "You may hide/show countries by clicking on the respective entries in the
+    legend. By double-clicking on a legend entry, you may isolate it from the
+    rest.",
     br(),br(),
     "You may also select to plot the number of cases (Y-axis) on a logarithmic
     scale. Additionally, you may choose to switch between plotting data
@@ -77,7 +89,13 @@ output$case_evolution_after100_text <- renderText(
     about the spread of COVID-19.",
     br(),br(),
     "You may select which countries to include in the plot for comparison
-    reasons. You can also pick between using the milestone of the 100th
+    reasons.",
+    br(),br(),
+    "You may hide/show countries by clicking on the respective entries in the
+    legend. By double-clicking on a legend entry, you may isolate it from the
+    rest.",
+    br(),br(),
+    "You can also pick between using the milestone of the 100th
     confirmed case or that of the 10th death as a starting point. Finally,
     you may select the number of cases (Y-axis) on a logarithmic scale and
     choose to switch between plotting data per-capita, or in absolute numbers."
@@ -96,7 +114,13 @@ output$plot_doublingTime_text <- renderText(
     for longer periods of time, signify a worse progression of the disease.",
     br(),br(),
     "You may select which countries to include in the plot for comparison
-    reasons. You may also select to plot data with respect to confirmed cases,
+    reasons.",
+    br(),br(),
+    "You may hide/show countries by clicking on the respective entries in the
+    legend. By double-clicking on a legend entry, you may isolate it from the
+    rest.",
+    br(),br(),
+    "You may also select to plot data with respect to confirmed cases,
     or deaths."
   )
 )
@@ -114,7 +138,13 @@ output$plot_case_trajectory_text <- renderText(
     linear axes is more suitable for that.",
     br(),br(),
     "You may select which countries to include in the plot for comparison
-    reasons. You may also select to plot data with respect to confirmed cases,
+    reasons.",
+    br(),br(),
+    "You may hide/show countries by clicking on the respective entries in the
+    legend. By double-clicking on a legend entry, you may isolate it from the
+    rest.",
+    br(),br(),
+    "You may also select to plot data with respect to confirmed cases,
     or deaths, view the data using linear or logarithmic scales and plot
     cases/deaths in absolute numbers of per capita."
   )

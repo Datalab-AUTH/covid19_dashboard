@@ -5,7 +5,11 @@ output$case_evolution_greece_text <- renderText(
     "This plot presents the evolution of active cases, confirmed cases,
     recovered patients and of patients currently in intensive care.",
     br(),br(),
-    "You may select to view the Y-axis in logarithmic scale.",
+    "You may hide/show variables by clicking on the respective entries in the
+    legend. By double-clicking on a legend entry, you may isolate it from the
+    rest.",
+    br(),br(),
+    "You may also select to view the Y-axis in logarithmic scale.",
     br(),br(),
     em("Note: Recoveries are only reported periodically, not daily.")
   )
@@ -21,7 +25,11 @@ output$cases_per_day_greece_text <- renderText(
     addition to the number of deaths, exceed the number of new confirmed cases.
     Similarly, negative intensive care values signify that more people are no
     longer treated in ICUs, either because they recovered, or because they died,
-    compared to new people admitted in the ICU."
+    compared to new people admitted in the ICU.",
+    br(),br(),
+    "You may hide/show variables by clicking on the respective entries in the
+    legend. By double-clicking on a legend entry, you may isolate it from the
+    rest."
   )
 )
 
@@ -34,7 +42,11 @@ output$tests_greece_text <- renderText(
     new tests is displayed on the left Y-axis, while the total number of tests
     is displayed on the right Y-axis.",
     br(),br(),
-    "You may select to view the right Y-axis (total tests) in logarithmic
+    "You may hide/show variables by clicking on the respective entries in the
+    legend. By double-clicking on a legend entry, you may isolate it from the
+    rest.",
+    br(),br(),
+    "You may also select to view the right Y-axis (total tests) in logarithmic
     scale."
   )
 )
