@@ -39,7 +39,7 @@ observe({
   zoomLevel <- input$overview_map_greece_zoom
   data <- data_greece_region_timeline %>%
     filter(date == input$timeslider_greece) %>%
-    addLabel_greece() %>%
+    addLabel_greece()
   req(data)
   
   leafletProxy("overview_map_greece", data = data) %>%
