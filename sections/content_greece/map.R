@@ -42,41 +42,46 @@ observe({
     addLabel_greece()
   req(data)
   
-  leafletProxy("overview_map_greece", data = data) %>%
-    clearMarkers() %>%
-    addCircleMarkers(
-      lng          = ~Long,
-      lat          = ~Lat,
-      radius       = ~log(confirmed^(zoomLevel / 2)),
-      stroke       = FALSE,
-      color        = "#0F7A82",
-      fillOpacity  = 0.5,
-      label        = ~label,
-      labelOptions = labelOptions(textsize = 15),
-      group        = "Confirmed"
-    ) %>%
-    addCircleMarkers(
-      lng          = ~Long,
-      lat          = ~Lat,
-      radius       = ~log(confirmedPerCapita^(zoomLevel)),
-      stroke       = FALSE,
-      color        = "#00b3ff",
-      fillOpacity  = 0.5,
-      label        = ~label,
-      labelOptions = labelOptions(textsize = 15),
-      group        = "Confirmed / 100,000 people"
-    ) %>%
-    addCircleMarkers(
-      lng          = ~Long,
-      lat          = ~Lat,
-      radius       = ~log(confirmed_new^(zoomLevel)),
-      stroke       = FALSE,
-      color        = "#E7590B",
-      fillOpacity  = 0.5,
-      label        = ~label,
-      labelOptions = labelOptions(textsize = 15),
-      group = "New Confirmed"
-    )
+  if (nrow(data) > 0) {
+    leafletProxy("overview_map_greece", data = data) %>%
+      clearMarkers() %>%
+      addCircleMarkers(
+        lng          = ~Long,
+        lat          = ~Lat,
+        radius       = ~log(confirmed^(zoomLevel / 2)),
+        stroke       = FALSE,
+        color        = "#0F7A82",
+        fillOpacity  = 0.5,
+        label        = ~label,
+        labelOptions = labelOptions(textsize = 15),
+        group        = "Confirmed"
+      ) %>%
+      addCircleMarkers(
+        lng          = ~Long,
+        lat          = ~Lat,
+        radius       = ~log(confirmedPerCapita^(zoomLevel)),
+        stroke       = FALSE,
+        color        = "#00b3ff",
+        fillOpacity  = 0.5,
+        label        = ~label,
+        labelOptions = labelOptions(textsize = 15),
+        group        = "Confirmed / 100,000 people"
+      ) %>%
+      addCircleMarkers(
+        lng          = ~Long,
+        lat          = ~Lat,
+        radius       = ~log(confirmed_new^(zoomLevel)),
+        stroke       = FALSE,
+        color        = "#E7590B",
+        fillOpacity  = 0.5,
+        label        = ~label,
+        labelOptions = labelOptions(textsize = 15),
+        group = "New Confirmed"
+      )
+  } else {
+    leafletProxy("overview_map_greece", data = data) %>%
+      clearMarkers()
+  }
 })
 
 output$overview_map_greece <- renderLeaflet(map_greece)
