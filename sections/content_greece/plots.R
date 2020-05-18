@@ -97,8 +97,14 @@ output$tests_greece <- renderPlotly({
 })
 
 output$gender_greece <- renderPlotly({
-  data <- data_greece_gender
-  p <- plot_ly(data = data, labels = ~Gender, values = ~Percentage, type = 'pie')
+  deaths <- data_greece_all %>%
+    slice(n()) %>%
+    pull(deaths)
+  # this may not be completely accurate, but only available data is percentages
+  # and total number of deaths
+  data <- data_greece_gender %>%
+    mutate(deaths = round({deaths} * Percentage / 100, 0))
+  p <- plot_ly(data = data, labels = ~Gender, values = ~deaths, type = 'pie')
   
   p <- layout(p,
               font = list(color = "#FFFFFF"),
