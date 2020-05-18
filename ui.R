@@ -57,7 +57,11 @@ ui <- fluidPage(
     tabPanel("Socioeconomic Plots", page_social_plots, value = "page-social-plots"),
     tabPanel("Government Response", page_action_plots, value = "page-actions-plots"),
     tabPanel("Greece", page_greece, value = "page-greece"),
-    tabPanel("About", page_about, value = "page-about"),
+    tabPanel(HTML("About</a></li>
+                  <li>
+                  <a href='https://covid19.csd.auth.gr/greece' target='_blank' style='padding-top:10px;padding-bottom:8px'>
+                  <img src='greece.png'
+                  alt='Greece'>"), page_about, value = "page-about"),
     tags$script(HTML(paste0("var header = $('.navbar > .container-fluid');",
       "header.append(",
       csd_auth_logos_html,
