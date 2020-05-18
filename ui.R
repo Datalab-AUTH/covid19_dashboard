@@ -28,7 +28,7 @@ ui <- fluidPage(
       ),
     includeHTML("google-analytics.html")
   ),
-  tags$style(type = "text/css", "@media (max-width: 1065px) { #csd_auth_logos { display: none; } }"),
+  tags$style(type = "text/css", "@media (max-width: 1150px) { #csd_auth_logos { display: none; } }"),
   tags$style(type = "text/css", ".container-fluid {padding-left: 0px; padding-right: 0px !important;}"),
   tags$style(type = "text/css", ".navbar {margin-bottom: 0px;}"),
   tags$style(type = "text/css", ".content {padding: 0px;}"),
