@@ -9,7 +9,7 @@ output$summary_table_greece <- renderUI({
   )
 })
 
-output$summaryDT_greece <- renderDataTable(getSummaryDT_greece(data_atDate_greece("2020-04-22")))
+output$summaryDT_greece <- renderDataTable(getSummaryDT_greece(data_atDate_greece(input$timeslider_greece)))
 proxy_summaryDT_greece  <- dataTableProxy("summaryDT_greece")
 
 observeEvent(input$timeslider_greece, {
