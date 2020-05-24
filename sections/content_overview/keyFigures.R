@@ -31,6 +31,14 @@ key_figures <- reactive({
     "deceased"  = HTML(paste(format(data$deceased, big.mark = " "), sprintf("<h4>(%+.1f %%)</h4>", data_new$new_deceased))),
     "countries" = HTML(paste(format(data$countries, big.mark = " "), "/ 195", sprintf("<h4>(%+d)</h4>", data_new$new_countries)))
   )
+
+  if (is.infinite(data_new$new_active)) keyFigures$active = HTML(paste(format(data$active, big.mark = " "), "<h4>(all new)</h4>"))
+  if (data_new$new_confirmed == 0) keyFigures$confirmed = HTML(paste(format(data$confirmed, big.mark = " "), "<h4>(no change)</h4>"))
+  if (is.nan(data_new$new_active) || data_new$new_active == 0) keyFigures$active = HTML(paste(format(data$active, big.mark = " "), "<h4>(no change)</h4>"))
+  if (data_new$new_recovered == 0) keyFigures$recovered = HTML(paste(format(data$recovered, big.mark = " "), "<h4>(no change)</h4>"))
+  if (data_new$new_deceased == 0) keyFigures$deceased = HTML(paste(format(data$deceased, big.mark = " "), "<h4>(no change)</h4>"))
+  if (data_new$new_countries == 0) keyFigures$countries = HTML(paste(format(data$countries, big.mark = " "), "<h4>(no change)</h4>"))
+
   return(keyFigures)
 })
 
@@ -97,3 +105,4 @@ output$box_keyFigures <- renderUI(box(
   div("Last updated: ", strftime(changed_date, format = "%d.%m.%Y - %R %Z")),
   width = 12
 ))
+
