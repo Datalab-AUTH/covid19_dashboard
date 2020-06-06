@@ -14,7 +14,7 @@ body_plots <- dashboardBody(
       fluidRow(
         box(
           title = "Evolution of Cases since Outbreak",
-          plotlyOutput("case_evolution"),
+          withSpinner(plotlyOutput("case_evolution")),
           column(
             checkboxInput("checkbox_logCaseEvolution", label = "Logarithmic Y-Axis", value = FALSE),
             width = 3,
@@ -34,7 +34,7 @@ body_plots <- dashboardBody(
       fluidRow(
         box(
           title = "New cases",
-          plotlyOutput("case_evolution_new"),
+          withSpinner(plotlyOutput("case_evolution_new")),
           column(
             uiOutput("selectize_casesByCountries_new"),
             width = 3,
@@ -59,7 +59,7 @@ body_plots <- dashboardBody(
       fluidRow(
         box(
           title = "Cases per Country",
-          plotlyOutput("case_evolution_byCountry"),
+          withSpinner(plotlyOutput("case_evolution_byCountry")),
           fluidRow(
             column(
               uiOutput("selectize_casesByCountries"),
@@ -86,7 +86,7 @@ body_plots <- dashboardBody(
       fluidRow(
         box(
           title = "Evolution of Cases since 10th/100th case",
-          plotlyOutput("case_evolution_after100"),
+          withSpinner(plotlyOutput("case_evolution_after100")),
           fluidRow(
             column(
               uiOutput("selectize_casesByCountriesAfter100th"),
@@ -117,7 +117,7 @@ body_plots <- dashboardBody(
       fluidRow(
         box(
           title = "Evolution of Doubling Times per Country",
-          plotlyOutput("plot_doublingTime"),
+          withSpinner(plotlyOutput("plot_doublingTime")),
           fluidRow(
             column(
               uiOutput("selectize_doublingTime_Country"),
@@ -147,7 +147,7 @@ body_plots <- dashboardBody(
       fluidRow(
         box(
           title = "Case Trajectory",
-          plotlyOutput("plot_case_trajectory"),
+          withSpinner(plotlyOutput("plot_case_trajectory")),
           column(
             uiOutput("selectize_case_trajectory_countries"),
             width = 3,
