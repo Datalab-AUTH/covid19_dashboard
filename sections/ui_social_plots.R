@@ -14,7 +14,7 @@ body_social_plots <- dashboardBody(
       fluidRow(
         box(
         title = "Health Expenditure",
-        plotlyOutput("healthGDP"),
+        withSpinner(plotlyOutput("healthGDP")),
         column(
           width = 3,
           style = "float: right; padding: 10px; margin-right: 50px"
@@ -50,7 +50,7 @@ body_social_plots <- dashboardBody(
       fluidRow(
         box(
         title = "Human Freedom",
-        plotlyOutput("freedom"),
+        withSpinner(plotlyOutput("freedom")),
         column(
           width = 3,
           style = "float: right; padding: 10px; margin-right: 50px"
@@ -86,7 +86,7 @@ body_social_plots <- dashboardBody(
       fluidRow(
         box(
         title = "Immunization to Influenza",
-        plotlyOutput("oecd_influenza"),
+        withSpinner(plotlyOutput("oecd_influenza")),
         column(
           width = 3,
           style = "float: right; padding: 10px; margin-right: 50px"
@@ -121,7 +121,7 @@ body_social_plots <- dashboardBody(
       ), fluidRow(
         box(
         title = "Life Expectancy",
-        plotlyOutput("oecd_expectancy"),
+        withSpinner(plotlyOutput("oecd_expectancy")),
         column(
           width = 3,
           style = "float: right; padding: 10px; margin-right: 50px"
