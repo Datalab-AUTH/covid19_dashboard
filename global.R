@@ -1,6 +1,7 @@
 # ---- Loading libraries ----
 library("shiny")
 library("shinydashboard")
+library("shinycssloaders")
 library("tidyverse")
 library("leaflet")
 library("plotly")

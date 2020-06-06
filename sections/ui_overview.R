@@ -22,21 +22,21 @@ body_overview <- dashboardBody(
   ),
   fluidRow(
     fluidRow(
-      uiOutput("box_keyFigures")
+      withSpinner(uiOutput("box_keyFigures"))
     ),
     fluidRow(
       class = "details",
       column(
         box(
           width = 12,
-          leafletOutput("overview_map")
+          withSpinner(leafletOutput("overview_map"))
         ),
         class = "map",
         width = 8,
         style = 'padding:0px;'
       ),
       column(
-        uiOutput("summaryTables"),
+        withSpinner(uiOutput("summaryTables")),
         class = "summary",
         width = 4,
         style = 'padding:0px;'
@@ -81,3 +81,4 @@ page_overview <- dashboardPage(
   sidebar = dashboardSidebar(disable = TRUE),
   body    = body_overview
 )
+
