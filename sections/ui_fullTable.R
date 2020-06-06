@@ -21,7 +21,7 @@ body_fullTable <- dashboardBody(
       h3(paste0("Complete Table (", strftime(current_date, format = "%d.%m.%Y"), ")"),
         class = "box-title", style = "margin-top: 10px; font-size: 18px;"),
       div(
-        dataTableOutput("fullTable"),
+        withSpinner(dataTableOutput("fullTable")),
         class = "full-table"
       ),
       div(
