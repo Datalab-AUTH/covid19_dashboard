@@ -12,21 +12,21 @@ body_greece <- dashboardBody(
   ),
   fluidRow(
     fluidRow(
-      uiOutput("box_keyFigures_greece")
+      withSpinner(uiOutput("box_keyFigures_greece"))
     ),
     fluidRow(
       class = "details",
       column(
         box(
           width = 12,
-          leafletOutput("overview_map_greece")
+          withSpinner(leafletOutput("overview_map_greece"))
         ),
         class = "map",
         width = 8,
         style = 'padding:0px;'
       ),
       column(
-        uiOutput("summary_table_greece"),
+        withSpinner(uiOutput("summary_table_greece")),
         class = "summary",
         width = 4,
         style = 'padding:0px;'
@@ -55,7 +55,7 @@ body_greece <- dashboardBody(
     fluidRow(
       box(
         title = "Evolution of Cases since Outbreak",
-        plotlyOutput("case_evolution_greece"),
+        withSpinner(plotlyOutput("case_evolution_greece")),
         column(
           checkboxInput("checkbox_logCaseEvolution_greece", label = "Logarithmic Y-Axis", value = FALSE),
           width = 3,
@@ -75,7 +75,7 @@ body_greece <- dashboardBody(
     fluidRow(
       box(
         title = "New Cases",
-        plotlyOutput("cases_per_day_greece"),
+        withSpinner(plotlyOutput("cases_per_day_greece")),
         width = 6
       ),
       box(
@@ -90,7 +90,7 @@ body_greece <- dashboardBody(
     fluidRow(
       box(
         title = "COVID-19 Tests Performed",
-        plotlyOutput("tests_greece"),
+        withSpinner(plotlyOutput("tests_greece")),
         column(
           checkboxInput("checkbox_log_tests_greece", label = "Logarithmic Y-Axis (Total Tests)", value = FALSE),
           width = 4,
@@ -110,7 +110,7 @@ body_greece <- dashboardBody(
     fluidRow(
       box(
         title = "Age Distribution",
-        plotlyOutput("age_greece"),
+        withSpinner(plotlyOutput("age_greece")),
         column(
           uiOutput("select_age_var_greece"),
           width = 3,
@@ -134,7 +134,7 @@ body_greece <- dashboardBody(
     fluidRow(
       box(
         title = "Gender Distribution",
-        plotlyOutput("gender_greece"),
+        withSpinner(plotlyOutput("gender_greece")),
         width = 6
       ),
       box(
