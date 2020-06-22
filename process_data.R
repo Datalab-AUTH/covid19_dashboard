@@ -133,7 +133,7 @@ rm(data_confirmed, data_confirmed_sub, data_recovered, data_recovered_sub, data_
    data_confirmed_sub_us, data_deceased_sub_us)
 
 # ---- Download population data ----
-population                                                            <- wb(country = "countries_only", indicator = "SP.POP.TOTL", startdate = 2018, enddate = 2020) %>%
+population                                                            <- wb(country = "all", indicator = "SP.POP.TOTL", startdate = 2018, enddate = 2020) %>%
   select(country, value) %>%
   rename(population = value)
 countryNamesPop                                                       <- c("Brunei Darussalam", "Congo, Dem. Rep.", "Congo, Rep.", "Czech Republic",
