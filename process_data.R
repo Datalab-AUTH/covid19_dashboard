@@ -187,7 +187,9 @@ noDataCountries <- data.frame(
                  29825964 # Yemen
   )
 )
-population      <- bind_rows(population, noDataCountries)
+population <- bind_rows(population, noDataCountries) %>%
+  group_by(country) %>% 
+  slice_tail(1)
 
 data_evolution <- data_evolution %>%
   left_join(population, by = c("Country/Region" = "country"))
