@@ -5,12 +5,15 @@ getDataByCountry <- function(countries, normalizeByPopulation) {
     filter(`Country/Region` %in% countries &
       var == "confirmed" &
       value > 0) %>%
-    group_by(`Country/Region`, date, population) %>%
-    summarise("Confirmed" = sum(value, na.rm = T)) %>%
+    group_by(`Country/Region`, date) %>%
+    summarise(
+      "Confirmed" = sum(value, na.rm = T),
+      population = sum(population, na.rm = T)) %>%
     arrange(date)
   if (nrow(data_confirmed) > 0) {
-    data_confirmed <- data_confirmed %>%
-      mutate(Confirmed = if_else(normalizeByPopulation, round(Confirmed / population * 100000, 2), Confirmed))
+    if (normalizeByPopulation) {
+      data_confirmed$Confirmed <- round(data_confirmed$Confirmed / data_confirmed$population * 100000, 2)
+    }
   }
   data_confirmed <- data_confirmed %>% as.data.frame()
 
@@ -19,12 +22,15 @@ getDataByCountry <- function(countries, normalizeByPopulation) {
     filter(`Country/Region` %in% countries &
       var == "recovered" &
       value > 0) %>%
-    group_by(`Country/Region`, date, population) %>%
-    summarise("Estimated Recoveries" = sum(value, na.rm = T)) %>%
+    group_by(`Country/Region`, date) %>%
+    summarise(
+      "Estimated Recoveries" = sum(value, na.rm = T),
+      population = sum(population, na.rm = T)) %>%
     arrange(date)
   if (nrow(data_recovered) > 0) {
-    data_recovered <- data_recovered %>%
-      mutate(`Estimated Recoveries` = if_else(normalizeByPopulation, round(`Estimated Recoveries` / population * 100000, 2), `Estimated Recoveries`))
+    if (normalizeByPopulation) {
+      data_recovered$`Estimated Recoveries` <- round(data_recovered$`Estimated Recoveries` / data_recovered$population * 100000, 2)
+    }
   }
   data_recovered <- data_recovered %>% as.data.frame()
 
@@ -33,12 +39,15 @@ getDataByCountry <- function(countries, normalizeByPopulation) {
     filter(`Country/Region` %in% countries &
       var == "deceased" &
       value > 0) %>%
-    group_by(`Country/Region`, date, population) %>%
-    summarise("Deceased" = sum(value, na.rm = T)) %>%
+    group_by(`Country/Region`, date) %>%
+    summarise(
+      "Deceased" = sum(value, na.rm = T),
+      population = sum(population, na.rm = T)) %>%
     arrange(date)
   if (nrow(data_deceased) > 0) {
-    data_deceased <- data_deceased %>%
-      mutate(Deceased = if_else(normalizeByPopulation, round(Deceased / population * 100000, 2), Deceased))
+    if (normalizeByPopulation) {
+      data_deceased$Deceased <- round(data_deceased$Deceased / data_deceased$population * 100000, 2)
+    }
   }
   data_deceased <- data_deceased %>% as.data.frame()
 
