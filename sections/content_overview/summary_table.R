@@ -59,7 +59,7 @@ summariseData <- function(df, groupBy) {
     group_by(!!sym(groupBy)) %>%
     summarise(
       "Confirmed"            = sum(confirmed, na.rm = T),
-      "Estimated Recoveries" = sum(recovered, na.rm = T),
+      "Recoveries" = sum(recovered, na.rm = T),
       "Deceased"             = sum(deceased, na.rm = T),
       "Active"               = sum(active, na.rm = T)
     ) %>%

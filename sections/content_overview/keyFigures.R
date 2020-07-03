@@ -72,7 +72,7 @@ output$valueBox_active <- renderValueBox({
 output$valueBox_recovered <- renderValueBox({
   valueBox(
     key_figures()$recovered,
-    subtitle = "Estimated Recoveries",
+    subtitle = "Recoveries",
     icon     = icon("heart"),
     color    = "light-blue"
   )
