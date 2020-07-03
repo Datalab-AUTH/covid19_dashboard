@@ -16,19 +16,26 @@ key_figures <- reactive({
   data           <- sumData(input$timeSlider)
   data_yesterday <- sumData(input$timeSlider - 1)
 
+  data_diff <- list(
+    confirmed = data$confirmed - data_yesterday$confirmed,
+    active    = data$active - data_yesterday$active,
+    recovered = data$recovered - data_yesterday$recovered,
+    deceased  = data$deceased - data_yesterday$deceased
+  )
+
   data_new <- list(
-    new_confirmed = (data$confirmed - data_yesterday$confirmed) / data_yesterday$confirmed * 100,
-    new_active    = (data$active - data_yesterday$active) / data_yesterday$active * 100,
-    new_recovered = (data$recovered - data_yesterday$recovered) / data_yesterday$recovered * 100,
-    new_deceased  = (data$deceased - data_yesterday$deceased) / data_yesterday$deceased * 100,
+    new_confirmed = data_diff$confirmed / data_yesterday$confirmed * 100,
+    new_active    = data_diff$active / data_yesterday$active * 100,
+    new_recovered = data_diff$recovered / data_yesterday$recovered * 100,
+    new_deceased  = data_diff$deceased / data_yesterday$deceased * 100,
     new_countries = data$countries - data_yesterday$countries
   )
 
   keyFigures <- list(
-    "confirmed" = HTML(paste(format(data$confirmed, big.mark = " "), sprintf("<h4>(%+.1f %%)</h4>", data_new$new_confirmed))),
-    "active"    = HTML(paste(format(data$active, big.mark = " "), sprintf("<h4>(%+.1f %%)</h4>", data_new$new_active))),
-    "recovered" = HTML(paste(format(data$recovered, big.mark = " "), sprintf("<h4>(%+.1f %%)</h4>", data_new$new_recovered))),
-    "deceased"  = HTML(paste(format(data$deceased, big.mark = " "), sprintf("<h4>(%+.1f %%)</h4>", data_new$new_deceased))),
+    "confirmed" = HTML(paste(format(data$confirmed, big.mark = " "), sprintf("<h4>%+i (%+.1f %%)</h4>", data_diff$confirmed, data_new$new_confirmed))),
+    "active"    = HTML(paste(format(data$active, big.mark = " "), sprintf("<h4>%+i (%+.1f %%)</h4>", data_diff$active, data_new$new_active))),
+    "recovered" = HTML(paste(format(data$recovered, big.mark = " "), sprintf("<h4>%+i (%+.1f %%)</h4>", data_diff$recovered, data_new$new_recovered))),
+    "deceased"  = HTML(paste(format(data$deceased, big.mark = " "), sprintf("<h4>%+i (%+.1f %%)</h4>", data_diff$deceased, data_new$new_deceased))),
     "countries" = HTML(paste(format(data$countries, big.mark = " "), "/ 195", sprintf("<h4>(%+d)</h4>", data_new$new_countries)))
   )
 
