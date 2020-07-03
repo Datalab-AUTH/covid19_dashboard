@@ -16,8 +16,6 @@ body_overview <- dashboardBody(
                                               background: #0F7A82;}"),
     tags$style(type = 'text/css', ".irs-min, .irs-max { color: #fff; }"),
     tags$style(type = 'text/css', ".irs-from, .irs-to, .irs-single { background: none; }"),
-    tags$style(type = 'text/css', ".play { color: #0F7A82; }"),
-    tags$style(type = 'text/css', ".pause { color: #0F7A82; }"),
     tags$style(type = 'text/css', "body { color: #fff; }")
   ),
   fluidRow(
@@ -50,7 +48,7 @@ body_overview <- dashboardBody(
           value      = max(data_evolution$date),
           width      = "100%",
           timeFormat = "%d.%m.%Y",
-          animate    = animationOptions(loop = TRUE)
+          animate    = animationOptions(loop = TRUE, playButton = "", pauseButton = "")
         ),
         class = "slider",
         width = 12,
