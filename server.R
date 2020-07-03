@@ -13,10 +13,6 @@ server <- function(input, output, session) {
   })
   
   observe({
-    data_greece <- data_atDate_greece(input$timeslider_greece)
-  })
-  
-  observe({
     updateSliderInput(
       session,
       "timeSlider",
@@ -26,20 +22,9 @@ server <- function(input, output, session) {
   })
 
   observe({
-    updateSliderInput(
-      session,
-      "timeslider_greece",
-      max = max(data_greece_region_timeline$date),
-      value = max(data_greece_region_timeline$date)
-    )
-  })
-  
-  observe({
     query <- parseQueryString(session$clientData$url_search)
     if ("tab" %in% names(query)) {
-      if (query$tab == "greece") {
-        updateTabsetPanel(session, "navbar_set_panel", selected = "page-greece")
-      } else if (query$tab == "datatable") {
+      if (query$tab == "datatable") {
         updateTabsetPanel(session, "navbar_set_panel", selected = "page-fullTable")
       } else if (query$tab == "epidemic") {
         updateTabsetPanel(session, "navbar_set_panel", selected = "page-plots")

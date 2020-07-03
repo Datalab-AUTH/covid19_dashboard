@@ -32,10 +32,10 @@ body_about <- dashboardBody(
                    "Aristotle University of Thessaloniki,"),
             "Greece. Since, apparently, the case of Greece is important to us,
             there is a specialized section that examines the evolution of the
-            disease in the country. We have also developed",
+            disease in the country. You may find",
             tags$a(href = "https://covid19.csd.auth.gr/greece/",
-                   "a separate project"),
-            "that is dedicated to Greece. That explores available regional data
+                   "a page dedicated to Greece here"),
+            ". It explores available regional data
             for Greece, as well as an analysis of social media (Twitter)
             traffic.",
             h3("Data Sources"),
@@ -88,9 +88,6 @@ body_about <- dashboardBody(
               tags$li(tags$b("Government Response:"),
                       tags$a(href = "https://covid19.csd.auth.gr/?tab=government",
                              "https://covid19.csd.auth.gr/?tab=government")),
-              tags$li(tags$b("Greece:"),
-                      tags$a(href = "https://covid19.csd.auth.gr/?tab=greece",
-                             "https://covid19.csd.auth.gr/?tab=greece")),
               tags$li(tags$b("About:"),
                       tags$a(href = "https://covid19.csd.auth.gr/?tab=about",
                              "https://covid19.csd.auth.gr/?tab=about")),

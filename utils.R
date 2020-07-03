@@ -47,7 +47,3 @@ data_atDate <<- function(inputDate) {
              active > 0)
 }
 
-data_atDate_greece <<- function(inputDate) {
-  data_greece_region_timeline[which(data_greece_region_timeline$date == inputDate),] %>%
-    distinct()
-}
