@@ -43,7 +43,7 @@ body_overview <- dashboardBody(
         sliderInput(
           "timeSlider",
           label      = "Select date",
-          min        = min(data_evolution$date),
+          min        = min(data_evolution$date) + 1,
           max        = max(data_evolution$date),
           value      = max(data_evolution$date),
           width      = "100%",
