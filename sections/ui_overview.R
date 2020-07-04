@@ -20,7 +20,7 @@ body_overview <- dashboardBody(
   ),
   fluidRow(
     fluidRow(
-      withSpinner(uiOutput("box_keyFigures"))
+      withSpinner(uiOutput("box_keyFigures"), proxy.height = "254px")
     ),
     fluidRow(
       class = "details",
