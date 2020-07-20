@@ -192,9 +192,86 @@ population <- bind_rows(population, noDataCountries) %>%
   slice_tail(1)
 
 data_evolution <- data_evolution %>%
-  left_join(population, by = c("Country/Region" = "country"))
+  left_join(population, by = c("Country/Region" = "country")) %>%
+  arrange(`Country/Region`, date)
 saveRDS(data_evolution, "data/data_evolution.RDS")
 rm(population, countryNamesPop, countryNamesDat, noDataCountries)
+
+# data evolution per country/total and by variable
+data_evolution_confirmed <- data_evolution %>%
+  group_by(`Country/Region`, date) %>%
+  filter(var == "confirmed") %>%
+  summarise(
+    value = sum(value),
+    value_new = sum(value_new),
+    population = first(population),
+    .groups = "drop"
+  ) %>%
+  mutate(value_per_capita = value / population * 100000)
+saveRDS(data_evolution_confirmed, "data/data_evolution_confirmed.RDS")
+data_evolution_confirmed_all <- data_evolution_confirmed %>%
+  group_by(date) %>%
+  summarise(
+    value = sum(value),
+    value_new = sum(value_new),
+    .groups = "drop"
+  )
+saveRDS(data_evolution_confirmed_all, "data/data_evolution_confirmed_all.RDS")
+data_evolution_recovered <- data_evolution %>%
+  group_by(`Country/Region`, date) %>%
+  filter(var == "recovered") %>%
+  summarise(
+    value = sum(value),
+    value_new = sum(value_new),
+    population = first(population),
+    .groups = "drop"
+  ) %>%  mutate(value_per_capita = value / population * 100000)
+saveRDS(data_evolution_recovered, "data/data_evolution_recovered.RDS")
+data_evolution_recovered_all <- data_evolution_recovered %>%
+  group_by(date) %>%
+  summarise(
+    value = sum(value),
+    value_new = sum(value_new),
+    .groups = "drop"
+  )
+saveRDS(data_evolution_recovered_all, "data/data_evolution_recovered_all.RDS")
+data_evolution_deceased <- data_evolution %>%
+  group_by(`Country/Region`, date) %>%
+  filter(var == "deceased") %>%
+  summarise(
+    value = sum(value),
+    value_new = sum(value_new),
+    population = first(population),
+    .groups = "drop"
+  ) %>%
+  mutate(value_per_capita = value / population * 100000)
+saveRDS(data_evolution_deceased, "data/data_evolution_deceased.RDS")
+data_evolution_deceased_all <- data_evolution_deceased %>%
+  group_by(date) %>%
+  summarise(
+    value = sum(value),
+    value_new = sum(value_new),
+    .groups = "drop"
+  )
+saveRDS(data_evolution_deceased_all, "data/data_evolution_deceased_all.RDS")
+data_evolution_active <- data_evolution %>%
+  group_by(`Country/Region`, date) %>%
+  filter(var == "active") %>%
+  summarise(
+    value = sum(value),
+    value_new = sum(value_new),
+    population = first(population),
+    .groups = "drop"
+  ) %>%  mutate(value_per_capita = value / population * 100000)
+saveRDS(data_evolution_active, "data/data_evolution_active.RDS")
+data_evolution_active_all <- data_evolution_active %>%
+  group_by(date) %>%
+  summarise(
+    value = sum(value),
+    value_new = sum(value_new),
+    .groups = "drop"
+  )
+saveRDS(data_evolution_active_all, "data/data_evolution_active_all.RDS")
 
 data_confirmed_1st_case <- data_evolution %>% 
   filter(var == "confirmed") %>% 

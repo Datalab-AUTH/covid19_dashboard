@@ -33,41 +33,19 @@ body_plots <- dashboardBody(
       ),
       fluidRow(
         box(
-          title = "New cases",
-          withSpinner(plotlyOutput("case_evolution_new")),
-          column(
-            uiOutput("selectize_casesByCountries_new"),
-            width = 3,
-          ),
-          column(
-            HTML("Note: Active cases are calculated as <i>Confirmed - (Estimated Recoveries + Deceased)</i>. Therefore, <i>new</i> active cases can
-          be negative for some days, if on this day there were more new estimated recoveries + deceased cases than there were new
-          confirmed cases."),
-            width = 7
-          ),
-          width = 6
-        ),
-        box(
-          column(
-            uiOutput("case_evolution_new_text"),
-            width = 12,
-            style = "padding: 50px;"
-          ),
-          width = 6
-        )
-      ),
-      fluidRow(
-        box(
           title = "Cases per Country",
-          withSpinner(plotlyOutput("case_evolution_byCountry")),
+          withSpinner(plotlyOutput("case_evolution_per_country")),
           fluidRow(
             column(
-              uiOutput("selectize_casesByCountries"),
+              uiOutput("selectize_case_evolution_per_country_country"),
               width = 3,
             ),
             column(
-              checkboxInput("checkbox_logCaseEvolutionCountry", label = "Logarithmic Y-Axis", value = FALSE),
-              checkboxInput("checkbox_per100kEvolutionCountry", label = "Per Capita", value = TRUE),
+              uiOutput("selectize_case_evolution_per_country_var"),
+              width = 3,
+            ),
+            column(
+              checkboxInput("checkbox_case_evolution_per_country_log", label = "Logarithmic Y-Axis (Total Cases)", value = FALSE),
               width = 3,
               style = "float: right; padding: 10px; margin-right: 50px"
             )
@@ -76,7 +54,7 @@ body_plots <- dashboardBody(
         ),
         box(
           column(
-            uiOutput("case_evolution_byCountry_text"),
+            uiOutput("case_evolution_per_country_text"),
             width = 12,
             style = "padding: 50px;"
           ),

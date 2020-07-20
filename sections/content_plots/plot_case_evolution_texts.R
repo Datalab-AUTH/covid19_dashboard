@@ -37,44 +37,18 @@ output$case_evolution_text <- renderText(
   )
 )
 
-output$case_evolution_new_text <- renderText(
+output$case_evolution_per_country_text <- renderText(
   paste(
     em("Explore the evolution of new COVID-19 cases."),
     br(),br(),
-    "The plot shows the temporal evolution of the number of new cases that are
-    recorded each day. Each color bar corresponds to a different category as
-    described in the accompanying legend.",
+    "The plot shows the temporal evolution of the number of confirmed cases and
+    deaths on a global scale. You can see the new number of cases, as well as the
+    total number of cases. By default, the plot shows aggregated data for
+    confirmed cases for all countries. You may select to isolate a single
+    country and plot the number of deceased patients instead.",
     br(),br(),
-    "You may hide/show variables by clicking on the respective entries in the
-    legend. By double-clicking on a legend entry, you may isolate it from the
-    rest.",
-    br(),br(),
-    "By default, the plot displays world-wide data, but you may select to
-    isolate any specific country."
-  )
-)
-
-output$case_evolution_byCountry_text <- renderText(
-  paste(
-    em("See how the disease is evolving between different countries."),
-    br(),br(),
-    "The plot shows the temporal evolution of the number of cases for specific
-    countries. Each solid line corresponds to the confirmed cases of the
-    corresponding country. Similarly, dashed lines refer to the estimated
-    recoveries and rigged lines to deceased cases.",
-    br(),br(),
-    "You may select which countries you would like to include in the plot for
-    comparison reasons.",
-    br(),br(),
-    "You may hide/show countries by clicking on the respective entries in the
-    legend. By double-clicking on a legend entry, you may isolate it from the
-    rest.",
-    br(),br(),
-    "You may also select to plot the number of cases (Y-axis) on a logarithmic
-    scale. Additionally, you may choose to switch between plotting data
-    per-capita (actually, per 100,000 people), or in absolute numbers. For
-    comparison reasons, it usually makes more sense to compare per-capita
-    numbers, as population sizes may differ considerably between countries."
+    "You may also select to plot the total number of cases (right Y-axis) on a
+    logarithmic scale for a different perspective of the evolution of cases."
   )
 )
 
