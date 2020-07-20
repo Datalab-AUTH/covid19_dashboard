@@ -299,6 +299,45 @@ data_evolution_deaths_after_10th <- data_evolution %>%
   ungroup()
 saveRDS(data_evolution_deaths_after_10th, "data/data_evolution_deaths_after_10th.RDS")
 
+# doubling times
+daysGrowthRate <- 7
+data_doubling_time_cases <- data_evolution %>%
+  pivot_wider(id_cols = c(`Province/State`, `Country/Region`, date, Lat, Long), names_from = var, values_from = value) %>%
+  filter(confirmed >= 100) %>%
+  group_by(`Country/Region`, date) %>%
+  select(-recovered, -active, -deceased) %>%
+  summarise(
+    value = sum(confirmed, na.rm = T),
+    .groups = "drop"
+  ) %>%
+  arrange(`Country/Region`, date) %>%
+  group_by(`Country/Region`) %>%
+  mutate(
+    doubling_time = round(log(2) / log(1 + (((value - lag(value, daysGrowthRate)) / lag(value, daysGrowthRate)) / daysGrowthRate)), 1)
+  ) %>%
+  mutate("daysSince" = row_number()) %>%
+  filter(!is.na(doubling_time)) %>%
+  ungroup()
+saveRDS(data_doubling_time_cases, "data/data_doubling_time_cases.RDS")
+data_doubling_time_deaths <- data_evolution %>%
+  pivot_wider(id_cols = c(`Province/State`, `Country/Region`, date, Lat, Long), names_from = var, values_from = value) %>%
+  filter(deceased >= 10) %>%
+  group_by(`Country/Region`, date) %>%
+  select(-recovered, -active, -confirmed) %>%
+  summarise(
+    value = sum(deceased, na.rm = T),
+    .groups = "drop"
+  ) %>%
+  arrange(`Country/Region`, date) %>%
+  group_by(`Country/Region`) %>%
+  mutate(
+    doubling_time  = round(log(2) / log(1 + (((value - lag(value, daysGrowthRate)) / lag(value, daysGrowthRate)) / daysGrowthRate)), 1),
+  ) %>%
+  mutate("daysSince" = row_number()) %>%
+  filter(!is.na(doubling_time)) %>%
+  ungroup()
+saveRDS(data_doubling_time_deaths, "data/data_doubling_time_deaths.RDS")
+
 data_confirmed_1st_case <- data_evolution %>% 
   filter(var == "confirmed") %>% 
   filter(value > 0) %>% 
