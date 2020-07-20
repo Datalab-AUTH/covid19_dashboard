@@ -308,6 +308,23 @@ data_evolution_deaths_after_10th <- data_evolution %>%
   ungroup()
 saveRDS(data_evolution_deaths_after_10th, "data/data_evolution_deaths_after_10th.RDS")
 
+# case fatalities
+data_case_fatality <- data_evolution_confirmed %>%
+  select(-value_new, -population, -value_per_capita) %>%
+  rename("confirmed" = "value") %>%
+  full_join(data_evolution_deceased) %>%
+  select(-value_new, -population, -value_per_capita) %>%
+  rename("deceased" = "value") %>%
+  mutate(case_fatality = 100 * deceased / confirmed) %>%
+  filter(!is.nan(case_fatality))
+saveRDS(data_case_fatality, "data/data_case_fatality.RDS")
+
+data_case_fatality_latest <- data_case_fatality %>%
+  arrange(`Country/Region`, date) %>%
+  group_by(`Country/Region`) %>%
+  slice(n())
+saveRDS(data_case_fatality_latest, "data/data_case_fatality_latest.RDS")
+
 # doubling times
 daysGrowthRate <- 7
 data_doubling_time_cases <- data_evolution %>%
