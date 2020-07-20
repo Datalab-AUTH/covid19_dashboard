@@ -24,6 +24,8 @@ updateData <- function() {
   data_confirmed_1st_case <<- readRDS("data/data_confirmed_1st_case.RDS")
   data_1st_death <<- readRDS("data/data_1st_death.RDS")
   data_evolution <<- readRDS("data/data_evolution.RDS")
+  data_evolution_cases_after_100th <<- readRDS("data/data_evolution_cases_after_100th.RDS")
+  data_evolution_deaths_after_10th <<- readRDS("data/data_evolution_deaths_after_10th.RDS")
   data_evolution_confirmed <<- readRDS("data/data_evolution_confirmed.RDS")
   data_evolution_confirmed_all <<- readRDS("data/data_evolution_confirmed_all.RDS")
   data_evolution_recovered <<- readRDS("data/data_evolution_recovered.RDS")

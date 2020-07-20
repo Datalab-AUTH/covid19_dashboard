@@ -273,6 +273,32 @@ data_evolution_active_all <- data_evolution_active %>%
   )
 saveRDS(data_evolution_active_all, "data/data_evolution_active_all.RDS")
 
+data_evolution_cases_after_100th <- data_evolution %>%
+  arrange(date) %>%
+  filter(value >= 100 & var == "confirmed") %>%
+  group_by(`Country/Region`, population, date) %>%
+  summarise(value = sum(value, na.rm = T), .groups = "drop") %>%
+  group_by(`Country/Region`) %>%
+  mutate(
+    "daysSince" = row_number(),
+    "value_per_capita" = value / population * 100000
+    ) %>%
+  ungroup()
+saveRDS(data_evolution_cases_after_100th, "data/data_evolution_cases_after_100th.RDS")
+
+data_evolution_deaths_after_10th <- data_evolution %>%
+  arrange(date) %>%
+  filter(value >= 10 & var == "deceased") %>%
+  group_by(`Country/Region`, population, date) %>%
+  summarise(value = sum(value, na.rm = T), .groups = "drop") %>%
+  group_by(`Country/Region`) %>%
+  mutate(
+    "daysSince" = row_number(),
+    "value_per_capita" = value / population * 100000
+    ) %>%
+  ungroup()
+saveRDS(data_evolution_deaths_after_10th, "data/data_evolution_deaths_after_10th.RDS")
+
 data_confirmed_1st_case <- data_evolution %>% 
   filter(var == "confirmed") %>% 
   filter(value > 0) %>% 
