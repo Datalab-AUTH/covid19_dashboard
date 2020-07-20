@@ -135,14 +135,23 @@ rm(data_confirmed, data_confirmed_sub, data_recovered, data_recovered_sub, data_
 # ---- Download population data ----
 population                                                            <- wb(country = "all", indicator = "SP.POP.TOTL", startdate = 2018, enddate = 2020) %>%
   select(country, value) %>%
-  rename(population = value)
-countryNamesPop                                                       <- c("Brunei Darussalam", "Congo, Dem. Rep.", "Congo, Rep.", "Czech Republic",
-                                                                           "Egypt, Arab Rep.", "Iran, Islamic Rep.", "Korea, Rep.", "St. Lucia", "West Bank and Gaza", "Russian Federation",
-                                                                           "Slovak Republic", "United States", "St. Vincent and the Grenadines", "Venezuela, RB")
-countryNamesDat                                                       <- c("Brunei", "Congo (Kinshasa)", "Congo (Brazzaville)", "Czechia", "Egypt", "Iran", "Korea, South",
-                                                                           "Saint Lucia", "occupied Palestinian territory", "Russia", "Slovakia", "US", "Saint Vincent and the Grenadines", "Venezuela")
-population[which(population$country %in% countryNamesPop), "country"] <- countryNamesDat
-
+  rename(population = value) %>%
+  mutate(country = recode(country,
+          "Brunei Darussalam" = "Brunei",
+          "Congo, Dem. Rep." = "Congo (Kinshasa)",
+          "Congo, Rep." = "Congo (Brazzaville)",
+          "Czech Republic" = "Czechia",
+          "Egypt, Arab Rep." = "Egypt",
+          "Iran, Islamic Rep." = "Iran",
+          "Korea, Rep." = "Korea, South",
+          "St. Lucia" = "Saint Lucia",
+          "West Bank and Gaza" = "occupied Palestinian territory",
+          "Russian Federation" = "Russia",
+          "Slovak Republic" = "Slovakia",
+          "United States" = "US",
+          "St. Vincent and the Grenadines" = "Saint Vincent and the Grenadines",
+          "Venezuela, RB" = "Venezuela"
+  ))
 
 # Data from wikipedia
 noDataCountries <- data.frame(
