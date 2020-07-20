@@ -550,10 +550,16 @@ data_trajectory_confirmed <- data_evolution %>%
   summarize(
     value = sum(value),
     value_new = sum(value_new),
-    population = head(population, 1)
+    population = head(population, 1),
+    .groups = "drop"
   ) %>%
   group_by(`Country/Region`) %>%
-  mutate(new_7days_rollsum = rollsum(value_new, 7, fill = NA, align = "right"))
+  mutate(
+    new_7days_rollsum = rollsum(value_new, 7, fill = NA, align = "right"),
+    value_per_capita = 100000 * value / population,
+    new_7days_rollsum_per_capita = 100000 * new_7days_rollsum / population
+  ) %>%
+  ungroup()
 saveRDS(data_trajectory_confirmed, "data/data_trajectory_confirmed.RDS")
 
 data_trajectory_deceased <- data_evolution %>%
@@ -564,9 +570,15 @@ data_trajectory_deceased <- data_evolution %>%
   summarize(
     value = sum(value),
     value_new = sum(value_new),
-    population = head(population, 1)
+    population = head(population, 1),
+    .groups = "drop"
   ) %>%
   group_by(`Country/Region`) %>%
-  mutate(new_7days_rollsum = rollsum(value_new, 7, fill = NA, align = "right"))
+  mutate(
+    new_7days_rollsum = rollsum(value_new, 7, fill = NA, align = "right"),
+    value_per_capita = 100000 * value / population,
+    new_7days_rollsum_per_capita = 100000 * new_7days_rollsum / population
+  ) %>%
+  ungroup()
 saveRDS(data_trajectory_deceased, "data/data_trajectory_deceased.RDS")
 

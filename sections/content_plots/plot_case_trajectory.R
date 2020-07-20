@@ -20,44 +20,44 @@ output$selectize_case_trajectory_countries <- renderUI({
 output$plot_case_trajectory <- renderPlotly({
   req(input$trajectory_var)
   if (input$trajectory_var == "confirmed") {
-    data <- data_trajectory_confirmed %>%
-      filter(`Country/Region` %in% input$case_trajectory_countries)
+    data <- data_trajectory_confirmed
     x_axis_label <- "Total confirmed cases"
     y_axis_label <- "# Confirmed cases in the past week"
   } else {
-    data <- data_trajectory_deceased %>%
-      filter(`Country/Region` %in% input$case_trajectory_countries)
+    data <- data_trajectory_deceased
     x_axis_label <- "Total deaths"
     y_axis_label <- "# deaths in the past week"
   }
   
+  data <- data %>%
+    filter(if (is.null(input$case_trajectory_countries)) FALSE else `Country/Region` %in% input$case_trajectory_countries)
+  
   if (input$checkbox_trajectory_per_capita) {
     x_axis_label <- paste(x_axis_label, "/ 100,000 people")
     y_axis_label <- paste(y_axis_label, "/ 100,000 people")
-    data <- data %>%
-      mutate(x = 100000 * value / population,
-             y = 100000 * new_7days_rollsum / population
-      )
+    p <- plot_ly(
+      data,
+      x     = ~value,
+      y     = ~new_7days_rollsum,
+      name  = ~`Country/Region`,
+      color = ~`Country/Region`,
+      type  = 'scatter',
+      mode  = 'lines')
   } else {
-  data <- data %>%
-    mutate(x = value,
-           y = new_7days_rollsum
-    )
+    p <- plot_ly(
+      data,
+      x     = ~value_per_capita,
+      y     = ~new_7days_rollsum_per_capita,
+      name  = ~`Country/Region`,
+      color = ~`Country/Region`,
+      type  = 'scatter',
+      mode  = 'lines')
   }
   
-  p <- plot_ly(
-    data,
-    x     = ~x,
-    y     = ~y,
-    name  = ~`Country/Region`,
-    color = ~`Country/Region`,
-    type  = 'scatter',
-    mode  = 'lines') %>%
-    layout(
-      yaxis = list(title = y_axis_label),
-      xaxis = list(title = x_axis_label)
-    )
-  
+  p <- layout(p,
+              yaxis = list(title = y_axis_label),
+              xaxis = list(title = x_axis_label)
+  )
   
   if (input$checkbox_logCaseTrajectory) {
     p <- layout(p,
