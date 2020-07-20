@@ -204,7 +204,7 @@ data_evolution <- data_evolution %>%
   left_join(population, by = c("Country/Region" = "country")) %>%
   arrange(`Country/Region`, date)
 saveRDS(data_evolution, "data/data_evolution.RDS")
-rm(population, countryNamesPop, countryNamesDat, noDataCountries)
+rm(population, noDataCountries)
 
 # data evolution per country/total and by variable
 data_evolution_confirmed <- data_evolution %>%
