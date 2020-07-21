@@ -546,7 +546,8 @@ data_full_table <- data_evolution %>%
     deceased_new        = sum(value_new_deceased, na.rm = T),
     active_total        = sum(value_active, na.rm = T),
     active_new          = sum(value_new_active, na.rm = T),
-    active_totalNorm    = round(sum(value_active, na.rm = T) / max(population, na.rm = T) * 100000, 2)
+    active_totalNorm    = round(sum(value_active, na.rm = T) / max(population, na.rm = T) * 100000, 2),
+    case_fatality       = round(100 * sum(value_deceased, na.rm = T) / sum(value_confirmed, na.rm = T), 2)
   ) %>%
   mutate(
     "confirmed_newPer" = confirmed_new / (confirmed_total - confirmed_new) * 100,

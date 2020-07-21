@@ -12,7 +12,8 @@ output$fullTable <- renderDataTable({
     "New Deceased",
     "Total Active",
     "New Active",
-    "Total Active <br>(per 100k)")
+    "Total Active <br>(per 100k)",
+    "Case Fatality <br>(%)")
   datatable(
     data,
     rownames  = FALSE,
@@ -45,7 +46,7 @@ output$fullTable <- renderDataTable({
         ),
         list(className = 'dt-right', targets = 1:ncol(data) - 1),
         list(width = '100px', targets = 0),
-        list(visible = FALSE, targets = 11:14)
+        list(visible = FALSE, targets = 12:15)
       )
     )
   ) %>%
