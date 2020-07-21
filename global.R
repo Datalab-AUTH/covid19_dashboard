@@ -35,6 +35,8 @@ updateData <- function() {
   data_evolution_deceased_all <<- readRDS("data/data_evolution_deceased_all.RDS")
   data_evolution_active <<- readRDS("data/data_evolution_active.RDS")
   data_evolution_active_all <<- readRDS("data/data_evolution_active_all.RDS")
+  data_case_fatality <<- readRDS("data/data_case_fatality.RDS")
+  data_case_fatality_all <<- readRDS("data/data_case_fatality_all.RDS")
   data_doubling_time_cases <<- readRDS("data/data_doubling_time_cases.RDS")
   data_doubling_time_deaths <<- readRDS("data/data_doubling_time_deaths.RDS")
   data_latest <<- readRDS("data/data_latest.RDS")

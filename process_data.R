@@ -328,6 +328,16 @@ data_case_fatality <- data_evolution_confirmed %>%
   filter(!is.nan(case_fatality))
 saveRDS(data_case_fatality, "data/data_case_fatality.RDS")
 
+data_case_fatality_all <- data_case_fatality %>%
+  group_by(date) %>%
+  summarize(
+    confirmed = sum(confirmed),
+    deceased = sum(deceased),
+    case_fatality = 100 * sum(deceased) / sum(confirmed),
+    .groups = "drop"
+  )
+saveRDS(data_case_fatality_all, "data/data_case_fatality_all.RDS")
+
 data_case_fatality_latest <- data_case_fatality %>%
   arrange(`Country/Region`, date) %>%
   group_by(`Country/Region`) %>%
