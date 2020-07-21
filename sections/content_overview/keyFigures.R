@@ -6,7 +6,7 @@ sumData <- function(date) {
       recovered = sum(recovered, na.rm = T),
       deceased  = sum(deceased, na.rm = T),
       countries = n_distinct(`Country/Region`),
-      case_fatality = round(100 * sum(deceased, na.rm = T) / sum(confirmed, na.rm = T), 1)
+      case_fatality = round(100 * sum(deceased, na.rm = T) / sum(confirmed, na.rm = T), 2)
     )
     return(data)
   }
@@ -39,7 +39,7 @@ key_figures <- reactive({
     "recovered" = HTML(paste(format(data$recovered, big.mark = " "), sprintf("<h4>%+i (%+.1f %%)</h4>", data_diff$recovered, data_new$new_recovered))),
     "deceased"  = HTML(paste(format(data$deceased, big.mark = " "), sprintf("<h4>%+i (%+.1f %%)</h4>", data_diff$deceased, data_new$new_deceased))),
     "countries" = HTML(paste(format(data$countries, big.mark = " "), "/ 195", sprintf("<h4>(%+d)</h4>", data_new$new_countries))),
-    "case_fatality" = HTML(paste(format(data$case_fatality, big.mark = " "), "%", sprintf("<h4>%+.1f %%</h4>", data_diff$case_fatality)))
+    "case_fatality" = HTML(paste(format(data$case_fatality, big.mark = " "), "%", sprintf("<h4>%+.2f %%</h4>", data_diff$case_fatality)))
   )
 
   if (is.infinite(data_new$new_active)) keyFigures$active = HTML(paste(format(data$active, big.mark = " "), "<h4>(all new)</h4>"))
