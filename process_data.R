@@ -115,11 +115,10 @@ data_evolution <- data_confirmed_sub %>%
     recovered_est = lag(confirmed, 14, default = 0) - deceased,
     recovered_est = ifelse(recovered_est > 0, recovered_est, 0),
     recovered     = coalesce(recovered, recovered_est),
-    active        = confirmed - recovered - deceased,
-    case_fatality = 100 * deceased / confirmed
+    active        = confirmed - recovered - deceased
   ) %>%
   select(-recovered_est) %>%
-  pivot_longer(names_to = "var", cols = c(confirmed, recovered, deceased, active, case_fatality)) %>%
+  pivot_longer(names_to = "var", cols = c(confirmed, recovered, deceased, active)) %>%
   filter(!(is.na(`Province/State`) && `Country/Region` == "US")) %>%
   filter(!(Lat == 0 & Long == 0)) %>%
   ungroup()
