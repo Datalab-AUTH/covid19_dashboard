@@ -94,6 +94,27 @@ body_plots <- dashboardBody(
       ),
       fluidRow(
         box(
+          title = "Case Fatality",
+          withSpinner(plotlyOutput("case_fatality")),
+          fluidRow(
+            column(
+              uiOutput("selectize_case_fatality_country"),
+              width = 3,
+            )
+          ),
+          width = 6
+        ),
+        box(
+          column(
+            uiOutput("case_fatality_text"),
+            width = 12,
+            style = "padding: 50px;"
+          ),
+          width = 6
+        )
+      ),
+      fluidRow(
+        box(
           title = "Evolution of Doubling Times per Country",
           withSpinner(plotlyOutput("plot_doublingTime")),
           fluidRow(

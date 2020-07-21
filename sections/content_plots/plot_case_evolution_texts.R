@@ -37,6 +37,25 @@ output$case_evolution_text <- renderText(
   )
 )
 
+output$case_fatality_text <- renderText(
+  paste(
+    em("The case fatality of COVID-19 by country."),
+    br(),br(),
+    "This plot shows the temporal evolution of case fatality. Case fatality is
+    defined as the ratio between deaths due to COVID-19 and confirmed cases.",
+    br(),br(),
+    "Countries throughout the world have reported case fatality ratios that are
+    very different. It has to be noted that differences may be caused by several
+    factors. Countries with older populations will probably have increased case
+    fatalities; a country that performs more tests will most probably indicate
+    lower case fatality numbers as milder cases will be identified as well;
+    deaths due to COVID-19 that are undiagnosed will lower the numbers etc.",
+    br(),br(),
+    "By default the plot shows the evolution of case fatality worldwide. You may
+    select to isolate any country."
+  )
+)
+
 output$case_evolution_per_country_text <- renderText(
   paste(
     em("Explore the evolution of new COVID-19 cases."),
