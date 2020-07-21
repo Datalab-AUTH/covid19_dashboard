@@ -38,12 +38,6 @@ sourceDirectory <- function(path, recursive = FALSE, local = TRUE) {
 }
 
 data_atDate <<- function(inputDate) {
-  data_evolution[which(data_evolution$date == inputDate),] %>%
-    distinct() %>%
-    pivot_wider(id_cols = c("Province/State", "Country/Region", "date", "Lat", "Long", "population"), names_from = var, values_from = value) %>%
-    filter(confirmed > 0 |
-             recovered > 0 |
-             deceased > 0 |
-             active > 0)
+  data_evolution_wide[which(data_evolution_wide$date == inputDate),]
 }
 

@@ -207,6 +207,14 @@ data_evolution <- data_evolution %>%
 saveRDS(data_evolution, "data/data_evolution.RDS")
 rm(population, noDataCountries)
 
+data_evolution_wide <- data_evolution %>%
+  pivot_wider(id_cols = c("Province/State", "Country/Region", "date", "Lat", "Long", "population"), names_from = var, values_from = value) %>%
+  filter(confirmed > 0 |
+           recovered > 0 |
+           deceased > 0 |
+           active > 0)
+saveRDS(data_evolution_wide, "data/data_evolution_wide.RDS")
+
 # data evolution per country/total and by variable
 data_evolution_confirmed <- data_evolution %>%
   group_by(`Country/Region`, date) %>%
