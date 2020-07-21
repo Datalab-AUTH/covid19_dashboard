@@ -121,7 +121,8 @@ data_evolution <- data_confirmed_sub %>%
   pivot_longer(names_to = "var", cols = c(confirmed, recovered, deceased, active)) %>%
   filter(!(is.na(`Province/State`) && `Country/Region` == "US")) %>%
   filter(!(Lat == 0 & Long == 0)) %>%
-  ungroup()
+  ungroup() %>%
+  mutate_at("value", as.integer)
 
 # Calculating new cases
 data_evolution <- data_evolution %>%
