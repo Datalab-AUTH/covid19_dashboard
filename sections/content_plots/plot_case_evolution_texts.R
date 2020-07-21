@@ -39,7 +39,7 @@ output$case_evolution_text <- renderText(
 
 output$case_fatality_text <- renderText(
   paste(
-    em("The case fatality of COVID-19 by country."),
+    em("The case fatality of COVID-19."),
     br(),br(),
     "This plot shows the temporal evolution of case fatality. Case fatality is
     defined as the ratio between deaths due to COVID-19 and confirmed cases.",
