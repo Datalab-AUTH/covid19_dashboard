@@ -5,7 +5,8 @@ sumData <- function(date) {
       active    = sum(active, na.rm = T),
       recovered = sum(recovered, na.rm = T),
       deceased  = sum(deceased, na.rm = T),
-      countries = n_distinct(`Country/Region`)
+      countries = n_distinct(`Country/Region`),
+      case_fatality = round(100 * sum(deceased, na.rm = T) / sum(confirmed, na.rm = T), 1)
     )
     return(data)
   }
@@ -20,7 +21,8 @@ key_figures <- reactive({
     confirmed = data$confirmed - data_yesterday$confirmed,
     active    = data$active - data_yesterday$active,
     recovered = data$recovered - data_yesterday$recovered,
-    deceased  = data$deceased - data_yesterday$deceased
+    deceased  = data$deceased - data_yesterday$deceased,
+    case_fatality = data$case_fatality - data_yesterday$case_fatality
   )
 
   data_new <- list(
@@ -36,7 +38,8 @@ key_figures <- reactive({
     "active"    = HTML(paste(format(data$active, big.mark = " "), sprintf("<h4>%+i (%+.1f %%)</h4>", data_diff$active, data_new$new_active))),
     "recovered" = HTML(paste(format(data$recovered, big.mark = " "), sprintf("<h4>%+i (%+.1f %%)</h4>", data_diff$recovered, data_new$new_recovered))),
     "deceased"  = HTML(paste(format(data$deceased, big.mark = " "), sprintf("<h4>%+i (%+.1f %%)</h4>", data_diff$deceased, data_new$new_deceased))),
-    "countries" = HTML(paste(format(data$countries, big.mark = " "), "/ 195", sprintf("<h4>(%+d)</h4>", data_new$new_countries)))
+    "countries" = HTML(paste(format(data$countries, big.mark = " "), "/ 195", sprintf("<h4>(%+d)</h4>", data_new$new_countries))),
+    "case_fatality" = HTML(paste(format(data$case_fatality, big.mark = " "), "%", sprintf("<h4>%+.1f %%</h4>", data_diff$case_fatality)))
   )
 
   if (is.infinite(data_new$new_active)) keyFigures$active = HTML(paste(format(data$active, big.mark = " "), "<h4>(all new)</h4>"))
@@ -45,7 +48,8 @@ key_figures <- reactive({
   if (data_new$new_recovered == 0) keyFigures$recovered = HTML(paste(format(data$recovered, big.mark = " "), "<h4>(no change)</h4>"))
   if (data_new$new_deceased == 0) keyFigures$deceased = HTML(paste(format(data$deceased, big.mark = " "), "<h4>(no change)</h4>"))
   if (data_new$new_countries == 0) keyFigures$countries = HTML(paste(format(data$countries, big.mark = " "), "<h4>(no change)</h4>"))
-
+  if (data_diff$case_fatality == 0) keyFigures$case_fatality = HTML(paste(format(data$case_fatality, big.mark = " "), "%", sprintf("<h4>(no change)</h4>", data_diff$case_fatality)))
+  
   return(keyFigures)
 })
 
@@ -96,6 +100,15 @@ output$valueBox_countries <- renderValueBox({
   )
 })
 
+output$valueBox_case_fatality <- renderValueBox({
+  valueBox(
+    key_figures()$case_fatality,
+    subtitle = "Case Fatality",
+    icon     = icon("percent"),
+    color    = "light-blue"
+  )
+})
+
 output$box_keyFigures <- renderUI(box(
   title = paste0("Key Figures (", strftime(input$timeSlider, format = "%d.%m.%Y"), ")"),
   fluidRow(
@@ -104,6 +117,7 @@ output$box_keyFigures <- renderUI(box(
       valueBoxOutput("valueBox_active", width = 2),
       valueBoxOutput("valueBox_recovered", width = 2),
       valueBoxOutput("valueBox_deceased", width = 2),
+      valueBoxOutput("valueBox_case_fatality", width = 2),
       valueBoxOutput("valueBox_countries", width = 2),
       width = 12,
       style = "margin-left: -20px"
