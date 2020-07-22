@@ -45,9 +45,34 @@ body_action_plots <- dashboardBody(
           width = 3
         ),
         width = 6
+        )
+      ),
+      fluidRow(
+        box(
+          title = "Policy Measures Indexes",
+          withSpinner(plotlyOutput("action_indexes")),
+          fluidRow(
+            column(
+              uiOutput("selectize_action_indexes_countries"),
+              width = 3,
+            ),
+            column(
+              uiOutput("selectize_action_indexes_index"),
+              width = 3
+            )
+          ),
+          width = 6
         ),
-      style = "padding-bottom: 200px;"
-      )
+        box(
+          column(
+            uiOutput("action_indexes_text"),
+            width = 12,
+            style = "padding: 50px;"
+          ),
+          width = 6
+        ),
+        style = "padding-bottom: 200px;"
+      ),
     )
   )
 )

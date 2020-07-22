@@ -2,7 +2,10 @@ output$action_general_text <- renderText(
   paste(
   h5("Overview"),
   br(),
-  "The following plots visualize publicly available information on 14 indicators
+  "The plots in this page concern policy measures that governments across the
+  world have taken it order to combat COVID-19.",
+  br(),br(),
+  "The first two plots visualize publicly available information on 14 indicators
   of government response to COVID-19, as recorded by the",
   paste0(
   tags$a(href = "https://www.bsg.ox.ac.uk/research/research-projects/coronavirus-government-response-tracker",
@@ -48,4 +51,35 @@ output$action_general_text <- renderText(
   indicate that the government acted",
   em("after"),
   "the selected milestone has been reached."
+))
+
+output$action_indexes_text <- renderText(
+  paste(
+    em("Quantify government activity as a response to COVID-19."),
+    br(),br(),
+    "Using the above mentioned indicators, different indices can be calculated,
+    in order to make it easier to quantify government actions. These include the
+    following indices:",
+    tags$ul(
+      tags$li(tags$b("Stringency Index:"),
+              "this records the strictness of \"lockdown style\" policies that
+              primarily restrict people’s behaviour"),
+      tags$li(tags$b("Government Response Index:"),
+              "an overall government response index, which records how the
+              response of governments has varied over all indicators in the
+              database, becoming stronger or weaker over the course of the
+              outbreak);"),
+      tags$li(tags$b("Containment and Health Index:"),
+              "this combines \"lockdown\" restrictions and closures with
+              measures such as testing policy and contact tracing, short term
+              investment in healthcare, as well investments in vaccines"),
+      tags$li(tags$b("Economic Support Index:"),
+              "this records measures such as income support and debt relief")
+    ),
+    "All these indices receive values between 0 and 100. The higher the value,
+    the more measures are in place.",
+    br(),br(),
+    "You may select which government index you are interested in and the
+    countries that you would like to display these indices for. By default, the
+    plot shows the evolution of the Stringency index."
 ))
