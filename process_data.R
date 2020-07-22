@@ -48,7 +48,9 @@ data_oxford <- read_csv("data/oxford_data/data/OxCGRT_latest.csv") %>%
   mutate(Date = as.Date.character(Date, format="%Y%m%d")) %>%
   select(-ends_with("_Flag"), -starts_with("Confirmed"), -CountryName, -starts_with("E1_"), -starts_with("E2_"), -starts_with("E4_") ) %>%
   rename("iso3c" = "CountryCode") %>%
-  rename("ActionDate" = "Date")
+  rename("ActionDate" = "Date") %>%
+  mutate(country = countrycode(iso3c, origin="iso3c", destination="country.name"),
+         country = recode(country, "Macedonia" = "North Macedonia")) 
 saveRDS(data_oxford, "data/data_oxford.RDS")
 
 # Get latest data
@@ -515,6 +517,9 @@ top5_countries <- data_evolution %>%
   select(`Country/Region`) %>%
   pull()
 saveRDS(top5_countries, "data/top5_countries.RDS")
+top5_countries_iso3c <- top5_countries %>%
+  countrycode(origin = "country.name", destination = "iso3c")
+saveRDS(top5_countries_iso3c, "data/data_top5_countries_iso3c.RDS")
 
 groupBy <- "Country/Region"
 padding_left <- max(str_length(data_evolution$value_new), na.rm = TRUE)

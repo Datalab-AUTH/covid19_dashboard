@@ -43,6 +43,7 @@ updateData <- function() {
   data_oecd <<- readRDS("data/data_oecd.RDS")
   data_oxford <<- readRDS("data/data_oxford.RDS")
   top5_countries <<- readRDS("data/top5_countries.RDS")
+  top5_countries_iso3c <<- readRDS("data/data_top5_countries_iso3c.RDS")
   data_world_bank <<- readRDS("data/data_world_bank.RDS")
   data_human_freedom <<- readRDS("data/data_human_freedom.RDS")
   data_full_table <<- readRDS("data/data_full_table.RDS")
