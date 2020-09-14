@@ -44,8 +44,14 @@ data_oecd <- read_csv("data/oecd_data.csv") %>%
   rename("influenzaImmunization" = "Immunization to Influenza")
 saveRDS(data_oecd, "data/data_oecd.RDS")
 
-data_oxford <- read_csv("data/oxford_data/data/OxCGRT_latest.csv") %>%
+data_oxford <- read_csv("data/oxford_data/data/OxCGRT_latest.csv",
+                        guess_max = 100000) %>% # improve guessing. It would
+                                                # otherwise fail with RegionName
+                                                # and RegionCode columns
   mutate(Date = as.Date.character(Date, format="%Y%m%d")) %>%
+  filter(is.na(RegionName)) %>% # for some countries (GBR, USA), there are
+                                # values for both the entire country and also
+                                # per region. We discard the region data
   select(-ends_with("_Flag"), -starts_with("Confirmed"), -CountryName, -starts_with("E1_"), -starts_with("E2_"), -starts_with("E4_") ) %>%
   rename("iso3c" = "CountryCode") %>%
   rename("ActionDate" = "Date") %>%
