@@ -10,7 +10,7 @@
 pull_data() {
 	./pull_latest_data.sh
 	Rscript ./process_data.R
-)
+}
 
 pull_data
 (
