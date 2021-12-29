@@ -587,6 +587,7 @@ data_case_evolution <- data_evolution %>%
   summarise(
     "value" = sum(value, na.rm = T)
   ) %>%
+  filter(var == "confirmed" | var == "deceased") %>%
   as.data.frame()
 saveRDS(data_case_evolution, "data/data_case_evolution.RDS")
 
