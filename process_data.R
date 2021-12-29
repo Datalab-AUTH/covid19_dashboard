@@ -207,7 +207,7 @@ noDataCountries <- data.frame(
 )
 population <- bind_rows(population, noDataCountries) %>%
   group_by(country) %>% 
-  slice_tail(1)
+  slice_tail(n = 1)
 
 data_evolution <- data_evolution %>%
   left_join(population, by = c("Country/Region" = "country")) %>%
