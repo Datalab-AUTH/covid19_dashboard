@@ -1,6 +1,0 @@
-[submodule "data/JHU_data"]
-	path = data/JHU_data
-	url = https://github.com/CSSEGISandData/COVID-19.git
-[submodule "data/oxford_data"]
-	path = data/oxford_data
-	url = https://github.com/OxCGRT/covid-policy-tracker.git
