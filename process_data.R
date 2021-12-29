@@ -14,7 +14,7 @@ library("jsonlite")
 
 source("utils.R", local = T)
 
-JHU_data_path <- "data/JHU_data/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_"
+JHU_data_path <- "data/time_series_covid19_"
 # TODO: Still throws a warning but works for now
 data_confirmed    <- read_csv(paste0(JHU_data_path, "confirmed_global.csv"))
 data_deceased     <- read_csv(paste0(JHU_data_path, "deaths_global.csv"))
@@ -44,7 +44,7 @@ data_oecd <- read_csv("data/oecd_data.csv") %>%
   rename("influenzaImmunization" = "Immunization to Influenza")
 saveRDS(data_oecd, "data/data_oecd.RDS")
 
-data_oxford <- read_csv("data/oxford_data/data/OxCGRT_latest.csv",
+data_oxford <- read_csv("data/OxCGRT_latest.csv",
                         guess_max = 100000) %>% # improve guessing. It would
                                                 # otherwise fail with RegionName
                                                 # and RegionCode columns
